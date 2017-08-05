@@ -94,24 +94,65 @@ let resourceTwo = new Resource("Photonic", 100, 0.1);
 document.getElementById(resourceOne.getName()+"_button").addEventListener("click", function(){resourceOne.manualIncrease(100);});
 document.getElementById(resourceTwo.getName()+"_button").addEventListener("click", function(){resourceTwo.manualIncrease(100);});
 
-document.getElementById("sun_button").addEventListener("click", function(){
-																			loadViewer("sun");				
-																			showHidePlanetaryData("hide");
-																			showHideUpgrades("hide");
-																			});
-document.getElementById("mercury_button").addEventListener("click", function(){
-																			loadViewer("mercury");
-																			showHidePlanetaryData("show");
-																			showHideUpgrades("show");
-																			});
-document.getElementById("venus_button").addEventListener("click", function(){loadViewer("venus");});
-document.getElementById("earth_button").addEventListener("click", function(){loadViewer("earth");});
-document.getElementById("mars_button").addEventListener("click", function(){loadViewer("mars");});
-document.getElementById("jupiter_button").addEventListener("click", function(){loadViewer("jupiter");});
-document.getElementById("saturn_button").addEventListener("click", function(){loadViewer("saturn");});
-document.getElementById("uranus_button").addEventListener("click", function(){loadViewer("uranus");});
-document.getElementById("neptune_button").addEventListener("click", function(){loadViewer("neptune");});
-document.getElementById("pluto_button").addEventListener("click", function(){loadViewer("pluto");});
+document.getElementById("sun_button")
+	.addEventListener("click", function(){
+										loadViewer("sun");				
+										showHidePlanetaryData("hide");
+										showHideUpgrades("hide");
+										});
+document.getElementById("mercury_button")
+	.addEventListener("click", function(){
+										loadViewer("mercury");
+										showHidePlanetaryData("show");
+										showHideUpgrades("show");
+										});
+document.getElementById("venus_button")
+	.addEventListener("click", function(){
+										loadViewer("venus");
+										showHidePlanetaryData("show");
+										showHideUpgrades("show");
+										});
+document.getElementById("earth_button")
+	.addEventListener("click", function(){
+										loadViewer("earth");
+										showHidePlanetaryData("show");
+										showHideUpgrades("show");
+										});
+document.getElementById("mars_button")
+	.addEventListener("click", function(){
+										loadViewer("mars");
+										showHidePlanetaryData("show");
+										showHideUpgrades("show");
+										});
+document.getElementById("jupiter_button")
+	.addEventListener("click", function(){
+										loadViewer("jupiter");
+										showHidePlanetaryData("show");
+										showHideUpgrades("show");
+										});
+document.getElementById("saturn_button")
+	.addEventListener("click", function(){
+										loadViewer("saturn");
+										showHidePlanetaryData("show");
+										showHideUpgrades("show");
+										});
+document.getElementById("uranus_button")
+	.addEventListener("click", function(){
+										loadViewer("uranus");
+										showHidePlanetaryData("show");
+										showHideUpgrades("show");
+										});
+document.getElementById("neptune_button")
+	.addEventListener("click", function(){
+										loadViewer("neptune");
+										showHidePlanetaryData("show");																			showHideUpgrades("show");
+										});
+document.getElementById("pluto_button")
+	.addEventListener("click", function(){
+										loadViewer("pluto");
+										showHidePlanetaryData("show");
+										showHideUpgrades("show");
+										});
 
 
 // Increments the resource values by their delta and updates the display
@@ -144,22 +185,21 @@ function showHidePlanetaryData(showHide) {
 }
 
 // Show/hide upgrades panel
+// Some added complexity due to the flexible size of the viewport
 function showHideUpgrades(showHide) {
 	var animspeed = setInterval(motion, 1);
 	var upgradesRect = document.getElementById("upgrades").getBoundingClientRect();
 	var upgradesPos = upgradesRect.left;
-	var posInc=0;
-	alert(upgradesPos);
-	alert(document.documentElement.clientWidth);
+	var upgradesPosOffset = 0;
 	function motion() {
 		if (showHide==="hide" && (upgradesPos<document.documentElement.clientWidth)) {
 			upgradesPos+=3;
-			posInc+=3;
-			document.getElementById("upgrades").style.transform = "translate(" + posInc + "px, 0px)";	
-		} else if (showHide==="show" && (upgradesPos>document.documentElement.clientWidth)) {
+			upgradesPosOffset+=3;
+			document.getElementById("upgrades").style.transform = "translate(" + upgradesPosOffset + "px, 0px)";	
+		} else if (showHide==="show" && (upgradesPos>document.documentElement.clientWidth- 299)) {
 			upgradesPos-=3;
-			posInc-=3;
-			document.getElementById("upgrades").style.transform = "translate(" + (upgradesPos+posInc) + "px, 0px)";
+			upgradesPosOffset-=3;
+			document.getElementById("upgrades").style.transform = "translate(" + (300 + upgradesPosOffset) + "px, 0px)";
 		}
 		else {
 			clearInterval(animspeed);
