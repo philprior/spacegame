@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Space Game</title>
+<!-- Columns, total width less than 1280 -->
+<!-- Rows, total height less than 720px -->
+<style>
+	body {
+		margin:0px;
+		padding:0px;
+	}
+	
+	.container {
+		display:grid;
+		grid-gap:0px;
+			grid-template-columns: 100vw;
+			grid-template-rows: 140px calc(100vh - 140px);
+		background:#00ccff;
+	}
+	
+	#toparea {
+		grid-row: 1;
+		display:grid;
+		grid-gap: 0px;
+			grid-template-columns: repeat(12, 100px) 1fr;
+			grid-template-rows: 40px 100px;
+		background:#ff00ff;
+	}
+	
+	#mainarea {
+		grid-row: 2;
+		display:grid;
+		grid-gap: 0px;
+			grid-template-columns: 300px 1fr 300px;
+			grid-template-rows: 1fr 100px 100px;
+	}
+	
+	#header, #viewer {
+		grid-column: 1 / -1;
+	}
+
+	#viewer {
+		text-align:center;
+		grid-row: 1;
+		z-index:0;
+	}
+	
+	#sun_button {
+		grid-column: 1 / span 3;
+	}
+	
+	#storybox {
+		grid-column: 2;
+		grid-row: 2 / -1;
+		overflow-y: auto;
+	}
+	
+	#resource1 {
+		grid-column: 1;
+		grid-row: 2;
+	}
+		
+	#resource2 {
+		grid-column: 3;
+		grid-row: 2;
+	}
+	
+	#resource1booster {
+		grid-column: 1;
+		grid-row: 3;		
+	}
+		
+	#resource2booster {
+		grid-column: 3;
+		grid-row: 3;
+	}
+	
+	#planetary_data {
+		grid-column: 1;
+		grid-row: 1;
+		z-index: 20;
+		overflow-y: auto;
+	}
+	
+	.upgrades {
+		grid-column: 3;
+		grid-row: 1;
+		z-index: 20;
+		overflow-y: auto;
+	}
+	
+	.container #toparea div, .container #mainarea div {
+		background:#202020;
+		color:#fff;
+		border:1px solid #505050;
+		padding:10px
+	}
+	
+	::-webkit-scrollbar {
+		width:10px;
+	}
+	
+	::-webkit-scrollbar-track {
+		width:5px;
+		background: rgba(150,150,150,0.5);
+	}
+	
+	::-webkit-scrollbar-thumb {
+		background: rgba(255,255,255,0.5);
+	}
+	
+</style>
+</head>
+
+<body>
+
+
+<div class="container">
+	<div id="toparea">
+		<div id="header">HEADER</div>
+
+		<div id="sun_button">Sun</div>
+		<div class="planetbutton" id="mercury_button">Mercury</div>
+		<div class="planetbutton" id="venus_button">Venus</div>
+		<div class="planetbutton" id="earth_button">Earth</div>
+		<div class="planetbutton" id="mars_button">Mars</div>
+		<div class="planetbutton" id="jupiter_button">Jupiter</div>
+		<div class="planetbutton" id="saturn_button">Saturn</div>
+		<div class="planetbutton" id="uranus_button">Uranus</div>
+		<div class="planetbutton" id="neptune_button">Neptune</div>
+		<div class="planetbutton" id="pluto_button">Pluto</div>
+	</div>
+
+	<div id="mainarea">
+		<div id="planetary_data">
+			Planet: [name]<br>
+			Mass: XXXkg<br>
+			X AU from Sol<br>
+			etc.<br><br>
+			---<br><br>
+		</div>
+
+		<div id="viewer"> [Animations go here]
+		</div>
+
+		<div class="upgrades">
+			Upgrades<br>
+			(scrollable)
+		</div>
+
+		<div id="storybox">Story box</div>
+
+		<div class="resource" id="resource1">Nuclear<br> <span id="Nuclear"></span></div>
+		<div class="resource" id="resource2">Photonic<br> <span id="Photonic"></span></div>
+		
+		<div class="resourcebooster" id="resource1booster"><button id="Nuclear_button">Boom</button></div>
+		<div class="resourcebooster" id="resource2booster"><button id="Photonic_button">Phtoom</button></div>
+	</div>
+</div>
+
+<script src="spacegamemechanics.js"></script>
+
+</body>
+</html>
