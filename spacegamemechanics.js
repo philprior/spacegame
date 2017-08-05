@@ -145,21 +145,17 @@ function showHidePlanetaryData(showHide) {
 }
 
 // Show/hide upgrades panel
-// Some added complexity due to the flexible size of the viewport
 function showHideUpgrades(showHide) {
 	var animspeed = setInterval(motion, 1);
 	var upgradesRect = document.getElementById("upgrades").getBoundingClientRect();
-	var upgradesPos = upgradesRect.left;
-	var upgradesPosOffset = 0;
+	var upgradesPos = document.documentElement.clientWidth - upgradesRect.left;
 	function motion() {
-		if (showHide==="hide" && (upgradesPos<document.documentElement.clientWidth)) {
-			upgradesPos+=3;
-			upgradesPosOffset+=3;
-			document.getElementById("upgrades").style.transform = "translate(" + upgradesPosOffset + "px, 0px)";	
-		} else if (showHide==="show" && (upgradesPos>document.documentElement.clientWidth- 299)) {
+		if (showHide==="hide" && (upgradesPos>0)) {
 			upgradesPos-=3;
-			upgradesPosOffset-=3;
-			document.getElementById("upgrades").style.transform = "translate(" + (300 + upgradesPosOffset) + "px, 0px)";
+			document.getElementById("upgrades").style.transform = "translate(" + (300 - upgradesPos) + "px, 0px)";	
+		} else if (showHide==="show" && (upgradesPos<300)) {
+			upgradesPos+=3;
+			document.getElementById("upgrades").style.transform = "translate(" + (300 - upgradesPos) + "px, 0px)";
 		}
 		else {
 			clearInterval(animspeed);
