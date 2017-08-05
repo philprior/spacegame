@@ -100,59 +100,20 @@ document.getElementById("sun_button")
 										showHidePlanetaryData("hide");
 										showHideUpgrades("hide");
 										});
-document.getElementById("mercury_button")
-	.addEventListener("click", function(){
-										loadViewer("mercury");
+// Planet button listeners
+var planetbuttons = document.getElementsByClassName("planetbutton");
+
+for (var i=0,len=planetbuttons.length; i<len; i++) {
+	planetButtonListener(planetbuttons[i].id);
+}
+
+function planetButtonListener(planet){
+	document.getElementById(planet).addEventListener("click", function(){
+										loadViewer(planet);
 										showHidePlanetaryData("show");
 										showHideUpgrades("show");
 										});
-document.getElementById("venus_button")
-	.addEventListener("click", function(){
-										loadViewer("venus");
-										showHidePlanetaryData("show");
-										showHideUpgrades("show");
-										});
-document.getElementById("earth_button")
-	.addEventListener("click", function(){
-										loadViewer("earth");
-										showHidePlanetaryData("show");
-										showHideUpgrades("show");
-										});
-document.getElementById("mars_button")
-	.addEventListener("click", function(){
-										loadViewer("mars");
-										showHidePlanetaryData("show");
-										showHideUpgrades("show");
-										});
-document.getElementById("jupiter_button")
-	.addEventListener("click", function(){
-										loadViewer("jupiter");
-										showHidePlanetaryData("show");
-										showHideUpgrades("show");
-										});
-document.getElementById("saturn_button")
-	.addEventListener("click", function(){
-										loadViewer("saturn");
-										showHidePlanetaryData("show");
-										showHideUpgrades("show");
-										});
-document.getElementById("uranus_button")
-	.addEventListener("click", function(){
-										loadViewer("uranus");
-										showHidePlanetaryData("show");
-										showHideUpgrades("show");
-										});
-document.getElementById("neptune_button")
-	.addEventListener("click", function(){
-										loadViewer("neptune");
-										showHidePlanetaryData("show");																			showHideUpgrades("show");
-										});
-document.getElementById("pluto_button")
-	.addEventListener("click", function(){
-										loadViewer("pluto");
-										showHidePlanetaryData("show");
-										showHideUpgrades("show");
-										});
+}
 
 
 // Increments the resource values by their delta and updates the display
@@ -162,7 +123,6 @@ function incrementResources() {
 	resourceTwo.increment();
 	document.getElementById(resourceTwo.getName()).innerHTML = Math.round(resourceTwo.getAmount());
 }
-
 
 
 // Show/hide planetary data panel
