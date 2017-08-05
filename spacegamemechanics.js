@@ -96,13 +96,13 @@ document.getElementById(resourceTwo.getName()+"_button").addEventListener("click
 
 document.getElementById("sun_button").addEventListener("click", function(){
 																			loadViewer("sun");				
-																			moveItem("planetary_data", "left", 300);
-																			moveItem("upgrades", "right", 300);
+																			showHidePlanetaryData("hide");
+																			showHideUpgrades("hide");
 																			});
 document.getElementById("mercury_button").addEventListener("click", function(){
 																			loadViewer("mercury");
-																			moveItem("planetary_data", "right", 300);
-																			moveItem("upgrades", "left", 300);
+																			showHidePlanetaryData("show");
+																			showHideUpgrades("show");
 																			});
 document.getElementById("venus_button").addEventListener("click", function(){loadViewer("venus");});
 document.getElementById("earth_button").addEventListener("click", function(){loadViewer("earth");});
@@ -123,25 +123,51 @@ function incrementResources() {
 }
 
 
-// Animation for UI items
-function moveItem(element, direction, distance) {
-	var animspeed = setInterval(motion, 0.5);
-	var rect = document.getElementById(element).getBoundingClientRect();
-	var pos = rect.left;
-	alert(pos);
+
+// Show/hide planetary data panel
+function showHidePlanetaryData(showHide) {
+	var animspeed = setInterval(motion, 1);
+	var planetaryRect = document.getElementById("planetary_data").getBoundingClientRect();
+	var planetaryPos = planetaryRect.left;
 	function motion() {
-		if (direction==="left" && pos!==(pos-distance)) {
-			pos--;
-			document.getElementById(element).style.transform = "translate(" + pos + "px, 0px)";	
-		} else if (direction==="right" && pos!==(pos+distance)) {
-			pos++;
-			document.getElementById(element).style.transform = "translate(" + pos + "px, 0px)";	
+		if (showHide==="hide" && (planetaryPos>-300)) {
+			planetaryPos-=3;
+			document.getElementById("planetary_data").style.transform = "translate(" + planetaryPos + "px, 0px)";	
+		} else if (showHide==="show" && planetaryPos<0) {
+			planetaryPos+=3;
+			document.getElementById("planetary_data").style.transform = "translate(" + planetaryPos + "px, 0px)";	
 		}
 		else {
 			clearInterval(animspeed);
 		}
 	}
 }
+
+// Show/hide upgrades panel
+function showHideUpgrades(showHide) {
+	var animspeed = setInterval(motion, 1);
+	var upgradesRect = document.getElementById("upgrades").getBoundingClientRect();
+	var upgradesPos = upgradesRect.left;
+	var posInc=0;
+	alert(upgradesPos);
+	alert(document.documentElement.clientWidth);
+	function motion() {
+		if (showHide==="hide" && (upgradesPos<document.documentElement.clientWidth)) {
+			upgradesPos+=3;
+			posInc+=3;
+			document.getElementById("upgrades").style.transform = "translate(" + posInc + "px, 0px)";	
+		} else if (showHide==="show" && (upgradesPos>document.documentElement.clientWidth)) {
+			upgradesPos-=3;
+			posInc-=3;
+			document.getElementById("upgrades").style.transform = "translate(" + (upgradesPos+posInc) + "px, 0px)";
+		}
+		else {
+			clearInterval(animspeed);
+		}
+	}
+}
+
+
 
 function loadViewer(thing) {
 	document.getElementById("viewer").innerHTML=thing;

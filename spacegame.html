@@ -76,18 +76,32 @@
 		grid-row: 3;
 	}
 	
-	#planetary_data {
+	#planetary_datawrap {
+		display:grid;
+		grid-gap:0px;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
 		grid-column: 1;
+		grid-row: 1;
+		z-index: 30;
+		overflow-y: auto;
+	}
+	
+	#upgradeswrap {
+		display:grid;
+		grid-gap:0px;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr;
+		grid-column: 3;
 		grid-row: 1;
 		z-index: 20;
 		overflow-y: auto;
 	}
 	
-	.upgrades {
-		grid-column: 3;
+	#planetary_data, #upgrades {
+		grid-column: 1;
 		grid-row: 1;
-		z-index: 20;
-		overflow-y: auto;
+		margin:0;
 	}
 	
 	.container #toparea div, .container #mainarea div {
@@ -95,6 +109,12 @@
 		color:#fff;
 		border:1px solid #505050;
 		padding:10px
+	}
+	
+	#upgradeswrap, #planetary_datawrap {
+		overflow-x: hidden;
+		overflow-y: hidden;
+		padding:0px;
 	}
 	
 	::-webkit-scrollbar {
@@ -133,20 +153,26 @@
 	</div>
 
 	<div id="mainarea">
-		<div id="planetary_data">
-			Planet: [name]<br>
-			Mass: XXXkg<br>
-			X AU from Sol<br>
-			etc.<br><br>
-			---<br><br>
+		<div id="planetary_datawrap">
+			<div id="planetary_data">
+				Planet: [name]<br>
+				Mass: XXXkg<br>
+				X AU from Sol<br>
+				etc.<br><br>
+				---<br><br>
+			</div>
 		</div>
+
 
 		<div id="viewer"> [Animations go here]
 		</div>
-
-		<div class="upgrades">
-			Upgrades<br>
-			(scrollable)
+		
+		
+		<div id="upgradeswrap">
+			<div id="upgrades">
+				Upgrades<br>
+				(scrollable)
+			</div>
 		</div>
 
 		<div id="storybox">Story box</div>
