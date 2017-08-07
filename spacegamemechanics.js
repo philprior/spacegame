@@ -269,12 +269,16 @@ function checkUpgradeEvents() {
 	for (var i=0, len=upgradeEvents.length; i<len; i++) {
 		if (resourceOne.getAmount() >= upgradeEvents[i].getPrereqOne() && resourceTwo.getAmount() >= upgradeEvents[i].getPrereqTwo()) {
 			document.getElementById("upgrades").innerHTML +=
-				'<div class="upgradeevent">' + upgradeEvents[i].getName() + '<br>' + upgradeEvents[i].getFlavourText() + '</div>';
+				"<div class='upgradeevent' id='upgradeevent_" + upgradeEvents[i].getEventId() + "'>" + upgradeEvents[i].getName() +
+				"<br>" + upgradeEvents[i].getFlavourText() + "</div>";
 			document.getElementById("storybox").innerHTML +=
 				"<div class='story_item' id='story_" + upgradeEvents[i].getEventId() + "'>" +upgradeEvents[i].getStoryText() + "</div>";
-			var nextStoryItem = "story_" + upgradeEvents[i].getEventId();
+			var upgradeEventItem = "upgradeevent_" + upgradeEvents[i].getEventId();
+			var storyItem = "story_" + upgradeEvents[i].getEventId();
 			upgradeEvents.splice(i,1);
-			scrollStory(nextStoryItem);
+			scrollStory(storyItem);
+			fadein(storyItem);
+			fadein(upgradeEventItem);
 		}
 	}
 }
@@ -291,11 +295,17 @@ loadViewer("earth");
 loadPlanetaryData("earth");
 showHidePlanetaryData("show");
 showHideUpgrades("show");
+fadein("ui");
 
 
 // Scrolls the story pane to the top of the next item automatically
 function scrollStory(identifier) {
 	document.querySelector("#"+identifier).scrollIntoView({behavior:'smooth'});
+}
+
+// fades an item in from opacity 0 to opacity 1
+function fadein(identifier){
+	document.querySelector("#"+identifier).style.opacity = 1;
 }
 
 // Update rate, once every 10th of a second
