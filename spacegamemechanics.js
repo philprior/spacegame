@@ -39,7 +39,8 @@ class Resource {
 
 
 class UpgradeEvent {
-	constructor(name, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, flavourText, storyText){
+	constructor(eventId, name, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, flavourText, storyText){
+		this._eventId = eventId;
 		this._name = name;
 		this._prereqOne = prereqOne;
 		this._prereqTwo = prereqTwo;
@@ -48,6 +49,10 @@ class UpgradeEvent {
 		this._unique = unique;
 		this._flavourText = flavourText;
 		this._storyText = storyText;
+	}
+	
+	getEventId() {
+		return this._eventId;
 	}
 	
 	getName() {
@@ -141,32 +146,32 @@ let sol = new Planet("Sol", 1390, 0, 0, 0, 0, 0, 0);
 planets.push(sol);
 let planetMercury = new Planet("Mercury", 3.0, 0.4, 5790, 0.241, 0.208, 7.00, 0);
 planets.push(planetMercury);
-let planetVenus = new Planet("Venus", 7.5, 0.7, 108200, 0.615, 0.208, 3.39, 0);
+let planetVenus = new Planet("Venus", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 0);
 planets.push(planetVenus);
-let planetEarth = new Planet("Earth", 7.9, 1.0, 149600, 1.000, 0.208, 0.00, 0);
+let planetEarth = new Planet("Earth", 7.9, 1.0, 149600, 1.000, 0.017, 0.00, 0);
 planets.push(planetEarth);
-let planetMars = new Planet("Mars", 4.2, 1.5, 227900, 1.880, 0.208, 1.85, 0);
+let planetMars = new Planet("Mars", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 0);
 planets.push(planetMars);
-let planetJupiter = new Planet("Jupiter", 142.8, 5.2, 778300, 11.867, 0.208, 1.31, 0);
+let planetJupiter = new Planet("Jupiter", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0);
 planets.push(planetJupiter);
-let planetSaturn = new Planet("Saturn", 120.7, 9.5, 1427000, 29.461, 0.208, 2.48, 0);
+let planetSaturn = new Planet("Saturn", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 0);
 planets.push(planetSaturn);
-let planetUranus = new Planet("Uranus", 51.1, 19.2, 2871000, 84.030, 0.208, 0.77, 0);
+let planetUranus = new Planet("Uranus", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77, 0);
 planets.push(planetUranus);
-let planetNeptune = new Planet("Neptune", 48.6, 30.0, 4497100, 164.815, 0.208, 1.77, 0);
+let planetNeptune = new Planet("Neptune", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77, 0);
 planets.push(planetNeptune);
-let planetPluto = new Planet("Pluto", 2, 39.5, 5790, 5913000, 248.057, 17.14, 0);
+let planetPluto = new Planet("Pluto", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 0);
 planets.push(planetPluto);
 
 
 // Instantiate upgradeEvents
-// (name, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, flavourText, storyText)
+// (eventId, name, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, flavourText, storyText)
 var upgradeEvents = [];
-let aBeginning = new UpgradeEvent("A beginning", 0, 0, 0, 0, 0, 0, true, "The first steps", "Text");
+let aBeginning = new UpgradeEvent("000001","A beginning", 0, 0, 0, 0, 0, 0, true, "The first steps", "Text");
 upgradeEvents.push(aBeginning);
-let nuclearPowerStation = new UpgradeEvent("Nuclear Power Station", 200, 0, 500, 0, 1, 0, false, "A planetside source of nuclear power", "Nuclear power is AARGH!");
+let nuclearPowerStation = new UpgradeEvent("000002", "Nuclear Power Station", 200, 0, 500, 0, 1, 0, false, "A planetside source of nuclear power", "You can now purchase surface based nuclear power stations for this planet.");
 upgradeEvents.push(nuclearPowerStation);
-let solarPowerFarm = new UpgradeEvent("Solar Power Farm", 0, 100, 100, 500, 0, 1, false, "A planetside source of solar power", "Solar power is swish<br>!<br>!<br>!<br>!<br>!<br>!<br>!<br>!<br>!<br>!<br>!<br>!<br>!<br>!");
+let solarPowerFarm = new UpgradeEvent("000003", "Solar Power Farm", 0, 100, 100, 500, 0, 1, false, "A planetside source of solar power", "You can now purchase surface based solar farms for this planet.");
 upgradeEvents.push(solarPowerFarm);
 
 
@@ -201,9 +206,9 @@ function planetButtonListener(planet){
 // Increments the resource values by their delta and updates the display
 function incrementResources() {
 	resourceOne.increment();
-	document.getElementById(resourceOne.getName()).innerHTML = Math.round(resourceOne.getAmount());
+	document.getElementById(resourceOne.getName()).innerHTML = Math.round(resourceOne.getAmount()).toLocaleString();
 	resourceTwo.increment();
-	document.getElementById(resourceTwo.getName()).innerHTML = Math.round(resourceTwo.getAmount());
+	document.getElementById(resourceTwo.getName()).innerHTML = Math.round(resourceTwo.getAmount()).toLocaleString();
 }
 
 
@@ -212,10 +217,9 @@ function loadPlanetaryData(planet){
 		for (var i=0, len=planets.length; i<len; i++) {
 		if (planet.toUpperCase()===planets[i].getName().toUpperCase()) {
 			document.getElementById("planetary_data").innerHTML =
-				"Name: " + planets[i].getName() + "<br><br>" +
-				"Diameter (km): " + (planets[i].getDiameter()*1000) + "<br><br>" +
-				"Distance from the sun (AU): " + planets[i].getAvgDistFromSunAu() + "<br><br>" +
-				"Distance from the sun (km): " + planets[i].getAvgDistFromSunKm();
+				"Name<br><span class='indented_data'>" + planets[i].getName() + "</span><br>" +
+				"Diameter<br><span class='indented_data'>" + (planets[i].getDiameter()*1000).toLocaleString() + "km</span><br>" +
+				"Average distance from the sun<br><span class='indented_data'>" + (planets[i].getAvgDistFromSunKm()*1000).toLocaleString()+ "km (" + planets[i].getAvgDistFromSunAu() + "AU)</span><br>";
 			break;
 		}
 	}
@@ -264,22 +268,35 @@ function showHideUpgrades(showHide) {
 function checkUpgradeEvents() {
 	for (var i=0, len=upgradeEvents.length; i<len; i++) {
 		if (resourceOne.getAmount() >= upgradeEvents[i].getPrereqOne() && resourceTwo.getAmount() >= upgradeEvents[i].getPrereqTwo()) {
-			document.getElementById("upgrades").innerHTML += upgradeEvents[i].getName() + "<br>" + upgradeEvents[i].getFlavourText() + "<br><br>";
-			document.getElementById("storybox").innerHTML += upgradeEvents[i].getStoryText() + "<br><br>";
+			document.getElementById("upgrades").innerHTML +=
+				'<div class="upgradeevent">' + upgradeEvents[i].getName() + '<br>' + upgradeEvents[i].getFlavourText() + '</div>';
+			document.getElementById("storybox").innerHTML +=
+				"<div class='story_item' id='story_" + upgradeEvents[i].getEventId() + "'>" +upgradeEvents[i].getStoryText() + "</div>";
+			var nextStoryItem = "story_" + upgradeEvents[i].getEventId();
 			upgradeEvents.splice(i,1);
+			scrollStory(nextStoryItem);
 		}
 	}
 }
 
 
+// Loads the content for the viewer panel
 function loadViewer(planet) {
 	document.getElementById("viewer").innerHTML=planet;
 }
 
+
+// Initial screen layout, centred on Earth
 loadViewer("earth");
 loadPlanetaryData("earth");
 showHidePlanetaryData("show");
 showHideUpgrades("show");
+
+
+// Scrolls the story pane to the top of the next item automatically
+function scrollStory(identifier) {
+	document.querySelector("#"+identifier).scrollIntoView({behavior:'smooth'});
+}
 
 // Update rate, once every 10th of a second
 setInterval(gameMain, 100);
