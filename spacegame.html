@@ -9,6 +9,8 @@
 	body {
 		margin:0px;
 		padding:0px;
+		font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+		font-size: 14px;
 	}
 	
 	.container {
@@ -16,7 +18,9 @@
 		grid-gap:0px;
 			grid-template-columns: 100vw;
 			grid-template-rows: 140px calc(100vh - 140px);
-		background:#202020
+		background:#202020;
+		overflow-x: hidden;
+		overflow-y: hidden;
 	}
 	
 	#toparea {
@@ -83,7 +87,7 @@
 		grid-column: 1;
 		grid-row: 1;
 		z-index: 30;
-		overflow-y: auto;
+		
 	}
 	
 	#upgradeswrap {
@@ -94,12 +98,12 @@
 		grid-column: 3;
 		grid-row: 1;
 		z-index: 20;
-		overflow-y: auto;
 	}
 	
 	#planetary_data, #upgrades {
 		grid-column: 1;
 		grid-row: 1;
+		overflow-y: auto;
 	}
 	
 	.container #toparea div, .container #mainarea div {
@@ -138,7 +142,7 @@
 
 <div class="container">
 	<div id="toparea">
-		<div id="header">HEADER</div>
+		<div id="header">SPACE GAME</div>
 
 		<div id="sun_button">Sun</div>
 		<div class="planetbutton" id="mercury">Mercury</div>
@@ -154,28 +158,18 @@
 
 	<div id="mainarea">
 		<div id="planetary_datawrap">
-			<div id="planetary_data">
-				Planet: [name]<br>
-				Mass: XXXkg<br>
-				X AU from Sol<br>
-				etc.<br><br>
-				---<br><br>
-			</div>
+			<div id="planetary_data"></div>
 		</div>
 
 
-		<div id="viewer"> [Animations go here]
-		</div>
+		<div id="viewer"></div>
 		
 		
 		<div id="upgradeswrap">
-			<div id="upgrades">
-				Upgrades<br>
-				(scrollable)
-			</div>
+			<div id="upgrades"></div>
 		</div>
 
-		<div id="storybox">Story box</div>
+		<div id="storybox"></div>
 
 		<div class="resource" id="resource1">Nuclear<br> <span id="Nuclear"></span></div>
 		<div class="resource" id="resource2">Photonic<br> <span id="Photonic"></span></div>
