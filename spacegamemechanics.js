@@ -287,8 +287,11 @@ function checkUpgradeEvents() {
 // Loads the content for the viewer panel
 function loadViewer(planet) {
 	//document.getElementById("viewer").innerHTML=planet;
-
-
+	if (planet==="earth") {
+		planetSphere.material.color.setHex(0x5555ff);
+	} else if (planet==="mars") {
+		planetSphere.material.color.setHex(0xff0000);
+	}
 }
 
 
