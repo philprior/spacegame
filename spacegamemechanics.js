@@ -286,7 +286,9 @@ function checkUpgradeEvents() {
 
 // Loads the content for the viewer panel
 function loadViewer(planet) {
-	document.getElementById("viewer").innerHTML=planet;
+	//document.getElementById("viewer").innerHTML=planet;
+
+
 }
 
 

@@ -44,10 +44,11 @@ body {
 		grid-column: 1 / -1;
 	}
 
-	#viewer {
+	.container #mainarea #viewer {
 		text-align:center;
 		grid-row: 1;
 		z-index:0;
+		padding:0px;
 	}
 	
 	#sun_button {
