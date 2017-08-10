@@ -294,34 +294,8 @@ function checkUpgradeEvents() {
 // Loads the content for the viewer panel
 function loadViewer(planet) {
 	fadeout("viewer");
-	if (planet==="earth") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/earthmap1k.jpg");
-		planetSphere.material.needsUpdate = true;
-	} else if (planet==="mercury") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/mercurymap.jpg");
-		planetSphere.material.needsUpdate = true;
-	} else if (planet==="venus") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/venusmap.jpg");
-		planetSphere.material.needsUpdate = true;
-	} else if (planet==="mars") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/mars_1k_color.jpg");
-		planetSphere.material.needsUpdate = true;
-	} else if (planet==="jupiter") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/jupitermap.jpg");
-		planetSphere.material.needsUpdate = true;
-	} else if (planet==="saturn") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/saturnmap.jpg");
-		planetSphere.material.needsUpdate = true;
-	} else if (planet==="uranus") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/uranusmap.jpg");
-		planetSphere.material.needsUpdate = true;
-	} else if (planet==="neptune") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/neptunemap.jpg");
-		planetSphere.material.needsUpdate = true;
-	} else if (planet==="pluto") {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/plutomap1k.jpg");
-		planetSphere.material.needsUpdate = true;
-	}
+	planetSphere.material.map = THREE.ImageUtils.loadTexture("images/" + planet + "map.jpg");
+	planetSphere.material.needsUpdate = true;
 	fadein("viewer");
 }
 
