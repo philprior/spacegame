@@ -27,8 +27,7 @@
 	
 	function animate() {
 		requestAnimationFrame( animate );
-		planetSphere.rotation.x += 0.001;
-		//cube.rotation.y += 0.1;
+		planetSphere.rotation.y += 0.001;
 		renderer.render( scene, camera );
 	}
 	animate();

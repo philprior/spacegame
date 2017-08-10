@@ -167,7 +167,7 @@ planets.push(planetPluto);
 // Instantiate upgradeEvents
 // (eventId, name, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, flavourText, storyText)
 var upgradeEvents = [];
-let aBeginning = new UpgradeEvent("000001","A beginning", 0, 0, 0, 0, 0, 0, true, "The first steps", "Text");
+let aBeginning = new UpgradeEvent("000001","A beginning", 0, 0, 0, 0, 0, 0, true, "", "The first steps");
 upgradeEvents.push(aBeginning);
 let nuclearPowerStation = new UpgradeEvent("000002", "Nuclear Power Station", 200, 0, 500, 0, 1, 0, false, "A planetside source of nuclear power", "You can now purchase surface based nuclear power stations for this planet.");
 upgradeEvents.push(nuclearPowerStation);
@@ -268,11 +268,18 @@ function showHideUpgrades(showHide) {
 function checkUpgradeEvents() {
 	for (var i=0, len=upgradeEvents.length; i<len; i++) {
 		if (resourceOne.getAmount() >= upgradeEvents[i].getPrereqOne() && resourceTwo.getAmount() >= upgradeEvents[i].getPrereqTwo()) {
-			document.getElementById("upgrades").innerHTML +=
-				"<div class='upgradeevent' id='upgradeevent_" + upgradeEvents[i].getEventId() + "'>" + upgradeEvents[i].getName() +
-				"<br>" + upgradeEvents[i].getFlavourText() + "</div>";
-			document.getElementById("storybox").innerHTML +=
-				"<div class='story_item' id='story_" + upgradeEvents[i].getEventId() + "'>" +upgradeEvents[i].getStoryText() + "</div>";
+			
+			if (upgradeEvents[i].getFlavourText()!=="") {
+				document.getElementById("upgrades").innerHTML +=
+					"<div class='upgradeevent' id='upgradeevent_" + upgradeEvents[i].getEventId() + "'>" + upgradeEvents[i].getName() +
+					"<br>" + upgradeEvents[i].getFlavourText() + "</div>";
+			}
+			
+			if (upgradeEvents[i].getStoryText()!=="") {
+				document.getElementById("storybox").innerHTML +=
+					"<div class='story_item' id='story_" + upgradeEvents[i].getEventId() + "'>" +upgradeEvents[i].getStoryText() + "</div>";
+			}
+			
 			var upgradeEventItem = "upgradeevent_" + upgradeEvents[i].getEventId();
 			var storyItem = "story_" + upgradeEvents[i].getEventId();
 			upgradeEvents.splice(i,1);
@@ -286,12 +293,36 @@ function checkUpgradeEvents() {
 
 // Loads the content for the viewer panel
 function loadViewer(planet) {
-	//document.getElementById("viewer").innerHTML=planet;
+	fadeout("viewer");
 	if (planet==="earth") {
-		planetSphere.material.color.setHex(0x5555ff);
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/earthmap1k.jpg");
+		planetSphere.material.needsUpdate = true;
+	} else if (planet==="mercury") {
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/mercurymap.jpg");
+		planetSphere.material.needsUpdate = true;
+	} else if (planet==="venus") {
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/venusmap.jpg");
+		planetSphere.material.needsUpdate = true;
 	} else if (planet==="mars") {
-		planetSphere.material.color.setHex(0xff0000);
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/mars_1k_color.jpg");
+		planetSphere.material.needsUpdate = true;
+	} else if (planet==="jupiter") {
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/jupitermap.jpg");
+		planetSphere.material.needsUpdate = true;
+	} else if (planet==="saturn") {
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/saturnmap.jpg");
+		planetSphere.material.needsUpdate = true;
+	} else if (planet==="uranus") {
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/uranusmap.jpg");
+		planetSphere.material.needsUpdate = true;
+	} else if (planet==="neptune") {
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/neptunemap.jpg");
+		planetSphere.material.needsUpdate = true;
+	} else if (planet==="pluto") {
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/plutomap1k.jpg");
+		planetSphere.material.needsUpdate = true;
 	}
+	fadein("viewer");
 }
 
 
@@ -311,6 +342,11 @@ function scrollStory(identifier) {
 // fades an item in from opacity 0 to opacity 1
 function fadein(identifier){
 	document.querySelector("#"+identifier).style.opacity = 1;
+}
+
+// fades an item in from opacity 0 to opacity 1
+function fadeout(identifier){
+	document.querySelector("#"+identifier).style.opacity = 0;
 }
 
 // Update rate, once every 10th of a second
