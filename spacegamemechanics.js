@@ -293,10 +293,8 @@ function checkUpgradeEvents() {
 
 // Loads the content for the viewer panel
 function loadViewer(planet) {
-	fadeout("viewer");
-	planetSphere.material.map = THREE.ImageUtils.loadTexture("images/" + planet + "map.jpg");
+		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/" + planet + "map.jpg");
 	planetSphere.material.needsUpdate = true;
-	fadein("viewer");
 }
 
 
@@ -306,7 +304,6 @@ loadPlanetaryData("earth");
 showHidePlanetaryData("show");
 showHideUpgrades("show");
 fadein("ui");
-
 
 // Scrolls the story pane to the top of the next item automatically
 function scrollStory(identifier) {
