@@ -39,9 +39,10 @@ class Resource {
 
 
 class UpgradeEvent {
-	constructor(eventId, name, prereqEvent, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, displayed, done, count, flavourText, storyText){
+	constructor(eventId, name, planet, prereqEvent, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, displayed, done, count, flavourText, storyText){
 		this._eventId = eventId;
 		this._name = name;
+		this._planet = planet;
 		this._prereqEvent = prereqEvent;
 		this._prereqOne = prereqOne;
 		this._prereqTwo = prereqTwo;
@@ -63,6 +64,10 @@ class UpgradeEvent {
 	
 	getName() {
 		return this._name;
+	}
+	
+	getPlanet() {
+		return this._planet;
 	}
 	
 	getPrereqOne() {
@@ -245,23 +250,24 @@ function updateButtonVals(eventId) {
 	document.getElementById("upgradeeventcount_"+eventId).innerHTML = "(x" + upgradeEvents[eventId].getCount() +")";
 	document.getElementById("nuclearcost_"+eventId).innerHTML = upgradeEvents[eventId].getCostOne();
 	document.getElementById("photoniccost_"+eventId).innerHTML = upgradeEvents[eventId].getCostTwo();
-} 
+}
+
 
 // Instantiate upgradeEvents and create related function triggers
-// (eventId, name, prereqEvent, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, displayed, done, count, flavourText, storyText)
+// (eventId, name, planet, prereqEvent, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, displayed, done, count, flavourText, storyText)
 var upgradeEvents = [];
-let aBeginning = new UpgradeEvent(0,"A beginning", -1, 0, 0, 0, 0, 0, 0, true, false, false, 0, "", "The first steps");
+let aBeginning = new UpgradeEvent(0,"A beginning", "earth", -1, 0, 0, 0, 0, 0, 0, true, false, false, 0, "", "The first steps");
 upgradeEvents.push(aBeginning);
 function upgradeevent_0() {
 }
 
-let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", -1, 20, 0, 50, 0, 0.1, 0, false, false, false, 0, "Adds <span class='Nuclear'>1</span>TJ/s", "You can now purchase surface based nuclear power stations for Earth.");
+let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", "earth", -1, 20, 0, 50, 0, 0.1, 0, false, false, false, 0, "Adds <span class='Nuclear'>1</span>TJ/s", "You can now purchase surface based nuclear power stations for Earth.");
 upgradeEvents.push(nuclearPowerStation);
 function upgradeevent_1() {
 	updateResources(1);
 }
 
-let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", -1, 0, 10, 10, 50, 0, 0.1, false, false, false, 0, "Adds <span class='Photonic'>1</span>TJ/s", "You can now purchase surface based solar farms for Earth.");
+let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", "earth", -1, 0, 10, 10, 50, 0, 0.1, false, false, false, 0, "Adds <span class='Photonic'>1</span>TJ/s", "You can now purchase surface based solar farms for Earth.");
 upgradeEvents.push(solarPowerFarm);
 function upgradeevent_2() {
 	updateResources(2);
@@ -290,6 +296,7 @@ for (var i=0,len=planetbuttons.length; i<len; i++) {
 
 function planetButtonListener(planet){
 	document.getElementById(planet).addEventListener("click", function(){
+										currentPlanet = planet;
 										loadViewer(planet);
 										loadPlanetaryData(planet);
 										showHidePlanetaryData("show");
@@ -421,6 +428,28 @@ function addUpgradeEventButtons() {
 	}
 }
 
+// Checks for location and affordability of upgrades and disables/enables visibility and interaction appropriately
+function checkUpgradeDisplay(planet) {
+	let upgradebuttons = document.getElementsByClassName("upgradeevent");
+
+	for (let i=0,len=upgradebuttons.length; i<len; i++) {
+		let eventId = upgradebuttons[i].id.substring('upgradeevent_'.length);
+		if (planet.toUpperCase()!==upgradeEvents[eventId].getPlanet().toUpperCase()) {
+			document.getElementById('upgradeevent_'+eventId).style.display = "none";
+		} else {
+			document.getElementById('upgradeevent_'+eventId).style.display = "block";
+			if((resourceOne.getAmount() - upgradeEvents[eventId].getCostOne() >= 0) && (resourceTwo.getAmount() - upgradeEvents[eventId].getCostTwo() >= 0)){
+				document.getElementById('upgradeevent_'+eventId).style.opacity = 1;
+				document.getElementById('upgradeevent_'+eventId).style.pointerEvents = "auto";
+			} else {
+				document.getElementById('upgradeevent_'+eventId).style.opacity = 0.5;
+				document.getElementById('upgradeevent_'+eventId).style.pointerEvents = "none";
+			}
+		}
+	}
+}
+
+
 // Loads the content for the viewer panel
 function loadViewer(planet) {
 	planetSphere.material.map = THREE.ImageUtils.loadTexture("images/" + planet + "map.jpg");
@@ -429,8 +458,9 @@ function loadViewer(planet) {
 
 
 // Initial screen layout, centred on Earth
-loadViewer("earth");
-loadPlanetaryData("earth");
+var currentPlanet = "earth";
+loadViewer(currentPlanet);
+loadPlanetaryData(currentPlanet);
 showHidePlanetaryData("show");
 showHideUpgrades("show");
 fadein("ui");
@@ -457,6 +487,6 @@ setInterval(gameMain, 100);
 function gameMain(){
 	incrementResources();
 	addUpgradeEvents();
+	checkUpgradeDisplay(currentPlanet);
 }
-
 
