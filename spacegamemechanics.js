@@ -31,7 +31,7 @@ class Resource {
 		this._delta += increase;
 	}
 	
-	resourceChange(inputAmount) {
+	addAmount(inputAmount) {
 		this._amount += inputAmount;
 	}
 	
@@ -85,8 +85,12 @@ class UpgradeEvent {
 		return this._costTwo;
 	}
 	
-	getDeltaShift() {
-		return this._deltaShift;
+	getDeltaShiftOne() {
+		return this._deltaShiftOne;
+	}
+	
+	getDeltaShiftTwo() {
+		return this._deltaShiftTwo;
 	}
 	
 	getUnique() {
@@ -123,6 +127,11 @@ class UpgradeEvent {
 	
 	setCostTwo(newCostTwo) {
 		this._costTwo = newCostTwo;
+	}
+	
+	increaseCosts() {
+		this._costOne = Math.round(this._costOne*1.25);
+		this._costTwo = Math.round(this._costTwo*1.25);
 	}
 	
 	incrementEventCounter() {
@@ -217,20 +226,53 @@ let planetPluto = new Planet("Pluto", "Dwarf", 2, 39.5, 5913000, 248.057, 0.248,
 planets.push(planetPluto);
 
 
-// Instantiate upgradeEvents
+// Updates resource values after an upgrade is chosen
+function updateResources(i) {
+	resourceOne.addAmount(-upgradeEvents[i].getCostOne());
+	resourceTwo.addAmount(-upgradeEvents[i].getCostTwo());
+	resourceOne.increaseDelta(upgradeEvents[i].getDeltaShiftOne());
+	resourceTwo.increaseDelta(upgradeEvents[i].getDeltaShiftTwo());
+	
+	if (upgradeEvents[i].getUnique()===false) {
+		upgradeEvents[i].incrementEventCounter();
+		upgradeEvents[i].increaseCosts();
+		updateButtonVals(i);
+	}
+}
+
+// Update the values on the upgrade buttons after a click
+function updateButtonVals(eventId) {
+	document.getElementById("upgradeeventcount_"+eventId).innerHTML = "(x" + upgradeEvents[eventId].getCount() +")";
+	document.getElementById("nuclearcost_"+eventId).innerHTML = upgradeEvents[eventId].getCostOne();
+	document.getElementById("photoniccost_"+eventId).innerHTML = upgradeEvents[eventId].getCostTwo();
+} 
+
+// Instantiate upgradeEvents and create related function triggers
 // (eventId, name, prereqEvent, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, displayed, done, count, flavourText, storyText)
 var upgradeEvents = [];
 let aBeginning = new UpgradeEvent(0,"A beginning", -1, 0, 0, 0, 0, 0, 0, true, false, false, 0, "", "The first steps");
 upgradeEvents.push(aBeginning);
-let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", -1, 200, 0, 500, 0, 1, 0, false, false, false, 0, "+<span class='Nuclear'>1</span>TJ/s", "You can now purchase surface based nuclear power stations for Earth.");
+function upgradeevent_0() {
+}
+
+let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", -1, 20, 0, 50, 0, 0.1, 0, false, false, false, 0, "Adds <span class='Nuclear'>1</span>TJ/s", "You can now purchase surface based nuclear power stations for Earth.");
 upgradeEvents.push(nuclearPowerStation);
-let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", -1, 0, 100, 100, 500, 0, 1, false, false, false, 0, "A planetside source of solar power", "You can now purchase surface based solar farms for Earth.");
+function upgradeevent_1() {
+	updateResources(1);
+}
+
+let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", -1, 0, 10, 10, 50, 0, 0.1, false, false, false, 0, "Adds <span class='Photonic'>1</span>TJ/s", "You can now purchase surface based solar farms for Earth.");
 upgradeEvents.push(solarPowerFarm);
+function upgradeevent_2() {
+	updateResources(2);
+	
+	
+}
 
 
 // Event listeners
-document.getElementById(resourceOne.getName()+"_booster").addEventListener("click", function(){resourceOne.resourceChange(resourceOneBoost);});
-document.getElementById(resourceTwo.getName()+"_booster").addEventListener("click", function(){resourceTwo.resourceChange(resourceTwoBoost);});
+document.getElementById(resourceOne.getName()+"_booster").addEventListener("click", function(){resourceOne.addAmount(resourceOneBoost);});
+document.getElementById(resourceTwo.getName()+"_booster").addEventListener("click", function(){resourceTwo.addAmount(resourceTwoBoost);});
 
 document.getElementById("system_button")
 	.addEventListener("click", function(){
@@ -269,7 +311,7 @@ function incrementResources() {
 
 // Load planetary data into panel
 function loadPlanetaryData(planet){
-		for (var i=0, len=planets.length; i<len; i++) {
+		for (let i=0, len=planets.length; i<len; i++) {
 		if (planet.toUpperCase()===planets[i].getName().toUpperCase()) {
 			document.getElementById("pd_name").innerHTML = planets[i].getName();
 			document.getElementById("pd_type").innerHTML = planets[i].getType();
@@ -325,7 +367,7 @@ function showHideUpgrades(showHide) {
 
 // Add upgradeEvents array for triggered events to the UI
 function addUpgradeEvents() {
-	for (var i=0, len=upgradeEvents.length; i<len; i++) {
+	for (let i=0, len=upgradeEvents.length; i<len; i++) {
 		let prereqEvent = upgradeEvents[i].getPrereqEvent();
 		//alert(prereqEvent);
 		if (prereqEvent === -1 || upgradeEvents[prereqEvent].getDone()===true) {
@@ -335,16 +377,18 @@ function addUpgradeEvents() {
 				if (upgradeEvents[i].getFlavourText()!=="") {
 					let eventCount = "";
 					if (upgradeEvents[i].getUnique()===false) {eventCount = "(x" + upgradeEvents[i].getCount() +")";}
+					let eventId = upgradeEvents[i].getEventId();
 					document.getElementById("upgrades").innerHTML +=
-						"<div class='upgradeevent' id='upgradeevent_" + upgradeEvents[i].getEventId() + "'>" +
-						"<span class='upgradeeventname'>" + upgradeEvents[i].getName() + "</span> " +
-						"<span class='upgradeeventcount'>" + eventCount + "</span>" +
+						"<div class='upgradeevent' id='upgradeevent_" + eventId + "'>" +
+						"<span class='upgradeeventname' id='upgradeeventname_" + eventId + "'>" + upgradeEvents[i].getName() + "</span> " +
+						"<span class='upgradeeventcount' id='upgradeeventcount_" + eventId + "'>" + eventCount + "</span>" +
 						"<br>" +
-						"Cost: <span class='Nuclear'>" + upgradeEvents[i].getCostOne().toLocaleString() + "</span>, " +
-						"<span class='Photonic'>" + upgradeEvents[i].getCostTwo().toLocaleString() + "</span>" +
+						"Cost: <span class='Nuclear' id='nuclearcost_" + eventId + "'>" + upgradeEvents[i].getCostOne().toLocaleString() + "</span>, " +
+						"<span class='Photonic' id='photoniccost_" + eventId + "'>" + upgradeEvents[i].getCostTwo().toLocaleString() + "</span>" +
 						"<br>" +
 						"<span class='upgradeeventflavour'>" + upgradeEvents[i].getFlavourText() + "</span>" +					
 						"</div>";
+					addUpgradeEventButtons();
 				}
 
 				if (upgradeEvents[i].getStoryText()!=="") {
@@ -363,6 +407,19 @@ function addUpgradeEvents() {
 	}
 }
 
+// Update the DOM to include listeners for each of the upgrade events
+function addUpgradeEventButtons() {
+	// upgrade button listeners
+	let upgradebuttons = document.getElementsByClassName("upgradeevent");
+
+	for (let i=0,len=upgradebuttons.length; i<len; i++) {
+		upgradeButtonListener(upgradebuttons[i].id);
+	}
+
+	function upgradeButtonListener(upgrade){
+		document.getElementById(upgrade).addEventListener("click", function(){window[upgrade]();});
+	}
+}
 
 // Loads the content for the viewer panel
 function loadViewer(planet) {
