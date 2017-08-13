@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Space Game System Generator</title>
+<style>
+	body {
+		margin:0px;
+		padding:0px;
+	}
+	#ui	{
+		display:grid;
+		grid-gap:0px;
+			grid-template-columns: 100vw;
+			grid-template-rows: calc(100vh - 50px) 50px ;
+		background:#202020;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+	
+	#viewer {
+		grid-row:1;
+	}
+	
+	#testbutton {
+		grid-row:2;
+	}
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="ui">
+		<div id="viewer"></div>
+		<div class="button" id="testbutton"><button id="add_button">test</button></div>
+</div>
+<script src="three.js"></script>
+<script src="system_gfx.js"></script>
+
+</body>
+</html>
