@@ -31,7 +31,7 @@ class Resource {
 		this._delta += increase;
 	}
 	
-	manualIncrease(inputAmount) {
+	resourceChange(inputAmount) {
 		this._amount += inputAmount;
 	}
 	
@@ -39,14 +39,20 @@ class Resource {
 
 
 class UpgradeEvent {
-	constructor(eventId, name, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, flavourText, storyText){
+	constructor(eventId, name, prereqEvent, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, displayed, done, count, flavourText, storyText){
 		this._eventId = eventId;
 		this._name = name;
+		this._prereqEvent = prereqEvent;
 		this._prereqOne = prereqOne;
 		this._prereqTwo = prereqTwo;
+		this._costOne = costOne;
+		this._costTwo = costTwo;
 		this._deltaShiftOne = deltaShiftOne;
 		this._deltaShiftTwo = deltaShiftTwo;
 		this._unique = unique;
+		this._displayed = displayed;
+		this._done = done;
+		this._count = count;
 		this._flavourText = flavourText;
 		this._storyText = storyText;
 	}
@@ -67,12 +73,40 @@ class UpgradeEvent {
 		return this._prereqTwo;
 	}
 	
+	getPrereqEvent() {
+		return this._prereqEvent;
+	}
+	
+	getCostOne() {
+		return this._costOne;
+	}
+	
+	getCostTwo() {
+		return this._costTwo;
+	}
+	
 	getDeltaShift() {
 		return this._deltaShift;
 	}
 	
 	getUnique() {
 		return this._unique;
+	}
+	
+	getDisplayed() {
+		return this._displayed;
+	}
+	
+	setDisplayed(newVal) {
+		this._displayed = newVal;
+	}
+	
+	getDone() {
+		return this._done;
+	}
+	
+	getCount() {
+		return this._count;
 	}
 	
 	getFlavourText() {
@@ -82,12 +116,25 @@ class UpgradeEvent {
 	getStoryText() {
 		return this._storyText;
 	}
+	
+	setCostOne(newCostOne) {
+		this._costOne = newCostOne;
+	}
+	
+	setCostTwo(newCostTwo) {
+		this._costTwo = newCostTwo;
+	}
+	
+	incrementEventCounter() {
+		this._count++;
+	}
 }
 
 
 class Planet {
-	constructor(name, diameter, avgDistFromSunAu, avgDistFromSunKm, period, eccentricity, inclination, upgrades){
+	constructor(name, type, diameter, avgDistFromSunAu, avgDistFromSunKm, period, eccentricity, inclination, upgrades){
 		this._name = name;
+		this._type = type;
 		this._diameter = diameter;
 		this._avgDistFromSunAu = avgDistFromSunAu;
 		this._avgDistFromSunKm = avgDistFromSunKm;
@@ -99,6 +146,10 @@ class Planet {
 	
 	getName() {
 		return this._name;
+	}
+	
+	getType() {
+		return this._type;
 	}
 	
 	getDiameter() {
@@ -132,9 +183,11 @@ class Planet {
 
 
 
-// Instantiate resources
+// Instantiate resources and set button boost values
 let resourceOne = new Resource("Nuclear", 0, 0.5);
 let resourceTwo = new Resource("Photonic", 0, 0.1);
+let resourceOneBoost = 100;
+let resourceTwoBoost = 100;
 
 
 // Intantiate planets
@@ -144,44 +197,44 @@ let resourceTwo = new Resource("Photonic", 0, 0.1);
 var planets = [];
 let sol = new Planet("Sol", 1390, 0, 0, 0, 0, 0, 0);
 planets.push(sol);
-let planetMercury = new Planet("Mercury", 3.0, 0.4, 5790, 0.241, 0.208, 7.00, 0);
+let planetMercury = new Planet("Mercury", "Terrestrial", 3.0, 0.4, 5790, 0.241, 0.208, 7.00, 0);
 planets.push(planetMercury);
-let planetVenus = new Planet("Venus", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 0);
+let planetVenus = new Planet("Venus", "Terrestrial", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 0);
 planets.push(planetVenus);
-let planetEarth = new Planet("Earth", 7.9, 1.0, 149600, 1.000, 0.017, 0.00, 0);
+let planetEarth = new Planet("Earth", "Terrestrial", 7.9, 1.0, 149600, 1.000, 0.017, 0.00, 0);
 planets.push(planetEarth);
-let planetMars = new Planet("Mars", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 0);
+let planetMars = new Planet("Mars", "Terrestrial", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 0);
 planets.push(planetMars);
-let planetJupiter = new Planet("Jupiter", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0);
+let planetJupiter = new Planet("Jupiter", "Gas giant", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0);
 planets.push(planetJupiter);
-let planetSaturn = new Planet("Saturn", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 0);
+let planetSaturn = new Planet("Saturn", "Gas giant", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 0);
 planets.push(planetSaturn);
-let planetUranus = new Planet("Uranus", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77, 0);
+let planetUranus = new Planet("Uranus", "Gas giant", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77, 0);
 planets.push(planetUranus);
-let planetNeptune = new Planet("Neptune", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77, 0);
+let planetNeptune = new Planet("Neptune", "Gas giant", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77, 0);
 planets.push(planetNeptune);
-let planetPluto = new Planet("Pluto", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 0);
+let planetPluto = new Planet("Pluto", "Dwarf", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 0);
 planets.push(planetPluto);
 
 
 // Instantiate upgradeEvents
-// (eventId, name, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, flavourText, storyText)
+// (eventId, name, prereqEvent, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, displayed, done, count, flavourText, storyText)
 var upgradeEvents = [];
-let aBeginning = new UpgradeEvent("000001","A beginning", 0, 0, 0, 0, 0, 0, true, "", "The first steps");
+let aBeginning = new UpgradeEvent(0,"A beginning", -1, 0, 0, 0, 0, 0, 0, true, false, false, 0, "", "The first steps");
 upgradeEvents.push(aBeginning);
-let nuclearPowerStation = new UpgradeEvent("000002", "Nuclear Power Station", 200, 0, 500, 0, 1, 0, false, "A planetside source of nuclear power", "You can now purchase surface based nuclear power stations for this planet.");
+let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", -1, 200, 0, 500, 0, 1, 0, false, false, false, 0, "+<span class='Nuclear'>1</span>TJ/s", "You can now purchase surface based nuclear power stations for Earth.");
 upgradeEvents.push(nuclearPowerStation);
-let solarPowerFarm = new UpgradeEvent("000003", "Solar Power Farm", 0, 100, 100, 500, 0, 1, false, "A planetside source of solar power", "You can now purchase surface based solar farms for this planet.");
+let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", -1, 0, 100, 100, 500, 0, 1, false, false, false, 0, "A planetside source of solar power", "You can now purchase surface based solar farms for Earth.");
 upgradeEvents.push(solarPowerFarm);
 
 
 // Event listeners
-document.getElementById(resourceOne.getName()+"_button").addEventListener("click", function(){resourceOne.manualIncrease(100);});
-document.getElementById(resourceTwo.getName()+"_button").addEventListener("click", function(){resourceTwo.manualIncrease(100);});
+document.getElementById(resourceOne.getName()+"_booster").addEventListener("click", function(){resourceOne.resourceChange(resourceOneBoost);});
+document.getElementById(resourceTwo.getName()+"_booster").addEventListener("click", function(){resourceTwo.resourceChange(resourceTwoBoost);});
 
-document.getElementById("sun_button")
+document.getElementById("system_button")
 	.addEventListener("click", function(){
-										loadViewer("sun");				
+										loadViewer("system");				
 										showHidePlanetaryData("hide");
 										showHideUpgrades("hide");
 										});
@@ -207,8 +260,10 @@ function planetButtonListener(planet){
 function incrementResources() {
 	resourceOne.increment();
 	document.getElementById(resourceOne.getName()).innerHTML = Math.round(resourceOne.getAmount()).toLocaleString();
+	document.getElementById(resourceOne.getName()+"_delta").innerHTML = Math.round(10*resourceOne.getDelta()).toLocaleString();
 	resourceTwo.increment();
 	document.getElementById(resourceTwo.getName()).innerHTML = Math.round(resourceTwo.getAmount()).toLocaleString();
+	document.getElementById(resourceTwo.getName()+"_delta").innerHTML = Math.round(10*resourceTwo.getDelta()).toLocaleString();
 }
 
 
@@ -216,10 +271,14 @@ function incrementResources() {
 function loadPlanetaryData(planet){
 		for (var i=0, len=planets.length; i<len; i++) {
 		if (planet.toUpperCase()===planets[i].getName().toUpperCase()) {
-			document.getElementById("planetary_data").innerHTML =
-				"Name<br><span class='indented_data'>" + planets[i].getName() + "</span><br>" +
-				"Diameter<br><span class='indented_data'>" + (planets[i].getDiameter()*1000).toLocaleString() + "km</span><br>" +
-				"Average distance from the sun<br><span class='indented_data'>" + (planets[i].getAvgDistFromSunKm()*1000).toLocaleString()+ "km (" + planets[i].getAvgDistFromSunAu() + "AU)</span><br>";
+			document.getElementById("pd_name").innerHTML = planets[i].getName();
+			document.getElementById("pd_type").innerHTML = planets[i].getType();
+			document.getElementById("pd_diameter").innerHTML = (planets[i].getDiameter()*1000).toLocaleString();
+			document.getElementById("pd_avgdist_km").innerHTML = (planets[i].getAvgDistFromSunKm()*1000).toLocaleString();
+			document.getElementById("pd_avgdist_au").innerHTML = planets[i].getAvgDistFromSunAu();
+			document.getElementById("pd_eccentricity").innerHTML = planets[i].getEccentricity();
+			document.getElementById("pd_inclination").innerHTML = planets[i].getInclination();
+			document.getElementById("pd_period").innerHTML = planets[i].getPeriod();
 			break;
 		}
 	}
@@ -264,28 +323,42 @@ function showHideUpgrades(showHide) {
 	}
 }
 
-// Check the upgradeEvents array for triggered events, publish these to the UI
-function checkUpgradeEvents() {
+// Add upgradeEvents array for triggered events to the UI
+function addUpgradeEvents() {
 	for (var i=0, len=upgradeEvents.length; i<len; i++) {
-		if (resourceOne.getAmount() >= upgradeEvents[i].getPrereqOne() && resourceTwo.getAmount() >= upgradeEvents[i].getPrereqTwo()) {
-			
-			if (upgradeEvents[i].getFlavourText()!=="") {
-				document.getElementById("upgrades").innerHTML +=
-					"<div class='upgradeevent' id='upgradeevent_" + upgradeEvents[i].getEventId() + "'>" + upgradeEvents[i].getName() +
-					"<br>" + upgradeEvents[i].getFlavourText() + "</div>";
+		let prereqEvent = upgradeEvents[i].getPrereqEvent();
+		//alert(prereqEvent);
+		if (prereqEvent === -1 || upgradeEvents[prereqEvent].getDone()===true) {
+			if (upgradeEvents[i].getDisplayed()===false && 
+				(resourceOne.getAmount() >= upgradeEvents[i].getPrereqOne() && resourceTwo.getAmount() >= upgradeEvents[i].getPrereqTwo())) {
+
+				if (upgradeEvents[i].getFlavourText()!=="") {
+					let eventCount = "";
+					if (upgradeEvents[i].getUnique()===false) {eventCount = "(x" + upgradeEvents[i].getCount() +")";}
+					document.getElementById("upgrades").innerHTML +=
+						"<div class='upgradeevent' id='upgradeevent_" + upgradeEvents[i].getEventId() + "'>" +
+						"<span class='upgradeeventname'>" + upgradeEvents[i].getName() + "</span> " +
+						"<span class='upgradeeventcount'>" + eventCount + "</span>" +
+						"<br>" +
+						"Cost: <span class='Nuclear'>" + upgradeEvents[i].getCostOne().toLocaleString() + "</span>, " +
+						"<span class='Photonic'>" + upgradeEvents[i].getCostTwo().toLocaleString() + "</span>" +
+						"<br>" +
+						"<span class='upgradeeventflavour'>" + upgradeEvents[i].getFlavourText() + "</span>" +					
+						"</div>";
+				}
+
+				if (upgradeEvents[i].getStoryText()!=="") {
+					document.getElementById("storybox").innerHTML +=
+						"<div class='story_item' id='story_" + upgradeEvents[i].getEventId() + "'>" +upgradeEvents[i].getStoryText() + "</div>";
+				}
+
+				var upgradeEventItem = "upgradeevent_" + upgradeEvents[i].getEventId();
+				var storyItem = "story_" + upgradeEvents[i].getEventId();
+				upgradeEvents[i].setDisplayed(true);
+				scrollStory(storyItem);
+				fadein(storyItem);
+				fadein(upgradeEventItem);
 			}
-			
-			if (upgradeEvents[i].getStoryText()!=="") {
-				document.getElementById("storybox").innerHTML +=
-					"<div class='story_item' id='story_" + upgradeEvents[i].getEventId() + "'>" +upgradeEvents[i].getStoryText() + "</div>";
-			}
-			
-			var upgradeEventItem = "upgradeevent_" + upgradeEvents[i].getEventId();
-			var storyItem = "story_" + upgradeEvents[i].getEventId();
-			upgradeEvents.splice(i,1);
-			scrollStory(storyItem);
-			fadein(storyItem);
-			fadein(upgradeEventItem);
 		}
 	}
 }
@@ -293,7 +366,7 @@ function checkUpgradeEvents() {
 
 // Loads the content for the viewer panel
 function loadViewer(planet) {
-		planetSphere.material.map = THREE.ImageUtils.loadTexture("images/" + planet + "map.jpg");
+	planetSphere.material.map = THREE.ImageUtils.loadTexture("images/" + planet + "map.jpg");
 	planetSphere.material.needsUpdate = true;
 }
 
@@ -326,7 +399,7 @@ setInterval(gameMain, 100);
 // Main function
 function gameMain(){
 	incrementResources();
-	checkUpgradeEvents();
+	addUpgradeEvents();
 }
 
 

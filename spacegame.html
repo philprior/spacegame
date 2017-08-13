@@ -12,7 +12,7 @@
 	<div id="toparea">
 		<div id="header">SPACE GAME</div>
 
-		<div id="sun_button">Sun</div>
+		<div id="system_button">System view</div>
 		<div class="planetbutton" id="mercury">Mercury</div>
 		<div class="planetbutton" id="venus">Venus</div>
 		<div class="planetbutton" id="earth">Earth</div>
@@ -25,19 +25,27 @@
 	</div>
 
 	<div id="mainarea">
-		<div id="planetary_data"></div>
+		<div id="planetary_data">
+			Name:<br><span class="pd"><span id="pd_name"></span></span><br>
+			Planet type:<br><span class="pd"><span id="pd_type"></span></span><br>
+			Diameter:<br><span class="pd"><span id="pd_diameter"></span>km</span><br>
+			Average distance from the Sun:<br><span class="pd"><span id="pd_avgdist_km"></span>km (<span id="pd_avgdist_au"></span>AU)</span><br>
+			Orbital eccentrity:<br><span class="pd"><span id="pd_eccentricity"></span></span><br>
+			Orbital inclination:<br><span class="pd"><span id="pd_inclination"></span>&#176;</span><br>
+			Period:<br><span class="pd"><span id="pd_period"></span> Earth years</span><br>
+		</div>
 		
 		<div id="viewer"></div>
 				
-		<div id="upgrades"></div>
+		<div id="upgrades">Available upgrades:<br><br></div>
 		
 		<div id="storybox"></div>
 
-		<div class="resource" id="resource1">Nuclear<br> <span id="Nuclear"></span></div>
-		<div class="resource" id="resource2">Photonic<br> <span id="Photonic"></span></div>
+		<div class="resource" id="resource1">Nuclear Energy (terajoules)<br><span class="Nuclear" id="Nuclear"></span><br><span class="Nuclear" id="Nuclear_delta"></span> TJ/s</div>
+		<div class="resource" id="resource2">Photonic Energy (terajoules)<br><span class="Photonic" id="Photonic"></span><br><span class="Photonic" id="Photonic_delta"></span> TJ/s</div>
 		
-		<div class="resourcebooster" id="resource1booster"><button id="Nuclear_button">Boom</button></div>
-		<div class="resourcebooster" id="resource2booster"><button id="Photonic_button">Phtoom</button></div>
+		<div class="resourcebooster" id="Nuclear_booster">Boom!</div>
+		<div class="resourcebooster" id="Photonic_booster">Phtoom</div>
 	</div>
 </div>
 <script src="three.js"></script>
