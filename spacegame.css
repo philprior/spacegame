@@ -7,7 +7,12 @@ body {
 	font-size: 14px;
 	background:#000;
 }
-	
+
+h1 {
+	font-size: 14px;
+	font-weight:normal;
+}
+
 #ui {
 	opacity: 0;
 	transition: 3s;
@@ -18,13 +23,13 @@ body {
 	grid-gap:0px;
 		grid-template-columns: 100vw;
 		grid-template-rows: 140px calc(100vh - 140px);
-	background:#202020;
+	background:rgba(255,255,255,0.1);
 	overflow-x: hidden;
 	overflow-y: hidden;
 }
 
 .container #toparea div, .container #mainarea div {
-	background:#202020;
+	
 	color:#fff;
 	border:1px solid #505050;
 	padding:10px
@@ -61,11 +66,14 @@ body {
 
 #system_button {
 	grid-column: 1 / span 3;
+	visibility: hidden;
 	cursor:pointer;
 	transition: 1s;
 }
 
 .planetbutton {
+	visibility: hidden;
+	opacity: 0;
 	cursor:pointer;
 	transition: 1s;
 }
@@ -132,12 +140,17 @@ body {
 	transition: background 1s cubic-bezier(0,1,1,1);
 }
 
-#planetary_data {
+.container #mainarea #planetary_data {
 	grid-column: 1;
 	grid-row: 1;
 	overflow-y: auto;
 	z-index: 20;
+	padding-left: 40px;
 	line-height: 1.5em;
+}
+
+#planetary_data h1 {
+	margin-left:-30px;
 }
 
 #planetary_data .pd {

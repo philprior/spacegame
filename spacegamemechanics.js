@@ -261,10 +261,11 @@ upgradeEvents.push(aBeginning);
 function upgradeevent_0() {
 }
 
-let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", "earth", -1, 20, 0, 50, 0, 0.1, 0, false, false, false, 0, "Adds <span class='Nuclear'>1</span>TJ/s", "You can now purchase surface based nuclear power stations for Earth.");
+let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", "earth", -1, 20, 0, 50, 0, 0.2, 0, false, false, false, 0, "Adds <span class='Nuclear'>2</span>TJ/s", "You can now purchase surface based nuclear power stations for Earth.");
 upgradeEvents.push(nuclearPowerStation);
 function upgradeevent_1() {
 	updateResources(1);
+	planetExplored("earth");
 }
 
 let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", "earth", -1, 0, 10, 10, 50, 0, 0.1, false, false, false, 0, "Adds <span class='Photonic'>1</span>TJ/s", "You can now purchase surface based solar farms for Earth.");
@@ -331,6 +332,12 @@ function loadPlanetaryData(planet){
 			break;
 		}
 	}
+}
+
+// Make planetbutton visible for explored planets
+function planetExplored(planet){
+	document.getElementById(planet).style.visibility = "visible";
+	fadein(planet);
 }
 
 
