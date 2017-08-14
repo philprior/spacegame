@@ -23,13 +23,12 @@ h1 {
 	grid-gap:0px;
 		grid-template-columns: 100vw;
 		grid-template-rows: 140px calc(100vh - 140px);
-	background:rgba(255,255,255,0.1);
+	background: rgba(255,255,255,0.05);
 	overflow-x: hidden;
 	overflow-y: hidden;
 }
 
 .container #toparea div, .container #mainarea div {
-	
 	color:#fff;
 	border:1px solid #505050;
 	padding:10px
@@ -38,7 +37,7 @@ h1 {
 #toparea {
 	grid-row: 1;
 	display:grid;
-	grid-gap: 0px;
+	grid-gap:0px;
 		grid-template-columns: repeat(12, 100px) 1fr;
 		grid-template-rows: 40px 100px;
 }
@@ -56,6 +55,7 @@ h1 {
 }
 
 .container #mainarea #viewer {
+	background: #000;
 	text-align:center;
 	grid-row: 1;
 	z-index:0;
@@ -67,6 +67,7 @@ h1 {
 #system_button {
 	grid-column: 1 / span 3;
 	visibility: hidden;
+	opacity: 0;
 	cursor:pointer;
 	transition: 1s;
 }
@@ -145,6 +146,7 @@ h1 {
 	grid-row: 1;
 	overflow-y: auto;
 	z-index: 20;
+	background:rgba(255,255,255,0.05);
 	padding-left: 40px;
 	line-height: 1.5em;
 }
@@ -158,11 +160,12 @@ h1 {
 	margin: 2em;
 }
 
-#upgrades {
+.container #mainarea #upgrades {
 	grid-column: 3;
 	grid-row: 1;
 	overflow-y: auto;
 	z-index: 20;
+	background:rgba(255,255,255,0.05);
 }
 
 .container #mainarea #upgrades .upgradeevent {
