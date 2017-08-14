@@ -198,10 +198,10 @@ class Planet {
 
 
 // Instantiate resources and set button boost values
-let resourceOne = new Resource("Nuclear", 0, 0.5);
-let resourceTwo = new Resource("Photonic", 0, 0.1);
-let resourceOneBoost = 100;
-let resourceTwoBoost = 100;
+let resourceOne = new Resource("Nuclear", 0, 0.1);
+let resourceTwo = new Resource("Photonic", 0, 0.05);
+let resourceOneBoost = 1;
+let resourceTwoBoost = 1;
 
 
 // Intantiate planets
@@ -449,6 +449,10 @@ function checkUpgradeDisplay(planet) {
 	}
 }
 
+function updateBoosters() {
+	document.getElementById("n_boost_amount").innerHTML = resourceOneBoost;
+	document.getElementById("p_boost_amount").innerHTML = resourceTwoBoost;
+}
 
 // Loads the content for the viewer panel
 function loadViewer(planet) {
@@ -488,5 +492,6 @@ function gameMain(){
 	incrementResources();
 	addUpgradeEvents();
 	checkUpgradeDisplay(currentPlanet);
+	updateBoosters();
 }
 

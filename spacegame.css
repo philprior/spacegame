@@ -23,6 +23,12 @@ body {
 	overflow-y: hidden;
 }
 
+.container #toparea div, .container #mainarea div {
+	background:#202020;
+	color:#fff;
+	border:1px solid #505050;
+	padding:10px
+}
 
 #toparea {
 	grid-row: 1;
@@ -105,20 +111,25 @@ body {
 	font-size: 2.5em;
 }
 
-#Nuclear_booster {
+.container #mainarea #Nuclear_booster {
 	cursor:pointer;
 	grid-column: 1;
 	grid-row: 3;
 	text-align: center;
+	vertical-align: middle;
+	background: rgba(0,255,0,0.10);
 	transition: 1s;
+	transition: background 1s cubic-bezier(0,1,1,1);
 }
 
-#Photonic_booster {
+.container #mainarea #Photonic_booster {
 	cursor:pointer;
 	grid-column: 3;
 	grid-row: 3;
 	text-align: center;
+	background: rgba(255,255,0,0.10);
 	transition: 1s;
+	transition: background 1s cubic-bezier(0,1,1,1);
 }
 
 #planetary_data {
@@ -154,14 +165,14 @@ body {
 .container #toparea #system_button:hover,
 .container #toparea .planetbutton:hover {
 	border:1px solid #ffffff;
-	transition:0.5s;
 }
 
-.container #toparea div, .container #mainarea div {
-	background:#202020;
-	color:#fff;
-	border:1px solid #505050;
-	padding:10px
+.container #mainarea #Nuclear_booster:active {
+	background: rgba(0,255,0,0.70);
+}
+
+.container #mainarea #Photonic_booster:active {
+	background: rgba(255,255,0,0.70);
 }
 
 ::-webkit-scrollbar {
