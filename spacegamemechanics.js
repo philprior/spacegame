@@ -364,7 +364,7 @@ let planetEarth = new StellarObject("Earth", "Terrestrial", 7.9, 1.0, 149600, 1.
 planets.push(planetEarth);
 let planetMars = new StellarObject("Mars", "Terrestrial", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 25, 1.02);
 planets.push(planetMars);
-let planetJupiter = new StellarObject("Jupiter", "Gas giant", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0.41);
+let planetJupiter = new StellarObject("Jupiter", "Gas giant", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 3, 0.41);
 planets.push(planetJupiter);
 let planetSaturn = new StellarObject("Saturn", "Gas giant", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 27, 0.44);
 planets.push(planetSaturn);
@@ -675,20 +675,34 @@ function gameMain(){
 ///////////////////////////////////
 
 // Set the renderer and assign it to a div
-var renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 var targetDiv = document.getElementById("viewer");
 renderer.setSize(targetDiv.clientWidth, targetDiv.clientHeight);
 targetDiv.appendChild(renderer.domElement);
 
 // Create the scene and camera
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 60000000);
+var camera = new THREE.PerspectiveCamera(60, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 60000000);
+
+// Add lights
+var ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+var light = new THREE.PointLight(0xffffff);
+light.position.set(0,0,0).normalize();
+scene.add(ambientLight);
+scene.add(light);
 
 // Add sun
 var sunGeometry = new THREE.SphereGeometry(sol.getDiameter()/2, 32, 32);
 var sunMaterial = new THREE.MeshBasicMaterial();
+sunMaterial.map = THREE.ImageUtils.loadTexture("images/sunmap.jpg");
 var sunModel = new THREE.Mesh(sunGeometry, sunMaterial);
 scene.add(sunModel);
+
+var textureFlare = THREE.ImageUtils.loadTexture("images/lensflare.jpg");
+var flareColour = new THREE.Color( 0xffffff );
+var sunFlare = new THREE.LensFlare(textureFlare, 100, 0, THREE.AdditiveBlending, flareColour);
+sunFlare.position.copy(light.position);
+scene.add(sunFlare);
 
 // Skybox (Sphere)
 var skyboxGeometry  = new THREE.SphereGeometry(100000000000, 32, 32);
@@ -702,7 +716,7 @@ scene.add(skybox);
 var planetModels = [];
 var planetMaps = [];
 for (let i=0, len=planets.length; i<len; i++) {
-	let planetGeometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 32, 32);
+	let planetGeometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 64, 64);
 	let planetMap = new THREE.MeshPhongMaterial();
 	planetMap.map   = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "map.jpg");
 	planetMaps.push(planetMap);
@@ -711,12 +725,6 @@ for (let i=0, len=planets.length; i<len; i++) {
 	scene.add(planetModels[i]);
 }
 
-
-var ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
-var light = new THREE.PointLight(0xffffff);
-light.position.set(0,0,0).normalize();
-scene.add(ambientLight);
-scene.add(light);
 
 // redraws the camera and renderer on a window resize
 window.addEventListener('resize', function(){
@@ -733,9 +741,8 @@ function animate() {
 		if (currentPlanet.toUpperCase()==="SYSTEM") {
 			camera.position.set(0, 0, 500000);
 		} else if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
-			camera.position.set(orbits[i].getX(), orbits[i].getY(), 100 + orbits[i].getZ());
+			camera.position.set(orbits[i].getX(), orbits[i].getY(), 150 + orbits[i].getZ());
 		}
-		
 		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
 		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
 		orbits[i].update();
