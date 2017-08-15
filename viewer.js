@@ -44,9 +44,17 @@ window.addEventListener('resize', function(){
 function animate() {
 		
 	for (let i=0, len=planets.length; i<len; i++) {
+		
+		if (currentPlanet.toUpperCase()==="SYSTEM") {
+			camera.position.set(0, 0, 5000);
+		} else if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
+			camera.position.set(orbits[i].getX(), orbits[i].getY(), 200 + orbits[i].getZ());
+		}
+		
 		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
 		orbits[i].update();
 	}
+	
 	requestAnimationFrame(animate);
 	renderer.render(scene, camera);
 }
