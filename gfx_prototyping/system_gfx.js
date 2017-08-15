@@ -165,28 +165,28 @@ class Orbit {
 		let localX = (Math.sin(this._theta)*this._aphe);
 		let localZ = (Math.cos(this._theta)*this._peri);
 		let localY = 0;
-		this._x = localX + this._parent.getX();
-		this._z = localZ + this._parent.getZ();
-		this._y = localY + this._parent.getY();
 		// Rotate the coordinates based on the rotation of the orbit around its parent
 		if(this._rotX!==0){
 			let temp_z = (Math.sin(this._rotX)*localY) + (Math.cos(this._rotX)*localZ);
 			let temp_y = (Math.cos(this._rotX)*localY) - (Math.sin(this._rotX)*localZ);
-			this._z = temp_z + this._parent.getZ();
-			this._y = temp_y + this._parent.getY();
+			localZ = temp_z;
+			localY = temp_y;
 		}
 		if(this._rotY!==0){
 			let temp_x = (Math.sin(this._rotY)*localZ) + (Math.cos(this._rotY)*localX);
 			let temp_z = (Math.cos(this._rotY)*localZ) - (Math.sin(this._rotY)*localX);
-			this._x = temp_x + this._parent.getX();
-			this._z = temp_z + this._parent.getZ();
+			localX = temp_x;
+			localZ = temp_z;
 		}
 		if(this._rotZ!==0){
 			let temp_y = (Math.sin(this._rotZ)*localX) + (Math.cos(this._rotZ)*localY);
 			let temp_x = (Math.cos(this._rotZ)*localX) - (Math.sin(this._rotZ)*localY);
-			this._y = temp_y + this._parent.getY();
-			this._x = temp_x + this._parent.getX();
+			localY = temp_y;
+			localX = temp_x;
 		}
+		this._x = localX + this._parent.getX();
+		this._z = localZ + this._parent.getZ();
+		this._y = localY + this._parent.getY();
 	}
 }
 
