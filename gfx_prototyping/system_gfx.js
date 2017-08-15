@@ -3,16 +3,15 @@
 "use strict";
 
 
-class Planet {
-	constructor(name, diameter, avgDistFromSunAu, avgDistFromSunKm, period, eccentricity, inclination, upgrades){
+class StellarObject {
+	constructor(name, diameter, orbitalRadiusAu, orbitalRadiusKm, period, eccentricity, inclination){
 		this._name = name;
 		this._diameter = diameter;
-		this._avgDistFromSunAu = avgDistFromSunAu;
-		this._avgDistFromSunKm = avgDistFromSunKm;
+		this._orbitalRadiusAu = orbitalRadiusAu;
+		this._orbitalRadiusKm = orbitalRadiusKm;
 		this._period = period;
 		this._eccentricity = eccentricity;
 		this._inclination = inclination;
-		this._upgrades = upgrades;
 	}
 	
 	getName() {
@@ -23,12 +22,12 @@ class Planet {
 		return this._diameter;
 	}
 	
-	getAvgDistFromSunAu() {
-		return this._avgDistFromSunAu;
+	getOrbitalRadiusAu() {
+		return this._orbitalRadiusAu;
 	}
 	
-	getAvgDistFromSunKm() {
-		return this._avgDistFromSunKm;
+	getOrbitalRadiusKm() {
+		return this._orbitalRadiusKm;
 	}
 	
 	getPeriod() {
@@ -41,10 +40,6 @@ class Planet {
 	
 	getInclination() {
 		return this._inclination;
-	}
-	
-	getUpgrades() {
-		return this._upgrades;	
 	}
 }
 
@@ -96,7 +91,7 @@ class Orbit {
 		
 		this._period = period;
 		
-		this._deltaTheta = Math.PI/Math.round(this._period/2);
+		this._deltaTheta = (2*Math.PI)/this._period;
 		this._theta = startThetaOffset;
 
 		this._x = 0;
@@ -110,8 +105,8 @@ class Orbit {
 		this.update();
 	}
 	
-	getName() {
-		return this._name;
+	getOrbitID() {
+		return this._orbitID;
 	}
 	
 	getRadius() {
@@ -197,37 +192,60 @@ class Orbit {
 
 
 // Intantiate planets
-/* (name, diameter(1000s of km to 2sf), avgDistFromSunAu(AU to 1 dp), avgDistFromSunKm (1000s of km)
-	period(relative to 1 earth year), eccentricity, inclination(degrees), upgrades)
+/* (name, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km)
+	period(relative to 1 earth year), eccentricity, inclination(degrees))
 */
+
+let sol = new StellarObject("Sol", 1390, 0, 0, 0, 0, 0);
+
 var planets = [];
-let sol = new Planet("Sol", 1390, 0, 0, 0, 0, 0, 0);
-planets.push(sol);
-let planetMercury = new Planet("Mercury", 3.0, 0.4, 5790, 0.241, 0.208, 7.00, 0);
+let planetMercury = new StellarObject("Mercury", 3.0, 0.4, 5790, 0.241, 0.208, 7.00);
 planets.push(planetMercury);
-let planetVenus = new Planet("Venus", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 0);
+let planetVenus = new StellarObject("Venus", 7.5, 0.7, 108200, 0.615, 0.007, 3.39);
 planets.push(planetVenus);
-let planetEarth = new Planet("Earth", 7.9, 1.0, 149600, 1.000, 0.017, 0.00, 0);
+let planetEarth = new StellarObject("Earth", 7.9, 1.0, 149600, 1.000, 0.017, 0.00);
 planets.push(planetEarth);
-let planetMars = new Planet("Mars", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 0);
+let planetMars = new StellarObject("Mars", 4.2, 1.5, 227900, 1.880, 0.093, 1.85);
 planets.push(planetMars);
-let planetJupiter = new Planet("Jupiter", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0);
+let planetJupiter = new StellarObject("Jupiter", 142.8, 5.2, 778300, 11.867, 0.048, 1.31);
 planets.push(planetJupiter);
-let planetSaturn = new Planet("Saturn", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 0);
+let planetSaturn = new StellarObject("Saturn", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48);
 planets.push(planetSaturn);
-let planetUranus = new Planet("Uranus", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77, 0);
+let planetUranus = new StellarObject("Uranus", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77);
 planets.push(planetUranus);
-let planetNeptune = new Planet("Neptune", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77, 0);
+let planetNeptune = new StellarObject("Neptune", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77);
 planets.push(planetNeptune);
-let planetPluto = new Planet("Pluto", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 0);
+let planetPluto = new StellarObject("Pluto", 2, 39.5, 5913000, 248.057, 0.248, 17.14);
 planets.push(planetPluto);
 
-var origin = new Anchor(0,0,0,0,0,0);
 
+// Create an origin point at the centre of all axes
+var origin = new Anchor(0,0,0,90,0,0);
+
+/*
 var earthOrbit = new Orbit("0001", origin, 250, 20, 360, 0, 0, 0, 0);
 var moonOrbit = new Orbit("0002", earthOrbit, 20, 0, 100, 0, 0, 0, -10);
 var earthOrbit2 = new Orbit("0003", origin, 400, 20, 1000, 90, 0, 0, 15);
 var moonOrbit2 = new Orbit("0004", earthOrbit2, 20, 0, 100, 0, 0, 0, 30);
+*/
+
+
+// Create orbits for the planets around the central anchor
+var orbits = [];
+for (let i=0, len=planets.length; i<len; i++) {
+	let orb = new Orbit(planets[i].getName() + "Orbit", 		//orbitID
+						origin,									//parent
+						planets[i].getOrbitalRadiusKm()/1000,		//radius
+						planets[i].getEccentricity()*planets[i].getOrbitalRadiusKm(),	//eccentricity * 1AU in Km
+						planets[i].getPeriod(),				//period
+						0,										//startThetaOffset
+						0,										//rotX
+						0,										//rotY
+						0//planets[i].getInclination()				//rotZ
+					   );
+	orbits.push(orb);
+	//alert(orbits[i].getOrbitID() + "\n" + orbits[i]._rotX + "\n" + orbits[i]._rotY + "\n" + orbits[i]._rotZ);
+}
 
 
 // Set the renderer and assign it to a div
@@ -238,23 +256,27 @@ targetDiv.appendChild(renderer.domElement);
 
 // Create the scene and camera
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 1000);
-camera.position.z = 500;
+var camera = new THREE.PerspectiveCamera(75, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 2500000);
+camera.position.z = 100000;
 
 // add a white sphere
-var geometry = new THREE.SphereGeometry(10, 32, 32);
+//var geometry = new THREE.SphereGeometry(10, 32, 32);
+var sunGeometry = new THREE.SphereGeometry(sol.getDiameter()/2, 32, 32);
+var sunMaterial = new THREE.MeshBasicMaterial();
 var material = new THREE.MeshPhongMaterial();
-var planetSphere = new THREE.Mesh(geometry, material);
-var geometry2 = new THREE.SphereGeometry(2, 16, 16);
-var moonSphere = new THREE.Mesh(geometry2, material);
-var planetSphere2 = new THREE.Mesh(geometry, material);
-var moonSphere2 = new THREE.Mesh(geometry2, material);
-scene.add(planetSphere);
-scene.add(moonSphere);
-scene.add(planetSphere2);
-scene.add(moonSphere2);
+var sunModel = new THREE.Mesh(sunGeometry, sunMaterial);
+scene.add(sunModel);
 
-var ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+
+var planetModels = [];
+for (let i=0, len=planets.length; i<len; i++) {
+	let geometry = new THREE.SphereGeometry((planets[i].getDiameter()/2)*20, 32, 32);
+	planetModels[i] = new THREE.Mesh(geometry, material);
+	scene.add(planetModels[i]);
+}
+
+
+var ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
 var light = new THREE.PointLight(0xffffff);
 light.position.set(0,0,0).normalize();
 scene.add(ambientLight);
@@ -269,16 +291,13 @@ window.addEventListener('resize', function(){
 });
 
 function animate() {
+		
+	for (let i=0, len=planets.length; i<len; i++) {
+		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
+		orbits[i].update();
+	}
+	
 	requestAnimationFrame(animate);
-	earthOrbit.update();
-	moonOrbit.update();
-	earthOrbit2.update();
-	moonOrbit2.update();
-	planetSphere.position.set(earthOrbit.getX(), earthOrbit.getY(), earthOrbit.getZ());
-	moonSphere.position.set(moonOrbit.getX(), moonOrbit.getY(), moonOrbit.getZ());
-	planetSphere2.position.set(earthOrbit2.getX(), earthOrbit2.getY(), earthOrbit2.getZ());
-	moonSphere2.position.set(moonOrbit2.getX(), moonOrbit2.getY(), moonOrbit2.getZ());
-	//camera.position.set(earthOrbit.getX(), earthOrbit.getY(), 100 + earthOrbit.getZ());
 	renderer.render(scene, camera);
 }
 animate();
