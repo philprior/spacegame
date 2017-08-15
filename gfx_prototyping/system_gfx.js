@@ -199,7 +199,7 @@ class Orbit {
 let sol = new StellarObject("Sol", 1390, 0, 0, 0, 0, 0);
 
 var planets = [];
-let planetMercury = new StellarObject("Mercury", 3.0, 0.4, 5790, 0.241, 0.208, 7.00);
+let planetMercury = new StellarObject("Mercury", 3.0, 0.4, 57900, 0.241, 0.206, 7.00);
 planets.push(planetMercury);
 let planetVenus = new StellarObject("Venus", 7.5, 0.7, 108200, 0.615, 0.007, 3.39);
 planets.push(planetVenus);
@@ -220,7 +220,7 @@ planets.push(planetPluto);
 
 
 // Create an origin point at the centre of all axes
-var origin = new Anchor(0,0,0,30,0,0);
+var origin = new Anchor(0,0,0,0,0,0);
 
 /*
 var earthOrbit = new Orbit("0001", origin, 250, 20, 360, 0, 0, 0, 0);
@@ -235,9 +235,9 @@ var orbits = [];
 for (let i=0, len=planets.length; i<len; i++) {
 	let orb = new Orbit(planets[i].getName() + "Orbit", 		//orbitID
 						origin,									//parent
-						planets[i].getOrbitalRadiusKm()/1000,		//radius
-						planets[i].getEccentricity()*planets[i].getOrbitalRadiusKm(),	//eccentricity * 1AU in Km
-						planets[i].getPeriod()*100,				//period
+						planets[i].getOrbitalRadiusKm(),		//radius
+						planets[i].getEccentricity()*149600,	//eccentricity * 1AU in Km
+						planets[i].getPeriod()*1000,				//period
 						0,										//startThetaOffset
 						0,										//rotX
 						0,										//rotY
@@ -256,8 +256,8 @@ targetDiv.appendChild(renderer.domElement);
 
 // Create the scene and camera
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 2500000);
-camera.position.z = 100000;
+var camera = new THREE.PerspectiveCamera(75, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 5000000);
+camera.position.z = 5000;
 
 // add a white sphere
 //var geometry = new THREE.SphereGeometry(10, 32, 32);
@@ -270,7 +270,7 @@ scene.add(sunModel);
 
 var planetModels = [];
 for (let i=0, len=planets.length; i<len; i++) {
-	let geometry = new THREE.SphereGeometry((planets[i].getDiameter()/2)*20, 32, 32);
+	let geometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 32, 32);
 	planetModels[i] = new THREE.Mesh(geometry, material);
 	scene.add(planetModels[i]);
 }
@@ -296,8 +296,8 @@ function animate() {
 		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
 		orbits[i].update();
 	}
-	
 	requestAnimationFrame(animate);
 	renderer.render(scene, camera);
+	camera.position.set(orbits[0].getX(), orbits[0].getY(), 100 + orbits[0].getZ());
 }
 animate();
