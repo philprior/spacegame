@@ -220,7 +220,7 @@ planets.push(planetPluto);
 
 
 // Create an origin point at the centre of all axes
-var origin = new Anchor(0,0,0,90,0,0);
+var origin = new Anchor(0,0,0,30,0,0);
 
 /*
 var earthOrbit = new Orbit("0001", origin, 250, 20, 360, 0, 0, 0, 0);
@@ -237,11 +237,11 @@ for (let i=0, len=planets.length; i<len; i++) {
 						origin,									//parent
 						planets[i].getOrbitalRadiusKm()/1000,		//radius
 						planets[i].getEccentricity()*planets[i].getOrbitalRadiusKm(),	//eccentricity * 1AU in Km
-						planets[i].getPeriod(),				//period
+						planets[i].getPeriod()*100,				//period
 						0,										//startThetaOffset
 						0,										//rotX
 						0,										//rotY
-						0//planets[i].getInclination()				//rotZ
+						planets[i].getInclination()				//rotZ
 					   );
 	orbits.push(orb);
 	//alert(orbits[i].getOrbitID() + "\n" + orbits[i]._rotX + "\n" + orbits[i]._rotY + "\n" + orbits[i]._rotZ);
