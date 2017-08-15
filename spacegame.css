@@ -146,7 +146,7 @@ h1 {
 	grid-row: 1;
 	overflow-y: auto;
 	z-index: 20;
-	background:rgba(255,255,255,0.05);
+	background:rgba(0,0,0,0.5);
 	padding-left: 40px;
 	line-height: 1.5em;
 }
@@ -165,7 +165,7 @@ h1 {
 	grid-row: 1;
 	overflow-y: auto;
 	z-index: 20;
-	background:rgba(255,255,255,0.05);
+	background:rgba(0,0,0,0.5);
 }
 
 .container #mainarea #upgrades .upgradeevent {

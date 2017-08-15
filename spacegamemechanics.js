@@ -146,7 +146,7 @@ class UpgradeEvent {
 
 
 class StellarObject {
-	constructor(name, type, diameter, orbitalRadiusAu, orbitalRadiusKm, period, eccentricity, inclination){
+	constructor(name, type, diameter, orbitalRadiusAu, orbitalRadiusKm, period, eccentricity, inclination, axialTilt, rotationPeriod){
 		this._name = name;
 		this._type = type;
 		this._diameter = diameter;
@@ -155,6 +155,8 @@ class StellarObject {
 		this._period = period;
 		this._eccentricity = eccentricity;
 		this._inclination = inclination;
+		this._axialTilt = axialTilt;
+		this._rotationPeriod = rotationPeriod;
 	}
 	
 	getName() {
@@ -187,6 +189,14 @@ class StellarObject {
 	
 	getInclination() {
 		return this._inclination;
+	}
+	
+	getAxialTilt() {
+		return this._axialTilt;
+	}
+	
+	getRotationPeriod() {
+		return this._rotationPeriod;
 	}
 }
 
@@ -340,29 +350,29 @@ class Orbit {
 
 
 // Intantiate planets
-/* (name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees))
+/* (name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees), axialTilt)
 */
 
 let sol = new StellarObject("Sol", "Star", 1390, 0, 0, 0, 0, 0);
 
 var planets = [];
-let planetMercury = new StellarObject("Mercury", "Terrestrial", 3.0, 0.4, 57900, 0.241, 0.208, 7.00, 0);
+let planetMercury = new StellarObject("Mercury", "Terrestrial", 3.0, 0.4, 57900, 0.241, 0.208, 7.00, 0, 59);
 planets.push(planetMercury);
-let planetVenus = new StellarObject("Venus", "Terrestrial", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 0);
+let planetVenus = new StellarObject("Venus", "Terrestrial", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 177, 243);
 planets.push(planetVenus);
-let planetEarth = new StellarObject("Earth", "Terrestrial", 7.9, 1.0, 149600, 1.000, 0.017, 0.00, 0);
+let planetEarth = new StellarObject("Earth", "Terrestrial", 7.9, 1.0, 149600, 1.000, 0.017, 0.00, 23, 1);
 planets.push(planetEarth);
-let planetMars = new StellarObject("Mars", "Terrestrial", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 0);
+let planetMars = new StellarObject("Mars", "Terrestrial", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 25, 1.02);
 planets.push(planetMars);
-let planetJupiter = new StellarObject("Jupiter", "Gas giant", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0);
+let planetJupiter = new StellarObject("Jupiter", "Gas giant", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0.41);
 planets.push(planetJupiter);
-let planetSaturn = new StellarObject("Saturn", "Gas giant", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 0);
+let planetSaturn = new StellarObject("Saturn", "Gas giant", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 27, 0.44);
 planets.push(planetSaturn);
-let planetUranus = new StellarObject("Uranus", "Gas giant", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77, 0);
+let planetUranus = new StellarObject("Uranus", "Gas giant", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77, 98, 0.72);
 planets.push(planetUranus);
-let planetNeptune = new StellarObject("Neptune", "Gas giant", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77, 0);
+let planetNeptune = new StellarObject("Neptune", "Gas giant", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77, 29, 0.72);
 planets.push(planetNeptune);
-let planetPluto = new StellarObject("Pluto", "Dwarf", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 0);
+let planetPluto = new StellarObject("Pluto", "Dwarf", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 120, 6.38);
 planets.push(planetPluto);
 
 
@@ -672,21 +682,32 @@ targetDiv.appendChild(renderer.domElement);
 
 // Create the scene and camera
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 50000000);
+var camera = new THREE.PerspectiveCamera(75, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 60000000);
 
-// add a white sphere
-//var geometry = new THREE.SphereGeometry(10, 32, 32);
+// Add sun
 var sunGeometry = new THREE.SphereGeometry(sol.getDiameter()/2, 32, 32);
 var sunMaterial = new THREE.MeshBasicMaterial();
-var material = new THREE.MeshPhongMaterial();
 var sunModel = new THREE.Mesh(sunGeometry, sunMaterial);
 scene.add(sunModel);
 
+// Skybox (Sphere)
+var skyboxGeometry  = new THREE.SphereGeometry(100000000000, 32, 32);
+var skyboxMaterial  = new THREE.MeshBasicMaterial();
+skyboxMaterial.map   = THREE.ImageUtils.loadTexture("images/eso_milkyway.jpg");
+skyboxMaterial.side  = THREE.BackSide;
+var skybox = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
+skybox.rotateZ((60*Math.PI)/180);
+scene.add(skybox);
 
 var planetModels = [];
+var planetMaps = [];
 for (let i=0, len=planets.length; i<len; i++) {
-	let geometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 32, 32);
-	planetModels[i] = new THREE.Mesh(geometry, material);
+	let planetGeometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 32, 32);
+	let planetMap = new THREE.MeshPhongMaterial();
+	planetMap.map   = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "map.jpg");
+	planetMaps.push(planetMap);
+	planetModels[i] = new THREE.Mesh(planetGeometry, planetMaps[i]);
+	planetModels[i].rotateZ(planets[i].getAxialTilt()*(Math.PI/180));
 	scene.add(planetModels[i]);
 }
 
@@ -712,10 +733,11 @@ function animate() {
 		if (currentPlanet.toUpperCase()==="SYSTEM") {
 			camera.position.set(0, 0, 500000);
 		} else if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
-			camera.position.set(orbits[i].getX(), orbits[i].getY(), 200 + orbits[i].getZ());
+			camera.position.set(orbits[i].getX(), orbits[i].getY(), 100 + orbits[i].getZ());
 		}
 		
 		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
+		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
 		orbits[i].update();
 	}
 	
