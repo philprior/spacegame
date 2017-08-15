@@ -249,7 +249,7 @@ class Orbit {
 		this._period = period;
 		
 		this._deltaTheta = (2*Math.PI)/this._period;
-		this._theta = startThetaOffset;
+		this._theta = startThetaOffset;//*(Math.PI/180);
 
 		this._x = 0;
 		this._y = 0;
@@ -269,6 +269,10 @@ class Orbit {
 	
 	getRadius() {
 		return this._radius;
+	}
+	
+	getParent() {
+		return this._parent;
 	}
 	
 	getPeri() {
@@ -385,7 +389,7 @@ for (let i=0, len=planets.length; i<len; i++) {
 	let orb = new Orbit(planets[i].getName() + "Orbit", 		//orbitID
 						origin,									//parent
 						planets[i].getOrbitalRadiusKm(),		//radius
-						planets[i].getEccentricity()*149600,	//eccentricity * 1AU in Km
+						planets[i].getEccentricity()*14960,		//eccentricity * 1AU in Km
 						planets[i].getPeriod()*1000,			//period
 						0,										//startThetaOffset
 						0,										//rotX
@@ -682,7 +686,7 @@ targetDiv.appendChild(renderer.domElement);
 
 // Create the scene and camera
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 60000000);
+var camera = new THREE.PerspectiveCamera(60, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 6000000);
 
 // Add lights
 var ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
@@ -700,29 +704,49 @@ scene.add(sunModel);
 
 var textureFlare = THREE.ImageUtils.loadTexture("images/lensflare.jpg");
 var flareColour = new THREE.Color( 0xffffff );
-var sunFlare = new THREE.LensFlare(textureFlare, 100, 0, THREE.AdditiveBlending, flareColour);
-sunFlare.position.copy(light.position);
+var sunFlare = new THREE.LensFlare(textureFlare, sol.getDiameter()/16, 0, THREE.AdditiveBlending, flareColour);
+sunFlare.position.set(light.position.x, light.position.y + 500, light.position.z);
 scene.add(sunFlare);
 
 // Skybox (Sphere)
-var skyboxGeometry  = new THREE.SphereGeometry(100000000000, 32, 32);
-var skyboxMaterial  = new THREE.MeshBasicMaterial();
-skyboxMaterial.map   = THREE.ImageUtils.loadTexture("images/eso_milkyway.jpg");
-skyboxMaterial.side  = THREE.BackSide;
+var skyboxGeometry = new THREE.SphereGeometry(100000000000, 32, 32);
+var skyboxMaterial = new THREE.MeshBasicMaterial();
+skyboxMaterial.map = THREE.ImageUtils.loadTexture("images/eso_milkyway.jpg");
+skyboxMaterial.side = THREE.BackSide;
 var skybox = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
 skybox.rotateZ((60*Math.PI)/180);
 scene.add(skybox);
 
 var planetModels = [];
 var planetMaps = [];
+var orbitalEllipses = [];
 for (let i=0, len=planets.length; i<len; i++) {
 	let planetGeometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 64, 64);
 	let planetMap = new THREE.MeshPhongMaterial();
+	planetMap.side = THREE.Frontside;
 	planetMap.map   = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "map.jpg");
 	planetMaps.push(planetMap);
 	planetModels[i] = new THREE.Mesh(planetGeometry, planetMaps[i]);
 	planetModels[i].rotateZ(planets[i].getAxialTilt()*(Math.PI/180));
 	scene.add(planetModels[i]);
+	
+	/*
+	let orbitalEllipse = new THREE.EllipseCurve(
+	orbits[i].getParent().getX(),  orbits[i].getParent().getZ(),            // ax, aY
+	orbits[i].getAphe(), orbits[i].getPeri(),           // xRadius, yRadius
+	0,  2 * Math.PI,  // aStartAngle, aEndAngle
+	false,            // aClockwise
+	0                 // aRotation
+	);
+	let ellipsePath = new THREE.Path(orbitalEllipse.getPoints(500));
+	let ellipseGeometry = ellipsePath.createPointsGeometry(500);
+	let ellipseMaterial = new THREE.LineBasicMaterial({color : 0x00aa00, linewidth:1});
+	let orbEllipse = new THREE.Line(ellipseGeometry, ellipseMaterial);
+	orbitalEllipses.push(orbEllipse);
+	orbEllipse.rotateX(90*(Math.PI/180)+orbits[i].getRotX());
+	//orbEllipse.rotateY(orbits[i].getRotY());
+	scene.add(orbitalEllipses[i]);
+	*/
 }
 
 
@@ -739,13 +763,17 @@ function animate() {
 	for (let i=0, len=planets.length; i<len; i++) {
 		
 		if (currentPlanet.toUpperCase()==="SYSTEM") {
-			camera.position.set(0, 0, 500000);
+			camera.position.set(0, 500000, 1000000);
+			camera.rotation.set(-20*(Math.PI/180), 0, 0);
 		} else if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
 			camera.position.set(orbits[i].getX(), orbits[i].getY(), 150 + orbits[i].getZ());
+			camera.rotation.set(0, 0, 0);
 		}
 		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
 		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
 		orbits[i].update();
+		
+		camera.updateProjectionMatrix();
 	}
 	
 	requestAnimationFrame(animate);
