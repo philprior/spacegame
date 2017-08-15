@@ -14,7 +14,7 @@ h1 {
 }
 
 #ui {
-	opacity: 0;
+	opacity: 1;
 	transition: 3s;
 }
 
@@ -66,15 +66,15 @@ h1 {
 
 #system_button {
 	grid-column: 1 / span 3;
-	visibility: hidden;
-	opacity: 0;
+	/* visibility: hidden;*/
+	opacity: 1;
 	cursor:pointer;
 	transition: 1s;
 }
 
 .planetbutton {
-	visibility: hidden;
-	opacity: 0;
+	/*visibility: hidden;*/
+	opacity: 1;
 	cursor:pointer;
 	transition: 1s;
 }

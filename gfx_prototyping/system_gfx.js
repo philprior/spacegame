@@ -220,14 +220,7 @@ planets.push(planetPluto);
 
 
 // Create an origin point at the centre of all axes
-var origin = new Anchor(0,0,0,0,0,0);
-
-/*
-var earthOrbit = new Orbit("0001", origin, 250, 20, 360, 0, 0, 0, 0);
-var moonOrbit = new Orbit("0002", earthOrbit, 20, 0, 100, 0, 0, 0, -10);
-var earthOrbit2 = new Orbit("0003", origin, 400, 20, 1000, 90, 0, 0, 15);
-var moonOrbit2 = new Orbit("0004", earthOrbit2, 20, 0, 100, 0, 0, 0, 30);
-*/
+var origin = new Anchor(0,0,0,0,90,0);
 
 
 // Create orbits for the planets around the central anchor
@@ -244,7 +237,6 @@ for (let i=0, len=planets.length; i<len; i++) {
 						planets[i].getInclination()				//rotZ
 					   );
 	orbits.push(orb);
-	//alert(orbits[i].getOrbitID() + "\n" + orbits[i]._rotX + "\n" + orbits[i]._rotY + "\n" + orbits[i]._rotZ);
 }
 
 
@@ -298,6 +290,6 @@ function animate() {
 	}
 	requestAnimationFrame(animate);
 	renderer.render(scene, camera);
-	camera.position.set(orbits[0].getX(), orbits[0].getY(), 100 + orbits[0].getZ());
+	//camera.position.set(orbits[7].getX(), orbits[7].getY(), 100 + orbits[7].getZ());
 }
 animate();

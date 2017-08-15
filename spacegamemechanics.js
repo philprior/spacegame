@@ -145,17 +145,16 @@ class UpgradeEvent {
 }
 
 
-class Planet {
-	constructor(name, type, diameter, avgDistFromSunAu, avgDistFromSunKm, period, eccentricity, inclination, upgrades){
+class StellarObject {
+	constructor(name, type, diameter, orbitalRadiusAu, orbitalRadiusKm, period, eccentricity, inclination){
 		this._name = name;
 		this._type = type;
 		this._diameter = diameter;
-		this._avgDistFromSunAu = avgDistFromSunAu;
-		this._avgDistFromSunKm = avgDistFromSunKm;
+		this._orbitalRadiusAu = orbitalRadiusAu;
+		this._orbitalRadiusKm = orbitalRadiusKm;
 		this._period = period;
 		this._eccentricity = eccentricity;
 		this._inclination = inclination;
-		this._upgrades = upgrades;
 	}
 	
 	getName() {
@@ -170,12 +169,12 @@ class Planet {
 		return this._diameter;
 	}
 	
-	getAvgDistFromSunAu() {
-		return this._avgDistFromSunAu;
+	getOrbitalRadiusAu() {
+		return this._orbitalRadiusAu;
 	}
 	
-	getAvgDistFromSunKm() {
-		return this._avgDistFromSunKm;
+	getOrbitalRadiusKm() {
+		return this._orbitalRadiusKm;
 	}
 	
 	getPeriod() {
@@ -189,12 +188,202 @@ class Planet {
 	getInclination() {
 		return this._inclination;
 	}
+}
+
+
+class Anchor {
+	constructor(x,y,z, rotX, rotY, rotZ){
+		this._x = x;
+		this._y = y;
+		this._z = z;
+		this._rotX = rotX*(Math.PI/180);
+		this._rotY = rotY*(Math.PI/180);
+		this._rotZ = rotZ*(Math.PI/180);
+	}
 	
-	getUpgrades() {
-		return this._upgrades;	
+	getX() {
+		return this._x;
+	}
+	
+	getY() {
+		return this._y;
+	}
+	
+	getZ() {
+		return this._z;
+	}
+	
+	getRotX() {
+		return this._rotX;
+	}
+		
+	getRotY() {
+		return this._rotY;
+	}
+	
+	getRotZ() {
+		return this._rotZ;
 	}
 }
 
+
+class Orbit {
+	constructor(orbitID, parent, radius, eccentricity, period, startThetaOffset, rotX, rotY, rotZ){
+		this._orbitID = orbitID;
+		this._parent = parent;
+		this._radius = radius;
+		this._eccentricity = eccentricity;
+		this._peri = radius-eccentricity; // perihelion - closest to the origin
+		this._aphe = radius+eccentricity; //aphelion - furthest from the origin
+		
+		this._period = period;
+		
+		this._deltaTheta = (2*Math.PI)/this._period;
+		this._theta = startThetaOffset;
+
+		this._x = 0;
+		this._y = 0;
+		this._z = 0;
+		
+		this._rotX = rotX*(Math.PI/180)+parent.getRotX();
+		this._rotY = rotY*(Math.PI/180)+parent.getRotY();
+		this._rotZ = rotZ*(Math.PI/180)+parent.getRotZ();
+		
+		this.update();
+	}
+	
+
+	getOrbitID() {
+		return this._orbitID;
+	}
+	
+	getRadius() {
+		return this._radius;
+	}
+	
+	getPeri() {
+		return this._peri;
+	}
+	
+	getAphe() {
+		return this._aphe;
+	}
+	
+	getEccentricity() {
+		return this._eccentricity;
+	}
+	
+	getRotX() {
+		return this._rotX;
+	}
+		
+	getRotY() {
+		return this._rotY;
+	}
+	
+	getRotZ() {
+		return this._rotZ;
+	}
+
+	getPeriod() {
+		return this._period;
+	}
+	
+	getTheta() {
+		return this._theta;
+	}
+	
+	getX() {
+		return this._x;
+	}
+	
+	getY() {
+		return this._y;
+	}
+	
+	getZ() {
+		return this._z;
+	}
+	
+	update() {
+		// Rotate the value of theta by one measure
+		this._theta += this._deltaTheta;
+		// calculate the basic x,y,z cartesian coordinates
+		// assuming we start by generating on a plane level with the sun->earth axis
+		let localX = (Math.sin(this._theta)*this._aphe);
+		let localZ = (Math.cos(this._theta)*this._peri);
+		let localY = 0;
+		// Rotate the coordinates based on the rotation of the orbit around its parent
+		if(this._rotX!==0){
+			let temp_z = (Math.sin(this._rotX)*localY) + (Math.cos(this._rotX)*localZ);
+			let temp_y = (Math.cos(this._rotX)*localY) - (Math.sin(this._rotX)*localZ);
+			localZ = temp_z;
+			localY = temp_y;
+		}
+		if(this._rotY!==0){
+			let temp_x = (Math.sin(this._rotY)*localZ) + (Math.cos(this._rotY)*localX);
+			let temp_z = (Math.cos(this._rotY)*localZ) - (Math.sin(this._rotY)*localX);
+			localX = temp_x;
+			localZ = temp_z;
+		}
+		if(this._rotZ!==0){
+			let temp_y = (Math.sin(this._rotZ)*localX) + (Math.cos(this._rotZ)*localY);
+			let temp_x = (Math.cos(this._rotZ)*localX) - (Math.sin(this._rotZ)*localY);
+			localY = temp_y;
+			localX = temp_x;
+		}
+		this._x = localX + this._parent.getX();
+		this._z = localZ + this._parent.getZ();
+		this._y = localY + this._parent.getY();
+	}
+}
+
+
+// Intantiate planets
+/* (name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees))
+*/
+
+let sol = new StellarObject("Sol", "Star", 1390, 0, 0, 0, 0, 0);
+
+var planets = [];
+let planetMercury = new StellarObject("Mercury", "Terrestrial", 3.0, 0.4, 5790, 0.241, 0.208, 7.00, 0);
+planets.push(planetMercury);
+let planetVenus = new StellarObject("Venus", "Terrestrial", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 0);
+planets.push(planetVenus);
+let planetEarth = new StellarObject("Earth", "Terrestrial", 7.9, 1.0, 149600, 1.000, 0.017, 0.00, 0);
+planets.push(planetEarth);
+let planetMars = new StellarObject("Mars", "Terrestrial", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 0);
+planets.push(planetMars);
+let planetJupiter = new StellarObject("Jupiter", "Gas giant", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0);
+planets.push(planetJupiter);
+let planetSaturn = new StellarObject("Saturn", "Gas giant", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 0);
+planets.push(planetSaturn);
+let planetUranus = new StellarObject("Uranus", "Gas giant", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77, 0);
+planets.push(planetUranus);
+let planetNeptune = new StellarObject("Neptune", "Gas giant", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77, 0);
+planets.push(planetNeptune);
+let planetPluto = new StellarObject("Pluto", "Dwarf", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 0);
+planets.push(planetPluto);
+
+
+// Create an origin point at the centre of all axes
+var origin = new Anchor(0,0,0,0,90,0);
+
+// Create orbits for the planets around the central anchor
+var orbits = [];
+for (let i=0, len=planets.length; i<len; i++) {
+	let orb = new Orbit(planets[i].getName() + "Orbit", 		//orbitID
+						origin,									//parent
+						planets[i].getOrbitalRadiusKm(),		//radius
+						planets[i].getEccentricity()*149600,	//eccentricity * 1AU in Km
+						planets[i].getPeriod()*1000,			//period
+						0,										//startThetaOffset
+						0,										//rotX
+						0,										//rotY
+						planets[i].getInclination()				//rotZ
+					   );
+	orbits.push(orb);
+}
 
 
 // Instantiate resources and set button boost values
@@ -203,32 +392,6 @@ let resourceTwo = new Resource("Photonic", 0, 0.05);
 let resourceOneBoost = 1;
 let resourceTwoBoost = 1;
 
-
-// Intantiate planets
-/* (name, diameter(1000s of km to 2sf), avgDistFromSunAu(AU to 1 dp), avgDistFromSunKm (1000s of km)
-	period(relative to 1 earth year), eccentricity, inclination(degrees), upgrades)
-*/
-var planets = [];
-let sol = new Planet("Sol", 1390, 0, 0, 0, 0, 0, 0);
-planets.push(sol);
-let planetMercury = new Planet("Mercury", "Terrestrial", 3.0, 0.4, 5790, 0.241, 0.208, 7.00, 0);
-planets.push(planetMercury);
-let planetVenus = new Planet("Venus", "Terrestrial", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 0);
-planets.push(planetVenus);
-let planetEarth = new Planet("Earth", "Terrestrial", 7.9, 1.0, 149600, 1.000, 0.017, 0.00, 0);
-planets.push(planetEarth);
-let planetMars = new Planet("Mars", "Terrestrial", 4.2, 1.5, 227900, 1.880, 0.093, 1.85, 0);
-planets.push(planetMars);
-let planetJupiter = new Planet("Jupiter", "Gas giant", 142.8, 5.2, 778300, 11.867, 0.048, 1.31, 0);
-planets.push(planetJupiter);
-let planetSaturn = new Planet("Saturn", "Gas giant", 120.7, 9.5, 1427000, 29.461, 0.058, 2.48, 0);
-planets.push(planetSaturn);
-let planetUranus = new Planet("Uranus", "Gas giant", 51.1, 19.2, 2871000, 84.030, 0.048, 0.77, 0);
-planets.push(planetUranus);
-let planetNeptune = new Planet("Neptune", "Gas giant", 48.6, 30.0, 4497100, 164.815, 0.010, 1.77, 0);
-planets.push(planetNeptune);
-let planetPluto = new Planet("Pluto", "Dwarf", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 0);
-planets.push(planetPluto);
 
 
 // Updates resource values after an upgrade is chosen
@@ -265,7 +428,6 @@ let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", "earth", 
 upgradeEvents.push(nuclearPowerStation);
 function upgradeevent_1() {
 	updateResources(1);
-	planetExplored("earth");
 }
 
 let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", "earth", -1, 0, 10, 10, 50, 0, 0.1, false, false, false, 0, "Adds <span class='Photonic'>1</span>TJ/s", "You can now purchase surface based solar farms for Earth.");
@@ -324,8 +486,8 @@ function loadPlanetaryData(planet){
 			document.getElementById("pd_name").innerHTML = planets[i].getName();
 			document.getElementById("pd_type").innerHTML = planets[i].getType();
 			document.getElementById("pd_diameter").innerHTML = (planets[i].getDiameter()*1000).toLocaleString();
-			document.getElementById("pd_avgdist_km").innerHTML = (planets[i].getAvgDistFromSunKm()*1000).toLocaleString();
-			document.getElementById("pd_avgdist_au").innerHTML = planets[i].getAvgDistFromSunAu();
+			document.getElementById("pd_avgdist_km").innerHTML = (planets[i].getOrbitalRadiusKm()*1000).toLocaleString();
+			document.getElementById("pd_avgdist_au").innerHTML = planets[i].getOrbitalRadiusAu();
 			document.getElementById("pd_eccentricity").innerHTML = planets[i].getEccentricity();
 			document.getElementById("pd_inclination").innerHTML = planets[i].getInclination();
 			document.getElementById("pd_period").innerHTML = planets[i].getPeriod();
@@ -463,10 +625,10 @@ function updateBoosters() {
 
 // Loads the content for the viewer panel
 function loadViewer(planet) {
-	planetSphere.material.map = THREE.ImageUtils.loadTexture("images/" + planet + "map.jpg");
-	planetSphere.material.needsUpdate = true;
+	//camera.position.set(orbits[planet].getX(), orbits[planet].getY(), 100 + orbits[planet].getZ());
+	//planetSphere.material.map = THREE.ImageUtils.loadTexture("images/" + planet + "map.jpg");
+	//planetSphere.material.needsUpdate = true;
 }
-
 
 // Initial screen layout, centred on Earth
 var currentPlanet = "earth";
@@ -475,6 +637,7 @@ loadPlanetaryData(currentPlanet);
 showHidePlanetaryData("show");
 showHideUpgrades("show");
 fadein("ui");
+//planetExplored("earth");
 
 // Scrolls the story pane to the top of the next item automatically
 function scrollStory(identifier) {
