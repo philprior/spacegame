@@ -448,8 +448,6 @@ let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", "earth", -1, 0, 10,
 upgradeEvents.push(solarPowerFarm);
 function upgradeevent_2() {
 	updateResources(2);
-	
-	
 }
 
 
@@ -624,7 +622,7 @@ function checkUpgradeDisplay(planet) {
 				document.getElementById('upgradeevent_'+eventId).style.opacity = 1;
 				document.getElementById('upgradeevent_'+eventId).style.pointerEvents = "auto";
 			} else {
-				document.getElementById('upgradeevent_'+eventId).style.opacity = 0.5;
+				document.getElementById('upgradeevent_'+eventId).style.opacity = 0.4;
 				document.getElementById('upgradeevent_'+eventId).style.pointerEvents = "none";
 			}
 		}
@@ -686,7 +684,7 @@ targetDiv.appendChild(renderer.domElement);
 
 // Create the scene and camera
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, targetDiv.offsetWidth / targetDiv.clientHeight, 0.1, 6000000);
+var camera = new THREE.PerspectiveCamera(60, targetDiv.clientWidth / targetDiv.clientHeight, 0.1, 5500000);
 
 // Add lights
 var ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
@@ -763,8 +761,8 @@ function animate() {
 	for (let i=0, len=planets.length; i<len; i++) {
 		
 		if (currentPlanet.toUpperCase()==="SYSTEM") {
-			camera.position.set(0, 500000, 1000000);
-			camera.rotation.set(-20*(Math.PI/180), 0, 0);
+			camera.position.set(0, 0, 500000);
+			camera.rotation.set(0, 0, 0);
 		} else if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
 			camera.position.set(orbits[i].getX(), orbits[i].getY(), 150 + orbits[i].getZ());
 			camera.rotation.set(0, 0, 0);

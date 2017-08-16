@@ -30,8 +30,8 @@ h1 {
 
 .container #toparea div, .container #mainarea div {
 	color:#fff;
-	border:1px solid #505050;
-	padding:10px
+	/* border:1px solid #505050; */
+	padding:10px 20px 10px 20px;
 }
 
 #toparea {
@@ -40,6 +40,9 @@ h1 {
 	grid-gap:0px;
 		grid-template-columns: repeat(12, 100px) 1fr;
 		grid-template-rows: 40px 100px;
+	background-image: url("images/planetbar.png");
+	background-position: bottom;
+	background-repeat: repeat-x;
 }
 
 #mainarea {
@@ -64,16 +67,20 @@ h1 {
 	transition: 2s;
 }
 
-#system_button {
+.container #toparea #system_button {
 	grid-column: 1 / span 3;
 	/* visibility: hidden;*/
+	padding-top: 15px;
 	opacity: 1;
 	cursor:pointer;
 	transition: 1s;
 }
 
-.planetbutton {
+.container #toparea .planetbutton {
 	/*visibility: hidden;*/
+	padding-top: 15px;
+	text-align: center;
+	color:#666;
 	opacity: 1;
 	cursor:pointer;
 	transition: 1s;
@@ -146,13 +153,16 @@ h1 {
 	grid-row: 1;
 	overflow-y: auto;
 	z-index: 20;
-	background:rgba(0,0,0,0.5);
-	padding-left: 40px;
+	background:url("images/sidepanel_join_topright.png") top right no-repeat,
+				url("images/sidepanel_join_bottomright.png") bottom right no-repeat,
+				url("images/sidepanel_rightborder.png") repeat-y;
+	background-color:rgba(0,0,0,0.5);
+	padding-left: 50px;
 	line-height: 1.5em;
 }
 
 #planetary_data h1 {
-	margin-left:-30px;
+	margin-left:-20px;
 }
 
 #planetary_data .pd {
@@ -165,7 +175,10 @@ h1 {
 	grid-row: 1;
 	overflow-y: auto;
 	z-index: 20;
-	background:rgba(0,0,0,0.5);
+	background:url("images/sidepanel_join_topleft.png") top left no-repeat,
+				url("images/sidepanel_join_bottomleft.png") bottom left no-repeat,
+				url("images/sidepanel_leftborder.png") repeat-y;
+	background-color:rgba(0,0,0,0.5);
 }
 
 .container #mainarea #upgrades .upgradeevent {
@@ -173,14 +186,24 @@ h1 {
 	opacity: 0;
 	cursor:pointer;
 	transition: 1s;
+	border-top: 1px #eee dotted;
+	border-bottom: 1px #eee dotted;
 }
 
-.container #mainarea #upgrades .upgradeevent:hover,
 .container #mainarea #Photonic_booster:hover,
-.container #mainarea #Nuclear_booster:hover,
+.container #mainarea #Nuclear_booster:hover {
+	border:1px solid #ffffff;
+}
+
 .container #toparea #system_button:hover,
 .container #toparea .planetbutton:hover {
-	border:1px solid #ffffff;
+	color:#fff;
+}
+
+.container #mainarea #upgrades .upgradeevent:hover {
+	transition: 1s;
+	border-top: 1px #f0f0f0 solid;
+	border-bottom: 1px #f0f0f0 solid;
 }
 
 .container #mainarea #Nuclear_booster:active {
@@ -189,6 +212,42 @@ h1 {
 
 .container #mainarea #Photonic_booster:active {
 	background: rgba(255,255,0,0.70);
+}
+
+#mercury {
+	background-image: url("images/mercurybutton.png");
+}
+
+#venus {
+	background-image: url("images/venusbutton.png");
+}
+
+#earth {
+	background-image: url("images/earthbutton.png");
+}
+
+#mars {
+	background-image: url("images/marsbutton.png");
+}
+
+#jupiter {
+	background-image: url("images/jupiterbutton.png");
+}
+
+#saturn {
+	background-image: url("images/saturnbutton.png");
+}
+
+#uranus {
+	background-image: url("images/uranusbutton.png");
+}
+
+#neptune {
+	background-image: url("images/neptunebutton.png");
+}
+
+#pluto {
+	background-image: url("images/plutobutton.png");
 }
 
 
