@@ -249,7 +249,7 @@ class Orbit {
 		this._period = period;
 		
 		this._deltaTheta = (2*Math.PI)/this._period;
-		this._theta = startThetaOffset;//*(Math.PI/180);
+		this._theta = startThetaOffset*(Math.PI/180);
 
 		this._x = 0;
 		this._y = 0;
@@ -383,6 +383,9 @@ planets.push(planetPluto);
 // Create an origin point at the centre of all axes
 var origin = new Anchor(0,0,0,0,90,0);
 
+// Approx angle of offset, as per 17/08/2017
+var thetaoffsets = [170, 15, 130, 310, 250, 185, 60, 110, 170];
+
 // Create orbits for the planets around the central anchor
 var orbits = [];
 for (let i=0, len=planets.length; i<len; i++) {
@@ -391,14 +394,13 @@ for (let i=0, len=planets.length; i<len; i++) {
 						planets[i].getOrbitalRadiusKm(),		//radius
 						planets[i].getEccentricity()*14960,		//eccentricity * 1AU in Km
 						planets[i].getPeriod()*1000,			//period
-						0,										//startThetaOffset
+						thetaoffsets[i],										//startThetaOffset
 						0,										//rotX
 						0,										//rotY
 						planets[i].getInclination()				//rotZ
 					   );
 	orbits.push(orb);
 }
-
 
 // Instantiate resources and set button boost values
 let resourceOne = new Resource("Nuclear", 0, 0.1);
