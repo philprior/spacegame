@@ -421,6 +421,8 @@ function updateResources(i) {
 		upgradeEvents[i].incrementEventCounter();
 		upgradeEvents[i].increaseCosts();
 		updateButtonVals(i);
+	} else {
+		document.getElementById("upgradeevent_" + i).style.display = "hidden";
 	}
 }
 
@@ -452,6 +454,18 @@ function upgradeevent_2() {
 	updateResources(2);
 }
 
+let superConductors = new UpgradeEvent(3, "Make superconductors available", "earth", -1, 150, 150, 400, 500, 0, 0, true, false, false, 0, "Unlocks further technologies", "Certain technologies, such as nuclear fusion reactors require very precise control of powerful magnetic fields. Such fields are generated using electromagnets, but to have enough power and precision the material conducting the electricity has to have a very low resistance. Usually this is done by taking a metal and cooling it to extremely low temperatures. e.g. Niobium has to be cooled to 9.3&#176;K (-263.7&#176;C) ");
+upgradeEvents.push(superConductors);
+function upgradeevent_3() {
+	updateResources(3);
+}
+
+let fusionReactor = new UpgradeEvent(4, "Fusion Reactor", "earth", 3, 500, 300, 1000, 0, 0, 0, true, false, false, 0, "Reactor adds 10 <span class='Nuclear'>1</span>TJ per click", "A fusion reactor, rather than smashing atoms appart, harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.");
+upgradeEvents.push(fusionReactor);
+function upgradeevent_4() {
+	resourceOneBoost = 10;
+	updateResources(4);
+}
 
 // Event listeners
 document.getElementById(resourceOne.getName()+"_booster").addEventListener("click", function(){resourceOne.addAmount(resourceOneBoost);});
