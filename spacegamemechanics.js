@@ -357,7 +357,7 @@ class Orbit {
 /* (name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees), axialTilt)
 */
 
-let sol = new StellarObject("Sol", "Star", 1390, 0, 0, 0, 0, 0);
+let sol = new StellarObject("Sol", "Star", 1390, 0, 0, 0, 0, 0, 0, 0);
 
 var planets = [];
 let planetMercury = new StellarObject("Mercury", "Terrestrial", 3.0, 0.4, 57900, 0.241, 0.208, 7.00, 0, 59);
@@ -713,11 +713,13 @@ skyboxMaterial.map = THREE.ImageUtils.loadTexture("images/eso_milkyway.jpg");
 skyboxMaterial.side = THREE.BackSide;
 var skybox = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
 skybox.rotateZ((60*Math.PI)/180);
+skybox.rotateY((-75*Math.PI)/180);
 scene.add(skybox);
 
 var planetModels = [];
 var planetMaps = [];
 var orbitalEllipses = [];
+var planetEllipses = [];
 for (let i=0, len=planets.length; i<len; i++) {
 	let planetGeometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 64, 64);
 	let planetMap = new THREE.MeshPhongMaterial();
@@ -728,7 +730,7 @@ for (let i=0, len=planets.length; i<len; i++) {
 	planetModels[i].rotateZ(planets[i].getAxialTilt()*(Math.PI/180));
 	scene.add(planetModels[i]);
 	
-	/*
+
 	let orbitalEllipse = new THREE.EllipseCurve(
 	orbits[i].getParent().getX(),  orbits[i].getParent().getZ(),            // ax, aY
 	orbits[i].getAphe(), orbits[i].getPeri(),           // xRadius, yRadius
@@ -738,13 +740,28 @@ for (let i=0, len=planets.length; i<len; i++) {
 	);
 	let ellipsePath = new THREE.Path(orbitalEllipse.getPoints(500));
 	let ellipseGeometry = ellipsePath.createPointsGeometry(500);
-	let ellipseMaterial = new THREE.LineBasicMaterial({color : 0x00aa00, linewidth:1});
+	let ellipseMaterial = new THREE.LineBasicMaterial({color : 0x008800, linewidth:1});
 	let orbEllipse = new THREE.Line(ellipseGeometry, ellipseMaterial);
 	orbitalEllipses.push(orbEllipse);
 	orbEllipse.rotateX(90*(Math.PI/180)+orbits[i].getRotX());
-	//orbEllipse.rotateY(orbits[i].getRotY());
+	orbEllipse.rotateY(planets[i].getInclination()*(Math.PI/180));
 	scene.add(orbitalEllipses[i]);
-	*/
+
+	
+	let planetEllipse = new THREE.EllipseCurve(
+	0, 0,             // ax, aY
+	12000,12000, 	  //planets[i].getDiameter()*5, planets[i].getDiameter()*5,           // xRadius, yRadius
+	0,  2 * Math.PI,  // aStartAngle, aEndAngle
+	false,            // aClockwise
+	0                 // aRotation
+	);
+	let planEllipsePath = new THREE.Path(planetEllipse.getPoints(50));
+	let planEllipseGeometry = planEllipsePath.createPointsGeometry(50);
+	let planEllipseMaterial = new THREE.LineBasicMaterial({color : 0x00ff00, linewidth:1});
+	let planEllipse = new THREE.Line(planEllipseGeometry, planEllipseMaterial);
+	planEllipse.rotateX(-15*(Math.PI/180));
+	planetEllipses.push(planEllipse);
+	scene.add(planetEllipses[i]);
 }
 
 
@@ -761,14 +778,23 @@ function animate() {
 	for (let i=0, len=planets.length; i<len; i++) {
 		
 		if (currentPlanet.toUpperCase()==="SYSTEM") {
-			camera.position.set(0, 0, 500000);
-			camera.rotation.set(0, 0, 0);
+			camera.position.set(0, 350000, 1500000);
+			camera.rotation.set(-15*(Math.PI)/180,0,0);
+			planetEllipses[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
+			orbitalEllipses[i].position.set(0,0,0);
+			sunFlare.position.set(light.position.x, light.position.y + 500, light.position.z);
 		} else if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
+			for(let i=0, len=planets.length; i<len; i++) {
+				planetEllipses[i].position.set(0,100000000,0);
+				orbitalEllipses[i].position.set(0,100000000,0);
+			}
+			sunFlare.position.set(0,100000000,0);
 			camera.position.set(orbits[i].getX(), orbits[i].getY(), 150 + orbits[i].getZ());
 			camera.rotation.set(0, 0, 0);
 		}
 		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
 		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
+		
 		orbits[i].update();
 		
 		camera.updateProjectionMatrix();
