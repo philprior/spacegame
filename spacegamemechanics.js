@@ -358,7 +358,7 @@ class Orbit {
 
 
 // Intantiate planets
-/* (name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees), axialTilt)
+/* name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees), axial tilt, axial rotation(relative to 1 earth day)
 */
 
 let sol = new StellarObject("Sol", "Star", 1390, 0, 0, 0, 0, 0, 0, 0);
