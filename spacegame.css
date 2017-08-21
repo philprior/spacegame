@@ -125,6 +125,8 @@ h1 {
 
 .container #mainarea #storybox .story_item {
 	border: 0px;
+	border-top: 1px solid #f0f0f0;
+	border-radius: 10px;
 	opacity: 0;
 	transition: 1s;
 }
@@ -245,6 +247,28 @@ h1 {
 	border-bottom: 1px #eee dotted;
 }
 
+.container #mainarea #camera_control {
+	cursor:pointer;
+	grid-column: 2;
+	grid-row: 1;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	z-index: 20;
+	padding:10px;
+	height:20px;
+	position: absolute;
+	left: 300px;
+	border: 1px solid;
+	border-bottom-right-radius:10px;
+	border-color: #333;
+	transition: visibility 0s, opacity 1s, border-color 1s;
+}
+
+
+.container #mainarea #camera_control:hover {
+	border-color:#f0f0f0;
+}
+
 .container #mainarea #Photonic_booster:hover,
 .container #mainarea #Nuclear_booster:hover {
 	/*border:1px solid #f0f0f0;*/
@@ -305,18 +329,4 @@ h1 {
 
 #pluto {
 	background-image: url("images/plutobutton.png");
-}
-
-
-::-webkit-scrollbar {
-	width:10px;
-}
-
-::-webkit-scrollbar-track {
-	width:5px;
-	background: rgba(50,50,50,0.5);
-}
-
-::-webkit-scrollbar-thumb {
-	background: rgba(255,255,255,0.5);
 }

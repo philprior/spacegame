@@ -114,6 +114,10 @@ class UpgradeEvent {
 		return this._done;
 	}
 	
+	isDone() {
+		this._done=true;
+	}
+	
 	getCount() {
 		return this._count;
 	}
@@ -422,7 +426,8 @@ function updateResources(i) {
 		upgradeEvents[i].increaseCosts();
 		updateButtonVals(i);
 	} else {
-		document.getElementById("upgradeevent_" + i).style.display = "hidden";
+		upgradeEvents[i].isDone();
+		document.getElementById("upgradeevent_" + i).style.display = "none";
 	}
 }
 
@@ -454,17 +459,18 @@ function upgradeevent_2() {
 	updateResources(2);
 }
 
-let superConductors = new UpgradeEvent(3, "Make superconductors available", "earth", -1, 150, 150, 400, 500, 0, 0, true, false, false, 0, "Unlocks further technologies", "Certain technologies, such as nuclear fusion reactors require very precise control of powerful magnetic fields. Such fields are generated using electromagnets, but to have enough power and precision the material conducting the electricity has to have a very low resistance. Usually this is done by taking a metal and cooling it to extremely low temperatures. e.g. Niobium has to be cooled to 9.3&#176;K (-263.7&#176;C) ");
+let superConductors = new UpgradeEvent(3, "Make superconductors available", "earth", -1, 15, 15, 4, 5, 0, 0, true, false, false, 0, "Unlocks further technologies", "Certain technologies, such as nuclear fusion reactors require very precise control of powerful magnetic fields. Such fields are generated using electromagnets, but to have enough power and precision the material conducting the electricity has to have a very low resistance. Usually this is done by taking a metal and cooling it to extremely low temperatures. e.g. Niobium has to be cooled to 9.3&#176;K (-263.7&#176;C) ");
 upgradeEvents.push(superConductors);
 function upgradeevent_3() {
 	updateResources(3);
 }
 
-let fusionReactor = new UpgradeEvent(4, "Fusion Reactor", "earth", 3, 500, 300, 1000, 0, 0, 0, true, false, false, 0, "Reactor adds 10 <span class='Nuclear'>1</span>TJ per click", "A fusion reactor, rather than smashing atoms appart, harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.");
+let fusionReactor = new UpgradeEvent(4, "Fusion Reactor", "earth", 3, 15, 15, 1000, 0, 0, 0, true, false, false, 0, "Reactor adds 10 <span class='Nuclear'>1</span>TJ per click", "A fusion reactor, rather than smashing atoms apart, harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.");
 upgradeEvents.push(fusionReactor);
 function upgradeevent_4() {
 	resourceOneBoost = 10;
 	updateResources(4);
+	document.getElementById("n_boost_amount").innerHTML = "10";
 }
 
 // Event listeners
@@ -491,9 +497,18 @@ function planetButtonListener(planet){
 										loadPlanetaryData(planet);
 										showHidePlanetaryData("show");
 										showHideUpgrades("show");
+										toggleCameraZoom();
 										});
 }
 
+// Camera zoom listener
+document.getElementById("camera_control").addEventListener("click", function(){
+																	if (cameraToggle==="standard"){
+																		cameraToggle="zoomed";
+																	} else {
+																		cameraToggle="standard";
+																	}
+																	toggleCameraZoom();});
 
 // Increments the resource values by their delta and updates the display
 function incrementResources() {
@@ -568,11 +583,10 @@ function showHideUpgrades(showHide) {
 	}
 }
 
-// Add upgradeEvents array for triggered events to the UI
+// Add upgradeEvents array for triggered events to the UI, if they are non-unique or are unique and have not previously been displayed
 function addUpgradeEvents() {
 	for (let i=0, len=upgradeEvents.length; i<len; i++) {
 		let prereqEvent = upgradeEvents[i].getPrereqEvent();
-		//alert(prereqEvent);
 		if (prereqEvent === -1 || upgradeEvents[prereqEvent].getDone()===true) {
 			if (upgradeEvents[i].getDisplayed()===false && 
 				(resourceOne.getAmount() >= upgradeEvents[i].getPrereqOne() && resourceTwo.getAmount() >= upgradeEvents[i].getPrereqTwo())) {
@@ -632,7 +646,7 @@ function checkUpgradeDisplay(planet) {
 		let eventId = upgradebuttons[i].id.substring('upgradeevent_'.length);
 		if (planet.toUpperCase()!==upgradeEvents[eventId].getPlanet().toUpperCase()) {
 			document.getElementById('upgradeevent_'+eventId).style.display = "none";
-		} else {
+		} else if (upgradeEvents[eventId].getUnique()===false || (upgradeEvents[eventId].getUnique()===true && upgradeEvents[eventId].getDone()===false)) {
 			document.getElementById('upgradeevent_'+eventId).style.display = "block";
 			if((resourceOne.getAmount() - upgradeEvents[eventId].getCostOne() >= 0) && (resourceTwo.getAmount() - upgradeEvents[eventId].getCostTwo() >= 0)){
 				document.getElementById('upgradeevent_'+eventId).style.opacity = 1;
@@ -658,12 +672,14 @@ function scrollStory(identifier) {
 
 // fades an item in from opacity 0 to opacity 1
 function fadein(identifier){
+	document.querySelector("#"+identifier).style.visibility = "visible";
 	document.querySelector("#"+identifier).style.opacity = 1;
 }
 
 // fades an item in from opacity 0 to opacity 1
 function fadeout(identifier){
 	document.querySelector("#"+identifier).style.opacity = 0;
+	document.querySelector("#"+identifier).style.visibility = "hidden";
 }
 
 // Initial screen layout, centred on Earth
@@ -701,6 +717,8 @@ targetDiv.appendChild(renderer.domElement);
 // Create the scene and camera
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, targetDiv.clientWidth / targetDiv.clientHeight, 0.1, 5500000);
+var cameraToggle = "standard";
+var cameraDist = 150;
 
 // Add lights
 var ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
@@ -789,6 +807,19 @@ window.addEventListener('resize', function(){
 	camera.updateProjectionMatrix();
 });
 
+// Toggles the camera zoom when looking at a planet
+function toggleCameraZoom() {
+	if (cameraToggle==="zoomed") {
+		for (let i=0, len=planets.length; i<len; i++) {
+			if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
+				cameraDist = planets[i].getDiameter()*2;
+			}
+		}
+	} else {
+		cameraDist = 150;
+	}
+}
+
 function animate() {
 		
 	for (let i=0, len=planets.length; i<len; i++) {
@@ -796,21 +827,23 @@ function animate() {
 		if (currentPlanet.toUpperCase()==="SYSTEM") {
 			camera.position.set(0, 350000, 1500000);
 			camera.rotation.set(-15*(Math.PI)/180,0,0);
+			fadeout("camera_control");
 			planetEllipses[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
 			orbitalEllipses[i].position.set(0,0,0);
 			sunFlare.position.set(light.position.x, light.position.y + 500, light.position.z);
 		} else if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
 			for(let i=0, len=planets.length; i<len; i++) {
-				planetEllipses[i].position.set(0,100000000,0);
-				orbitalEllipses[i].position.set(0,100000000,0);
+				planetEllipses[i].position.set(0,10000000,0);
+				orbitalEllipses[i].position.set(0,10000000,0);
 			}
 			sunFlare.position.set(0,100000000,0);
-			camera.position.set(orbits[i].getX(), orbits[i].getY(), 150 + orbits[i].getZ());
+			fadein("camera_control");
+			document.getElementById("camera_dist").innerHTML = (cameraDist*1000).toLocaleString() + "km (" + cameraToggle + ")";
+			camera.position.set(orbits[i].getX(), orbits[i].getY(), cameraDist + orbits[i].getZ());
 			camera.rotation.set(0, 0, 0);
 		}
 		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
 		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
-		
 		orbits[i].update();
 		
 		camera.updateProjectionMatrix();
