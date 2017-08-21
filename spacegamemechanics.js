@@ -2,8 +2,9 @@
 /*jslint node: true */
 "use strict";
 
-
-//classes
+////////////////////////////
+// classes  ////////////////
+////////////////////////////
 class Resource {
 	constructor(name, amount, delta){
 		this._name = name;
@@ -356,8 +357,12 @@ class Orbit {
 	}
 }
 
+/////////////////////////
+// Create intances  /////
+/////////////////////////
 
-// Intantiate planets
+
+// Planets
 /* name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees), axial tilt, axial rotation(relative to 1 earth day)
 */
 
@@ -383,13 +388,15 @@ planets.push(planetNeptune);
 let planetPluto = new StellarObject("Pluto", "Dwarf", 2, 39.5, 5913000, 248.057, 0.248, 17.14, 120, 6.38);
 planets.push(planetPluto);
 
-
-// Create an origin point at the centre of all axes
-var origin = new Anchor(0,0,0,0,90,0);
-
 // Approx angle of offset, as per 17/08/2017
 var thetaoffsets = [170, 15, 130, 310, 250, 185, 60, 110, 170];
 
+// Anchors
+// Create an origin point at the centre of all axes
+var origin = new Anchor(0,0,0,0,90,0);
+
+
+// Orbits for planets
 // Create orbits for the planets around the central anchor
 var orbits = [];
 for (let i=0, len=planets.length; i<len; i++) {
@@ -411,32 +418,6 @@ let resourceOne = new Resource("Nuclear", 0, 0.1);
 let resourceTwo = new Resource("Photonic", 0, 0.05);
 let resourceOneBoost = 1;
 let resourceTwoBoost = 1;
-
-
-
-// Updates resource values after an upgrade is chosen
-function updateResources(i) {
-	resourceOne.addAmount(-upgradeEvents[i].getCostOne());
-	resourceTwo.addAmount(-upgradeEvents[i].getCostTwo());
-	resourceOne.increaseDelta(upgradeEvents[i].getDeltaShiftOne());
-	resourceTwo.increaseDelta(upgradeEvents[i].getDeltaShiftTwo());
-	
-	if (upgradeEvents[i].getUnique()===false) {
-		upgradeEvents[i].incrementEventCounter();
-		upgradeEvents[i].increaseCosts();
-		updateButtonVals(i);
-	} else {
-		upgradeEvents[i].isDone();
-		document.getElementById("upgradeevent_" + i).style.display = "none";
-	}
-}
-
-// Update the values on the upgrade buttons after a click
-function updateButtonVals(eventId) {
-	document.getElementById("upgradeeventcount_"+eventId).innerHTML = "(x" + upgradeEvents[eventId].getCount() +")";
-	document.getElementById("nuclearcost_"+eventId).innerHTML = upgradeEvents[eventId].getCostOne();
-	document.getElementById("photoniccost_"+eventId).innerHTML = upgradeEvents[eventId].getCostTwo();
-}
 
 
 // Instantiate upgradeEvents and create related function triggers
@@ -471,6 +452,35 @@ function upgradeevent_4() {
 	resourceOneBoost = 10;
 	updateResources(4);
 	document.getElementById("n_boost_amount").innerHTML = "10";
+}
+
+
+///////////////////////////
+// Game functions  ////////
+///////////////////////////
+
+// Updates resource values after an upgrade is chosen
+function updateResources(i) {
+	resourceOne.addAmount(-upgradeEvents[i].getCostOne());
+	resourceTwo.addAmount(-upgradeEvents[i].getCostTwo());
+	resourceOne.increaseDelta(upgradeEvents[i].getDeltaShiftOne());
+	resourceTwo.increaseDelta(upgradeEvents[i].getDeltaShiftTwo());
+	
+	if (upgradeEvents[i].getUnique()===false) {
+		upgradeEvents[i].incrementEventCounter();
+		upgradeEvents[i].increaseCosts();
+		updateButtonVals(i);
+	} else {
+		upgradeEvents[i].isDone();
+		document.getElementById("upgradeevent_" + i).style.display = "none";
+	}
+}
+
+// Update the values on the upgrade buttons after a click
+function updateButtonVals(eventId) {
+	document.getElementById("upgradeeventcount_"+eventId).innerHTML = "(x" + upgradeEvents[eventId].getCount() +")";
+	document.getElementById("nuclearcost_"+eventId).innerHTML = upgradeEvents[eventId].getCostOne();
+	document.getElementById("photoniccost_"+eventId).innerHTML = upgradeEvents[eventId].getCostTwo();
 }
 
 // Event listeners
@@ -750,6 +760,8 @@ skybox.rotateZ((60*Math.PI)/180);
 skybox.rotateY((-75*Math.PI)/180);
 scene.add(skybox);
 
+
+// Planets and planet paths
 var planetModels = [];
 var planetMaps = [];
 var orbitalEllipses = [];
@@ -820,6 +832,7 @@ function toggleCameraZoom() {
 	}
 }
 
+// Main viewer loop
 function animate() {
 		
 	for (let i=0, len=planets.length; i<len; i++) {
