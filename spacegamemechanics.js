@@ -395,23 +395,78 @@ var thetaoffsets = [170, 15, 130, 310, 250, 185, 60, 110, 170];
 // Create an origin point at the centre of all axes
 var origin = new Anchor(0,0,0,0,90,0);
 
-
 // Orbits for planets
 // Create orbits for the planets around the central anchor
-var orbits = [];
+var planetaryOrbits = [];
 for (let i=0, len=planets.length; i<len; i++) {
 	let orb = new Orbit(planets[i].getName() + "Orbit", 		//orbitID
 						origin,									//parent
 						planets[i].getOrbitalRadiusKm(),		//radius
 						planets[i].getEccentricity()*14960,		//eccentricity * 1AU in Km
 						planets[i].getPeriod()*1000,			//period
-						thetaoffsets[i],										//startThetaOffset
+						thetaoffsets[i],						//startThetaOffset
 						0,										//rotX
 						0,										//rotY
 						planets[i].getInclination()				//rotZ
 					   );
-	orbits.push(orb);
+	planetaryOrbits.push(orb);
 }
+
+
+// Moons and orbits
+/* 
+Moon: name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees), axial tilt, axial rotation(relative to 1 earth day)
+Orbit: orbitID, parent, radius, eccentricity, period, startThetaOffset, rotX, rotY, rotZ
+*/
+var moons = [];
+var moonOrbits = [];
+
+let luna = new StellarObject("Luna", "Moon", 3.4, 0.00257, 384, 0.08, 0.05, 5.14, -6.68, 1);
+moons.push(luna);
+let lunaOrbit = new Orbit("LunaOrbit",
+						  planetaryOrbits[2],
+						  moons[0].getOrbitalRadiusKm(),
+						  0, //moons[0].getEccentricity()*14960,
+						  moons[0].getPeriod()*1000,
+						  0,
+						  0,
+						  0,
+						  moons[0].getInclination()
+						 );
+moonOrbits.push(lunaOrbit);
+
+
+// Placeholder  - Moons are too small/fast to be seen on this scale, so ignoring for the sake of performance
+/*
+let io = new StellarObject("Io", "Moon", 3.6, 0, 422, 0.005, 0, 2, 0, 0);
+moons.push(io);
+let ioOrbit = new Orbit("IoOrbit",
+						  planetaryOrbits[4],
+						  moons[1].getOrbitalRadiusKm(),
+						  0,
+						  moons[1].getPeriod()*1000,
+						  0,
+						  0,
+						  0,
+						  moons[1].getInclination()
+						 );
+moonOrbits.push(ioOrbit);
+
+let europa = new StellarObject("Europa", "Moon", 3.1, 0, 671, 0.01, 0, 1.7, 0, 0);
+moons.push(europa);
+let europaOrbit = new Orbit("EuropaOrbit",
+						  planetaryOrbits[4],
+						  moons[2].getOrbitalRadiusKm(),
+						  0,
+						  moons[2].getPeriod()*1000,
+						  0,
+						  0,
+						  0,
+						  moons[2].getInclination()
+						 );
+moonOrbits.push(europaOrbit);
+*/
+
 
 // Instantiate resources and set button boost values
 let resourceOne = new Resource("Nuclear", 0, 0.1);
@@ -669,11 +724,11 @@ function checkUpgradeDisplay(planet) {
 	}
 }
 
+// Updates the UI values for the booster areas
 function updateBoosters() {
 	document.getElementById("n_boost_amount").innerHTML = resourceOneBoost;
 	document.getElementById("p_boost_amount").innerHTML = resourceTwoBoost;
 }
-
 
 // Scrolls the story pane to the top of the next item automatically
 function scrollStory(identifier) {
@@ -778,8 +833,8 @@ for (let i=0, len=planets.length; i<len; i++) {
 	
 
 	let orbitalEllipse = new THREE.EllipseCurve(
-	orbits[i].getParent().getX(),  orbits[i].getParent().getZ(),            // ax, aY
-	orbits[i].getAphe(), orbits[i].getPeri(),           // xRadius, yRadius
+	planetaryOrbits[i].getParent().getX(),  planetaryOrbits[i].getParent().getZ(),	// ax, aY
+	planetaryOrbits[i].getAphe(), planetaryOrbits[i].getPeri(),           			// xRadius, yRadius
 	0,  2 * Math.PI,  // aStartAngle, aEndAngle
 	false,            // aClockwise
 	0                 // aRotation
@@ -789,7 +844,7 @@ for (let i=0, len=planets.length; i<len; i++) {
 	let ellipseMaterial = new THREE.LineBasicMaterial({color : 0x008800, linewidth:1});
 	let orbEllipse = new THREE.Line(ellipseGeometry, ellipseMaterial);
 	orbitalEllipses.push(orbEllipse);
-	orbEllipse.rotateX(90*(Math.PI/180)+orbits[i].getRotX());
+	orbEllipse.rotateX(90*(Math.PI/180)+planetaryOrbits[i].getRotX());
 	orbEllipse.rotateY(planets[i].getInclination()*(Math.PI/180));
 	scene.add(orbitalEllipses[i]);
 
@@ -810,6 +865,18 @@ for (let i=0, len=planets.length; i<len; i++) {
 	scene.add(planetEllipses[i]);
 }
 
+// Moons
+var moonModels = [];
+for (let i=0, len=moons.length; i<len; i++) {
+	let moonGeometry = new THREE.SphereGeometry((moons[i].getDiameter()/2), 32, 32);
+	let moonMap = new THREE.MeshPhongMaterial();
+	// planetMap.side = THREE.Frontside;
+	// planetMap.map   = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "map.jpg");
+	// planetMaps.push(planetMap);
+	moonModels[i] = new THREE.Mesh(moonGeometry, moonMap);
+	moonModels[i].rotateZ(moons[i].getAxialTilt()*(Math.PI/180));
+	scene.add(moonModels[i]);
+}
 
 // redraws the camera and renderer on a window resize
 window.addEventListener('resize', function(){
@@ -841,7 +908,7 @@ function animate() {
 			camera.position.set(0, 350000, 1500000);
 			camera.rotation.set(-15*(Math.PI)/180,0,0);
 			fadeout("camera_control");
-			planetEllipses[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
+			planetEllipses[i].position.set(planetaryOrbits[i].getX(), planetaryOrbits[i].getY(), planetaryOrbits[i].getZ());
 			orbitalEllipses[i].position.set(0,0,0);
 			sunFlare.position.set(light.position.x, light.position.y + 500, light.position.z);
 		} else if (currentPlanet.toUpperCase()===planets[i].getName().toUpperCase()) {
@@ -852,16 +919,24 @@ function animate() {
 			sunFlare.position.set(0,100000000,0);
 			fadein("camera_control");
 			document.getElementById("camera_dist").innerHTML = (cameraDist*1000).toLocaleString() + "km (" + cameraToggle + ")";
-			camera.position.set(orbits[i].getX(), orbits[i].getY(), cameraDist + orbits[i].getZ());
+			camera.position.set(planetaryOrbits[i].getX(), planetaryOrbits[i].getY(), cameraDist + planetaryOrbits[i].getZ());
 			camera.rotation.set(0, 0, 0);
 		}
-		planetModels[i].position.set(orbits[i].getX(), orbits[i].getY(), orbits[i].getZ());
+		planetModels[i].position.set(planetaryOrbits[i].getX(), planetaryOrbits[i].getY(), planetaryOrbits[i].getZ());
 		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
-		orbits[i].update();
+		planetaryOrbits[i].update();
 		
-		camera.updateProjectionMatrix();
+		
 	}
 	
+	for (let i=0, len=moons.length; i<len; i++) {
+		moonModels[i].position.set(moonOrbits[i].getX(), moonOrbits[i].getY(), moonOrbits[i].getZ());
+		moonModels[i].rotateY(0.01/moons[i].getRotationPeriod());
+		moonOrbits[i].update();
+	}
+	
+	
+	camera.updateProjectionMatrix();
 	requestAnimationFrame(animate);
 	renderer.render(scene, camera);
 }
