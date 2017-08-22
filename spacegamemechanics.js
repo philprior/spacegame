@@ -919,8 +919,8 @@ function animate() {
 			sunFlare.position.set(0,100000000,0);
 			fadein("camera_control");
 			document.getElementById("camera_dist").innerHTML = (cameraDist*1000).toLocaleString() + "km (" + cameraToggle + ")";
-			camera.position.set(planetaryOrbits[i].getX(), planetaryOrbits[i].getY(), cameraDist + planetaryOrbits[i].getZ());
-			camera.rotation.set(0, 0, 0);
+			camera.position.set(planetaryOrbits[i].getX(), cameraDist/3.5 + planetaryOrbits[i].getY(), cameraDist + planetaryOrbits[i].getZ());
+			camera.rotation.set(-15*(Math.PI)/180, 0, 0);
 		}
 		planetModels[i].position.set(planetaryOrbits[i].getX(), planetaryOrbits[i].getY(), planetaryOrbits[i].getZ());
 		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
