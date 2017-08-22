@@ -467,6 +467,37 @@ let europaOrbit = new Orbit("EuropaOrbit",
 moonOrbits.push(europaOrbit);
 */
 
+// Rings
+/* 
+Ring: name, type, inner diameter(1000s of km), n/a, outerDiameter (1000s of km), period(relative to 1 earth year), eccentricity, inclination(degrees), axial tilt, axial rotation(relative to 1 earth day)
+Orbit: orbitID, parent, radius, eccentricity, period, startThetaOffset, rotX, rotY, rotZ
+*/
+var rings = [];
+var ringOrbits = [];
+rings.push(-1);
+rings.push(-1);
+rings.push(-1);
+rings.push(-1);
+rings.push(-1);
+ringOrbits.push(-1);
+ringOrbits.push(-1);
+ringOrbits.push(-1);
+ringOrbits.push(-1);
+ringOrbits.push(-1);
+let saturnRing = new StellarObject("Saturn's rings", "Particles", 74.5, 0, 140.2, 0, 0, 0, 0, 0);
+rings.push(saturnRing);
+let saturnRingOrbit = new Orbit("saturnRingOrbit",
+						  planetaryOrbits[5],
+						  0,
+						  0,
+						  0,
+						  0,
+						  0,
+						  0,
+						  0//rings[0].getInclination()
+						 );
+ringOrbits.push(saturnRingOrbit);
+
 
 // Instantiate resources and set button boost values
 let resourceOne = new Resource("Nuclear", 0, 0.1);
@@ -824,8 +855,7 @@ var planetEllipses = [];
 for (let i=0, len=planets.length; i<len; i++) {
 	let planetGeometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 64, 64);
 	let planetMap = new THREE.MeshPhongMaterial();
-	planetMap.side = THREE.Frontside;
-	planetMap.map   = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "map.jpg");
+	planetMap.map = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "map.jpg");
 	planetMaps.push(planetMap);
 	planetModels[i] = new THREE.Mesh(planetGeometry, planetMaps[i]);
 	planetModels[i].rotateZ(planets[i].getAxialTilt()*(Math.PI/180));
@@ -870,12 +900,24 @@ var moonModels = [];
 for (let i=0, len=moons.length; i<len; i++) {
 	let moonGeometry = new THREE.SphereGeometry((moons[i].getDiameter()/2), 32, 32);
 	let moonMap = new THREE.MeshPhongMaterial();
-	// planetMap.side = THREE.Frontside;
-	// planetMap.map   = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "map.jpg");
-	// planetMaps.push(planetMap);
 	moonModels[i] = new THREE.Mesh(moonGeometry, moonMap);
 	moonModels[i].rotateZ(moons[i].getAxialTilt()*(Math.PI/180));
 	scene.add(moonModels[i]);
+}
+
+// Rings
+var ringModels = [];
+var ringMaps = [];
+for (let i=0, len=rings.length; i<len; i++) {
+	let ringGeometry = new THREE.RingGeometry(rings[i].getDiameter(), rings[i].getOrbitalRadiusKm(), 100, 100, 0, Math.PI*2);
+	let ringMap = new THREE.MeshPhongMaterial({side:THREE.DoubleSide});
+	ringMap.map   = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "ringcolour.jpg");
+	ringMaps.push(ringMap);
+	ringModels[i] = new THREE.Mesh(ringGeometry, ringMaps[i]);
+	ringModels[i].rotateX(90*(Math.PI/180)+planetaryOrbits[i].getRotX());
+	ringModels[i].rotateY(planets[5].getInclination()*(Math.PI/180));
+	//ringModels[i].rotateZ(rings[i].getAxialTilt()*(Math.PI/180));
+	scene.add(ringModels[i]);
 }
 
 // redraws the camera and renderer on a window resize
@@ -901,7 +943,7 @@ function toggleCameraZoom() {
 
 // Main viewer loop
 function animate() {
-		
+	
 	for (let i=0, len=planets.length; i<len; i++) {
 		
 		if (currentPlanet.toUpperCase()==="SYSTEM") {
@@ -925,8 +967,6 @@ function animate() {
 		planetModels[i].position.set(planetaryOrbits[i].getX(), planetaryOrbits[i].getY(), planetaryOrbits[i].getZ());
 		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
 		planetaryOrbits[i].update();
-		
-		
 	}
 	
 	for (let i=0, len=moons.length; i<len; i++) {
@@ -934,7 +974,7 @@ function animate() {
 		moonModels[i].rotateY(0.01/moons[i].getRotationPeriod());
 		moonOrbits[i].update();
 	}
-	
+
 	
 	camera.updateProjectionMatrix();
 	requestAnimationFrame(animate);
