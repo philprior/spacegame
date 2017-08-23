@@ -413,64 +413,9 @@ for (let i=0, len=planets.length; i<len; i++) {
 }
 
 
-// Moons and orbits
-/* 
-Moon: name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km) period(relative to 1 earth year), eccentricity, inclination(degrees), axial tilt, axial rotation(relative to 1 earth day)
-Orbit: orbitID, parent, radius, eccentricity, period, startThetaOffset, rotX, rotY, rotZ
-*/
-var moons = [];
-var moonOrbits = [];
-
-let luna = new StellarObject("Luna", "Moon", 3.4, 0.00257, 384, 0.08, 0.05, 5.14, -6.68, 1);
-moons.push(luna);
-let lunaOrbit = new Orbit("LunaOrbit",
-						  planetaryOrbits[2],
-						  moons[0].getOrbitalRadiusKm(),
-						  0, //moons[0].getEccentricity()*14960,
-						  moons[0].getPeriod()*1000,
-						  0,
-						  0,
-						  0,
-						  moons[0].getInclination()
-						 );
-moonOrbits.push(lunaOrbit);
-
-
-// Placeholder  - Moons are too small/fast to be seen on this scale, so ignoring for the sake of performance
-/*
-let io = new StellarObject("Io", "Moon", 3.6, 0, 422, 0.005, 0, 2, 0, 0);
-moons.push(io);
-let ioOrbit = new Orbit("IoOrbit",
-						  planetaryOrbits[4],
-						  moons[1].getOrbitalRadiusKm(),
-						  0,
-						  moons[1].getPeriod()*1000,
-						  0,
-						  0,
-						  0,
-						  moons[1].getInclination()
-						 );
-moonOrbits.push(ioOrbit);
-
-let europa = new StellarObject("Europa", "Moon", 3.1, 0, 671, 0.01, 0, 1.7, 0, 0);
-moons.push(europa);
-let europaOrbit = new Orbit("EuropaOrbit",
-						  planetaryOrbits[4],
-						  moons[2].getOrbitalRadiusKm(),
-						  0,
-						  moons[2].getPeriod()*1000,
-						  0,
-						  0,
-						  0,
-						  moons[2].getInclination()
-						 );
-moonOrbits.push(europaOrbit);
-*/
-
-
 // Instantiate resources and set button boost values
-let resourceOne = new Resource("Nuclear", 0, 0.1);
-let resourceTwo = new Resource("Photonic", 0, 0.05);
+let resourceOne = new Resource("Nuclear", 0, 0.0);
+let resourceTwo = new Resource("Photonic", 0, 0.0);
 let resourceOneBoost = 1;
 let resourceTwoBoost = 1;
 
@@ -478,34 +423,113 @@ let resourceTwoBoost = 1;
 // Instantiate upgradeEvents and create related function triggers
 // (eventId, name, planet, prereqEvent, prereqOne, prereqTwo, costOne, costTwo, deltaShiftOne, deltaShiftTwo, unique, displayed, done, count, flavourText, storyText)
 var upgradeEvents = [];
-let aBeginning = new UpgradeEvent(0,"A beginning", "earth", -1, 0, 0, 0, 0, 0, 0, true, false, false, 0, "", "The first steps");
-upgradeEvents.push(aBeginning);
+
+let begin = new UpgradeEvent(0,"begin", "earth", -1, 0, 0, 0, 0, 0, 0, true, true, false, 0, "", "");
+upgradeEvents.push(begin);
 function upgradeevent_0() {
+	upgradeEvents[0].isDone();
+	fadeout("begin");
+	document.getElementById("begin").innerHTML = "NEXT";
+	document.getElementById("begin").addEventListener("click", function(){upgradeevent_1();});
+	fadein("begin");
 }
 
-let nuclearPowerStation = new UpgradeEvent(1, "Nuclear Power Station", "earth", -1, 20, 0, 50, 0, 0.2, 0, false, false, false, 0, "Adds <span class='Nuclear'>2</span>TJ/s", "You can now purchase surface based nuclear power stations for Earth.");
-upgradeEvents.push(nuclearPowerStation);
-function upgradeevent_1() {
-	updateResources(1);
+let aBeginning = new UpgradeEvent(1,"A beginning", "earth", 0, 0, 0, 0, 0, 0, 0, true, false, false, 0, "", "Earth.<br><br>'The pale blue dot' of Carl Sagan's poem. It's fascinating, but far from the only planet in our solar system.<br><br>It would be great to visit them all, but getting to each one takes a certain amount of effort. We're tracking the Earth's orbit right now, so you may see the Sun appear to fly by in the distance. We're the ones moving around it though. The Sun is HUGE, you could fit 109 Earths across it, but it's so far away that it appears as a small dot from here.");
+upgradeEvents.push(aBeginning);
+function upgradeevent_1() {	
+	upgradeEvents[1].isDone();
+	fadeout("begin");
+	document.getElementById("begin").addEventListener("click", function(){upgradeevent_2();});
+	fadein("begin");
 }
 
-let solarPowerFarm = new UpgradeEvent(2, "Solar Power Farm", "earth", -1, 0, 10, 10, 50, 0, 0.1, false, false, false, 0, "Adds <span class='Photonic'>1</span>TJ/s", "You can now purchase surface based solar farms for Earth.");
-upgradeEvents.push(solarPowerFarm);
+let lightsOn = new UpgradeEvent(2,"Lights On", "earth", 1, 0, 0, 0, 0, 0, 0, true, false, false, 0, "", "But first of all, lets determine what exactly we are doing up here in the first place.<br><br>We must be looking down on Earth from some kind of camera, but you don't just get cameras up in space without some sort of spacecraft.<br><br> Lets turn on the lights in the ship.");
+upgradeEvents.push(lightsOn);
 function upgradeevent_2() {
-	updateResources(2);
+	upgradeEvents[2].isDone();
+	fadeout("begin");
+	document.getElementById("begin").addEventListener("click", function(){revealReactors();});
+	fadein("upgrades");
+	fadein("begin");
 }
 
-let superConductors = new UpgradeEvent(3, "Make superconductors available", "earth", -1, 15, 15, 4, 5, 0, 0, true, false, false, 0, "Unlocks further technologies", "Certain technologies, such as nuclear fusion reactors require very precise control of powerful magnetic fields. Such fields are generated using electromagnets, but to have enough power and precision the material conducting the electricity has to have a very low resistance. Usually this is done by taking a metal and cooling it to extremely low temperatures. e.g. Niobium has to be cooled to 9.3&#176;K (-263.7&#176;C) ");
-upgradeEvents.push(superConductors);
+function revealReactors() {
+	fadeout("begin");
+	fadein("resource1");
+	fadein("resource2");
+	fadein("Nuclear_booster");
+	fadein("Photonic_booster");
+}
+
+let firstUpgrade = new UpgradeEvent(3,"The first upgrade", "earth", 2, 0, 0, 5, 5, 0, 0, true, false, false, 0, "Turn on the ship lights", "So, there's our first upgrade... turning on the lights.<br><br>Notice how the upgrade is greyed out at the moment? We can't do anything without power.<br><br>Those numbers indicate the cost in <span class='Nuclear'>nuclear</span> and <span class='Photonic'>photonic</span> (light) energy. Luckily, we have an onboard reactor and a set of solar cells on the outside of the ship.<br><br>Automated systems are down though, so to start with we'll have to trigger the energy generation ourselves.<br><br>Try to generate 5 of each type of energy, then turn on the lights...");
+upgradeEvents.push(firstUpgrade);
 function upgradeevent_3() {
 	updateResources(3);
+	fadein("toparea");
+	fadein("planetary_data");
+	document.getElementById("upgrades").style.backgroundImage = "url('images/sidepanel_join_topleft.png'), url('images/sidepanel_join_bottomleft.png'), url('images/sidepanel_leftborder.png')";
+	document.getElementById("upgrades").style.backgroundPosition = "top left, bottom left, left";
+	document.getElementById("upgrades").style.backgroundRepeat = "no-repeat, no-repeat, repeat-y";
+	document.getElementById("upgrades").style.backgroundColor = "rgba(0,0,0,0.5)";
+	
+	document.getElementById("storybox").style.backgroundImage = "url('images/sidepanel_join_topright.png'), url('images/sidepanel_rightborder.png'),	url('images/sidepanel_join_topleft.png'), url('images/sidepanel_leftborder.png'), url('images/topbar_border.png')";
+	document.getElementById("storybox").style.backgroundPosition = "top right, top right, top left, left, top";
+	document.getElementById("storybox").style.backgroundRepeat = "no-repeat, repeat-y, no-repeat, repeat-y, repeat-x";
+	document.getElementById("storybox").style.backgroundColor = "linear-gradient(to bottom left, #222222, #000000 80%)";
+	fadein("earth");
 }
 
-let fusionReactor = new UpgradeEvent(4, "Fusion Reactor", "earth", 3, 15, 15, 1000, 0, 0, 0, true, false, false, 0, "Reactor adds 10 <span class='Nuclear'>1</span>TJ per click", "A fusion reactor, rather than smashing atoms apart, harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.");
-upgradeEvents.push(fusionReactor);
+
+let powerUp = new UpgradeEvent(4,"Radio telescope", "earth", 3, 0, 0, 100, 100, 0, 0, true, false, false, 0, "Enables the System view", "Ahha! The lights are on!<br><br>Do you see how the energy cost was removed from your stores?<br><br>Well, there's a bonus, seems our planetary data scanner and system navigation menu are online too.<br><br>Lets upgrade to build a powerful radio telescope and enable the system view, it'll allow us to see the orbits of all of the planets.");
+upgradeEvents.push(powerUp);
 function upgradeevent_4() {
-	resourceOneBoost = 10;
 	updateResources(4);
+	fadein("system_button");
+}
+
+
+let nuclearPlant = new UpgradeEvent(5,"Nuclear power plant", "earth", 3, 10, 0, 10, 0, 0.1, 0, false, false, false, 0, "A terrestrial nuclear plant", "It's going to get very tedious if we have to generate all of this energy ourselves.<br><br>Lets use some of our stored energy to create an automatic income of <span class='Nuclear'>1</span>TJ/s by building a nuclear power plant on Earth.<br><br>We can build as many of these as we want, but the cost will go up each time!");
+upgradeEvents.push(nuclearPlant);
+function upgradeevent_5() {
+	updateResources(5);
+}
+
+let solarFarm = new UpgradeEvent(6,"Solar energy farm", "earth", 3, 0, 10, 5, 15, 0, 0.1, false, false, false, 0, "A terrestrial solar farm", "A lot of sunlight is hitting the earth's surface.<br><br>Lets build a solar farm on Earth and gain an automatic income of <span class='Photonic'>1</span>TJ/s.<br><br>Solar farms are expensive, but we can build as many as we want!<br><br>Each one is slightly more expensive than the last.");
+upgradeEvents.push(solarFarm);
+function upgradeevent_6() {
+	updateResources(6);
+}
+
+let orbitalTech = new UpgradeEvent(7,"Research orbital launch tech", "earth", 4, 0, 0, 150, 150, 0, 0, true, false, false, 0, "Enables orbital technologies", "Excellent, now we can see where all of the planets are!<br><br>Still, if we want to visit them we're going to need much better technology and far more energy than this.<br><br>Lets start by developing our ability to put things into orbit.");
+upgradeEvents.push(orbitalTech);
+function upgradeevent_7() {
+	updateResources(7);
+}
+
+let orbNukePlant = new UpgradeEvent(8,"Orbital nuclear research", "earth", 7, 0, 0, 80, 150, 0, 0, true, false, false, 0, "Orbital nuclear research", "We've reached the limit of what we can do on Earth with nuclear power.<br><br>Fission is the best we can manage there, we need to build an orbital research station to investigate the possbility of nuclear fusion at lower gravity.<br><br>Getting it into orbit should be easy, but it'll need a big input of solar energy to power all of those computers and research systems.");
+upgradeEvents.push(orbNukePlant);
+function upgradeevent_8() {
+	updateResources(8);
+}
+
+let orbSolarFarm = new UpgradeEvent(9,"Orbital solar farm", "earth", 7, 0, 0, 80, 20, 0, 0.5, false, false, false, 0, "An orbital solar farm", "All of those clouds get in the way of our precious sunlight.<br><br>Lets build a solar farm in orbit for <span class='Photonic'>5</span>TJ/s.<br><br>It will take an investment of high density nuclear energy to get each satellite into orbit first though.");
+upgradeEvents.push(orbSolarFarm);
+function upgradeevent_9() {
+	updateResources(9);
+}
+
+
+let superConductors = new UpgradeEvent(10, "Make superconductors available", "earth", 8, 0, 0, 250, 500, 0, 0, true, false, false, 0, "Unlocks further technologies", "Certain technologies, such as nuclear fusion reactors, require very precise control of powerful magnetic fields. Such fields are generated using electromagnets, but to have enough power and precision the material conducting the electricity has to have a very low resistance.<br><br>Usually this is done by taking a metal and cooling it to extremely low temperatures. e.g. Niobium, which has to be cooled to 9.3&#176;K (-263.7&#176;C)");
+upgradeEvents.push(superConductors);
+function upgradeevent_10() {
+	updateResources(10);
+}
+
+let fusionReactor = new UpgradeEvent(11, "Prototype Fusion Reactor", "earth", 10, 15, 15, 500, 100, 0, 0, true, false, false, 0, "Reactor adds 10 <span class='Nuclear'>1</span>TJ per click", "A prototype fusion reactor for this craft.<br><br>Rather than smashing atoms apart, fusion harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.");
+upgradeEvents.push(fusionReactor);
+function upgradeevent_11() {
+	resourceOneBoost = 10;
+	updateResources(11);
 	document.getElementById("n_boost_amount").innerHTML = "10";
 }
 
@@ -539,6 +563,8 @@ function updateButtonVals(eventId) {
 }
 
 // Event listeners
+document.getElementById("begin").addEventListener("click", function(){upgradeevent_0();});
+
 document.getElementById(resourceOne.getName()+"_booster").addEventListener("click", function(){resourceOne.addAmount(resourceOneBoost);});
 document.getElementById(resourceTwo.getName()+"_booster").addEventListener("click", function(){resourceTwo.addAmount(resourceTwoBoost);});
 
@@ -864,15 +890,6 @@ for (let i=0, len=planets.length; i<len; i++) {
 	scene.add(planetEllipses[i]);
 }
 
-// Moons
-var moonModels = [];
-for (let i=0, len=moons.length; i<len; i++) {
-	let moonGeometry = new THREE.SphereGeometry((moons[i].getDiameter()/2), 32, 32);
-	let moonMap = new THREE.MeshPhongMaterial();
-	moonModels[i] = new THREE.Mesh(moonGeometry, moonMap);
-	moonModels[i].rotateZ(moons[i].getAxialTilt()*(Math.PI/180));
-	scene.add(moonModels[i]);
-}
 
 // redraws the camera and renderer on a window resize
 window.addEventListener('resize', function(){
@@ -923,13 +940,6 @@ function animate() {
 		planetModels[i].rotateY(0.01/planets[i].getRotationPeriod());
 		planetaryOrbits[i].update();
 	}
-	
-	for (let i=0, len=moons.length; i<len; i++) {
-		moonModels[i].position.set(moonOrbits[i].getX(), moonOrbits[i].getY(), moonOrbits[i].getZ());
-		moonModels[i].rotateY(0.01/moons[i].getRotationPeriod());
-		moonOrbits[i].update();
-	}
-
 	
 	camera.updateProjectionMatrix();
 	requestAnimationFrame(animate);
