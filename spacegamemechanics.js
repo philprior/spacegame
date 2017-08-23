@@ -525,7 +525,7 @@ function upgradeevent_10() {
 	updateResources(10);
 }
 
-let fusionReactor = new UpgradeEvent(11, "Prototype Fusion Reactor", "earth", 10, 15, 15, 500, 100, 0, 0, true, false, false, 0, "Reactor adds 10 <span class='Nuclear'>1</span>TJ per click", "A prototype fusion reactor for this craft.<br><br>Rather than smashing atoms apart, fusion harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.");
+let fusionReactor = new UpgradeEvent(11, "Prototype Fusion Reactor", "earth", 10, 15, 15, 500, 100, 0, 0, true, false, false, 0, "Reactor adds <span class='Nuclear'>10</span>TJ per click", "A prototype fusion reactor for this craft.<br><br>Rather than smashing atoms apart, fusion harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.");
 upgradeEvents.push(fusionReactor);
 function upgradeevent_11() {
 	resourceOneBoost = 10;
