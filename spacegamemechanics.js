@@ -512,7 +512,7 @@ function upgradeevent_8() {
 	updateResources(8);
 }
 
-let orbSolarFarm = new UpgradeEvent(9,"Orbital solar farm", "earth", 7, 0, 0, 80, 20, 0, 0.5, false, false, false, 0, "An orbital solar farm", "All of those clouds get in the way of our precious sunlight.<br><br>Lets build a solar farm in orbit for <span class='Photonic'>5</span>TJ/s.<br><br>It will take an investment of high density nuclear energy to get each satellite into orbit first though.");
+let orbSolarFarm = new UpgradeEvent(9,"Orbital solar farm", "earth", 7, 0, 0, 150, 20, 0, 0.3, false, false, false, 0, "Adds <span class='Photonic'>3</span>TJ/s", "All of those clouds get in the way of our precious sunlight.<br><br>Lets build a solar farm in orbit for <span class='Photonic'>5</span>TJ/s.<br><br>It will take an investment of high density nuclear energy to get each satellite into orbit first though.");
 upgradeEvents.push(orbSolarFarm);
 function upgradeevent_9() {
 	updateResources(9);
@@ -533,6 +533,19 @@ function upgradeevent_11() {
 	document.getElementById("n_boost_amount").innerHTML = "10";
 }
 
+let orbFusionReactor = new UpgradeEvent(12, "Orbital Fusion Reactor", "earth", 11, 0, 0, 300, 200, 1, 0, false, false, false, 0, "Adds <span class='Nuclear'>10</span>TJ/s", "Now that the prototype fusion reactor is installed and working, we can expand the technology to other space bound platforms<br><br>This will help generate a more regular income of nuclear energy.");
+upgradeEvents.push(orbFusionReactor);
+function upgradeevent_12() {
+	updateResources(12);
+}
+
+let marsLander = new UpgradeEvent(13, "Mars Lander", "earth", 12, 0, 0, 10000, 5000, 0, 0, true, false, false, 0, "Send an unmanned mission to Mars", "With all of this abundant energy, it's about time we considered heading to another planet.<br><br>Lets send a robotic lander out to Mars to gather data.");
+upgradeEvents.push(marsLander);
+function upgradeevent_13() {
+	updateResources(13);
+	fadein("mars");
+}
+
 
 ///////////////////////////
 // Game functions  ////////
@@ -549,6 +562,7 @@ function updateResources(i) {
 		upgradeEvents[i].incrementEventCounter();
 		upgradeEvents[i].increaseCosts();
 		updateButtonVals(i);
+		upgradeEvents[i].isDone();
 	} else {
 		upgradeEvents[i].isDone();
 		document.getElementById("upgradeevent_" + i).style.display = "none";
