@@ -480,7 +480,7 @@ function upgradeevent_3() {
 }
 
 
-let powerUp = new UpgradeEvent(4,"Radio telescope", "earth", 3, 0, 0, 100, 100, 0, 0, true, false, false, 0, "Enables the System view", "Ahha! The lights are on!<br><br>Do you see how the energy cost was removed from your stores?<br><br>Well, there's a bonus, seems our planetary data scanner and system navigation menu are online too.<br><br>Lets upgrade to build a powerful radio telescope and enable the system view, it'll allow us to see the orbits of all of the planets.");
+let powerUp = new UpgradeEvent(4,"Radio telescope", "earth", 3, 0, 0, 100, 100, 0, 0, true, false, false, 0, "Enables the System view", "Ahha! The lights are on!<br><br>Do you see how the energy cost was removed from your stores?<br><br>Well, there's a bonus, seems our planetary data scanner (left) and system navigation menu (top) are online too.<br><br>Lets build a powerful radio telescope and add a system view to the navigation menu, it'll allow us to see the orbits of all of the planets.");
 upgradeEvents.push(powerUp);
 function upgradeevent_4() {
 	updateResources(4);
@@ -488,19 +488,19 @@ function upgradeevent_4() {
 }
 
 
-let nuclearPlant = new UpgradeEvent(5,"Nuclear power plant", "earth", 3, 10, 0, 10, 0, 0.1, 0, false, false, false, 0, "A terrestrial nuclear plant", "It's going to get very tedious if we have to generate all of this energy ourselves.<br><br>Lets use some of our stored energy to create an automatic income of <span class='Nuclear'>1</span>TJ/s by building a nuclear power plant on Earth.<br><br>We can build as many of these as we want, but the cost will go up each time!");
+let nuclearPlant = new UpgradeEvent(5,"Nuclear power plant", "earth", 3, 10, 0, 10, 0, 0.1, 0, false, false, false, 0, "Adds <span class='Nuclear'>1</span>TJ/s", "It's going to get very tedious if we have to generate all of this energy ourselves.<br><br>Lets use some of our stored energy to create an automatic income of <span class='Nuclear'>1</span>TJ/s by building a nuclear power plant on Earth.<br><br>We can build as many of these as we want, but the cost will go up each time!");
 upgradeEvents.push(nuclearPlant);
 function upgradeevent_5() {
 	updateResources(5);
 }
 
-let solarFarm = new UpgradeEvent(6,"Solar energy farm", "earth", 3, 0, 10, 5, 15, 0, 0.1, false, false, false, 0, "A terrestrial solar farm", "A lot of sunlight is hitting the earth's surface.<br><br>Lets build a solar farm on Earth and gain an automatic income of <span class='Photonic'>1</span>TJ/s.<br><br>Solar farms are expensive, but we can build as many as we want!<br><br>Each one is slightly more expensive than the last.");
+let solarFarm = new UpgradeEvent(6,"Solar energy farm", "earth", 3, 0, 10, 5, 15, 0, 0.1, false, false, false, 0, "Adds <span class='Photonic'>1</span>TJ/s", "A lot of sunlight is hitting the earth's surface.<br><br>Lets build a solar farm on Earth and gain an automatic income of <span class='Photonic'>1</span>TJ/s.<br><br>Solar farms are expensive, but we can build as many as we want!<br><br>Each one is slightly more expensive than the last.");
 upgradeEvents.push(solarFarm);
 function upgradeevent_6() {
 	updateResources(6);
 }
 
-let orbitalTech = new UpgradeEvent(7,"Research orbital launch tech", "earth", 4, 0, 0, 150, 150, 0, 0, true, false, false, 0, "Enables orbital technologies", "Excellent, now we can see where all of the planets are!<br><br>Still, if we want to visit them we're going to need much better technology and far more energy than this.<br><br>Lets start by developing our ability to put things into orbit.");
+let orbitalTech = new UpgradeEvent(7,"Research orbital launch tech", "earth", 4, 0, 0, 150, 150, 0, 0, true, false, false, 0, "Enables orbital technologies", "Excellent, now we have added a 'System view' button to our navigation menu (top) and can see where all of the planets are! (Though not yet which one is which...)<br><br>If we want to visit them to gather more information we're going to need much better technology and far more energy than this.<br><br>Lets start by developing our ability to put things into orbit.");
 upgradeEvents.push(orbitalTech);
 function upgradeevent_7() {
 	updateResources(7);
@@ -525,7 +525,7 @@ function upgradeevent_10() {
 	updateResources(10);
 }
 
-let fusionReactor = new UpgradeEvent(11, "Prototype Fusion Reactor", "earth", 10, 15, 15, 500, 100, 0, 0, true, false, false, 0, "Reactor adds <span class='Nuclear'>10</span>TJ per click", "A prototype fusion reactor for this craft.<br><br>Rather than smashing atoms apart, fusion harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.");
+let fusionReactor = new UpgradeEvent(11, "Prototype Fusion Reactor", "earth", 10, 15, 15, 500, 100, 0, 0, true, false, false, 0, "Reactor adds <span class='Nuclear'>10</span>TJ per click", "A prototype fusion reactor for this craft.<br><br>Rather than smashing atoms apart, fusion harnesses the energy released when elements of two atoms combine to form a different element. This is the same kind of reaction that occurs in a star. The plasma produced by such a reaction is difficult to keep stable and is typically held in position by a series of magnetic fields.<br><br>Your onboard nuclear reactor now adds <span class='Nuclear'>10</span>TJ per click.");
 upgradeEvents.push(fusionReactor);
 function upgradeevent_11() {
 	resourceOneBoost = 10;
@@ -539,13 +539,25 @@ function upgradeevent_12() {
 	updateResources(12);
 }
 
-let marsLander = new UpgradeEvent(13, "Mars Lander", "earth", 12, 0, 0, 10000, 5000, 0, 0, true, false, false, 0, "Send an unmanned mission to Mars", "With all of this abundant energy, it's about time we considered heading to another planet.<br><br>Lets send a robotic lander out to Mars to gather data.");
+let marsLander = new UpgradeEvent(13, "Mars Lander", "earth", 12, 0, 0, 3500, 2000, 0, 0, true, false, false, 0, "Send an unmanned mission to Mars", "With all of this abundant energy, it's about time we considered heading to another planet.<br><br>Lets send a robotic lander out to Mars to gather data.<br><br>This will unlock Mars as a planet you can view in the system navigation bar above.");
 upgradeEvents.push(marsLander);
 function upgradeevent_13() {
 	updateResources(13);
 	fadein("mars");
 }
 
+let demoUnlock = new UpgradeEvent(14, "Welcome to Mars", "mars", 13, 0, 0, 100, 100, 0, 0, true, false, false, 0, "Unlock all planets", "Congratulations, you can now view Mars and unlock the rest of the planet navigation to browse the solar system.<br><br>You've made it to the end of the demo content.<br><br>If you could offer some <a href='https://goo.gl/forms/HHOVaTXTIoKG3Hlr1'>feedback</a> on this demo, that would be very much appreciated.");
+upgradeEvents.push(demoUnlock);
+function upgradeevent_14() {
+	updateResources(14);
+	fadein("mercury");
+	fadein("venus");
+	fadein("jupiter");
+	fadein("saturn");
+	fadein("neptune");
+	fadein("uranus");
+	fadein("pluto");
+}
 
 ///////////////////////////
 // Game functions  ////////
