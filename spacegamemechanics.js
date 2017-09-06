@@ -512,7 +512,7 @@ function upgradeevent_8() {
 	updateResources(8);
 }
 
-let orbSolarFarm = new UpgradeEvent(9,"Orbital solar farm", "earth", 7, 0, 0, 150, 20, 0, 0.3, false, false, false, 0, "Adds <span class='Photonic'>3</span>TJ/s", "All of those clouds get in the way of our precious sunlight.<br><br>Lets build a solar farm in orbit for <span class='Photonic'>5</span>TJ/s.<br><br>It will take an investment of high density nuclear energy to get each satellite into orbit first though.");
+let orbSolarFarm = new UpgradeEvent(9,"Orbital solar farm", "earth", 7, 0, 0, 150, 20, 0, 0.3, false, false, false, 0, "Adds <span class='Photonic'>3</span>TJ/s", "All of those clouds get in the way of our precious sunlight.<br><br>Lets build a solar farm in orbit for <span class='Photonic'>3</span>TJ/s.<br><br>It will take an investment of high density nuclear energy to get each satellite into orbit first though.");
 upgradeEvents.push(orbSolarFarm);
 function upgradeevent_9() {
 	updateResources(9);
