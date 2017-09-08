@@ -39,7 +39,11 @@ Suggestions are also provided herein as to the further development of the produc
 \end{abstract}
 
 \begin{acknowledgments}
+I would like to thank my supervisor Hayo Thielecke for his advice and support in the completion of this project.
 
+Thanks also to Uday Reddy and the rest of the teaching staff at the University of Birmingham's School of Computer science for their support and guidance.
+
+Finally I would like to extend my appreciation to the individuals, classmates and acquaintances who assisted me in testing and providing feedback on my product.
 \end{acknowledgments}
 
 
@@ -96,7 +100,7 @@ Solar System Explorer is a desktop browser based incremental game for players of
 
 \subsection{Language selection}
 
-One main concern with creating Solar System Explorer was making a choice of programming language that would enable both a full implementation of the envisioned product whilst maintaining performance. The sole developer's primary skill set was in the Java language, however given the delivery platform of a web browser this essentially mandated the use of the HyperText Markup Language (HTML) and Cascading Style Sheets (CSS) in combination with JavaScript for dynamic behaviour on the client. It was possible that Java would have been useful in developing server-side functionailty, such as providing communicating with a database layer but with the decision to run the code entirely on the server side there was no requirement to do so.
+One main concern with creating Solar System Explorer was making a choice of programming language that would enable both a full implementation of the envisioned product whilst maintaining performance. The sole developer's primary skill set was in the Java language, however given the delivery platform of a web browser this essentially mandated the use of the HyperText Markup Language (HTML) and Cascading Style Sheets (CSS) in combination with JavaScript for dynamic behaviour on the client. It was possible that Java would have been useful in developing server-side functionailty, such as providing communication with a database layer but with the decision to run the code entirely on the client there was no requirement to do so.
 
 A decision was made to conform to World Wide Web Consortium (W3C) standards as these represent the ideal model of structure in the delivery of web based content, plus compliance with standards in the manner in which web browsers parse the code should ensure a more consistent delivery across different vendor's products (e.g. Google Chrome, Mozilla Firefox, etc). No effort was to be extended to provide functionality to non-standards compliant browsers (e.g. MicroSoft Edge) through the use of proprietary code as this would add a significant overhead to development in terms of the complexity of the finished product.
 
@@ -124,19 +128,20 @@ A number of different JavaScript libraries which provide interfaces to simplify 
 
 \subsection{Architecture}
 
-The architecture chosen was a simple client server model, with a one off delivery of all code to the client machine at the time of the initial HyperText Transfer Protocol (HTTP) GET request to the game's Uniform Resource Locator (URL).
+The architecture chosen was a simple client-server model, with a one off delivery of all code to the client machine at the time of the initial HyperText Transfer Protocol (HTTP) GET request to the game's Uniform Resource Locator (URL). There was no need for extended communication between the client and server beyond this point as there was no need for access to server hosted information, all game logic and data is included in the Javascript source file. In fact any such requirement would introduce needless complexity and performance restrictions. This does make the game simple to 'hack' but, given that there are no negative risks involved in someone accessing the source code, this is of no concern.
 
-JavaScript ES6 is typically included in order and as part of a single file, rather than broken down into individually localised code blocks in separate files.
+JavaScript is typically included as a single file, rather than broken down into individually localised code blocks in separate files. This is to save on request overheads and reduce server load as each HTML page, once parsed, triggers a number of asset requests for any content referred to in the file. Most usually these requests are for one or more CSS files, any embedded images and any embbeded scripts. Each individual request has to travel to the server and wait in a queue to be picked up by a worker thread in the server software, thus adding more wait time until the page is ready to be fully rendered on the client. Serving the JavaScript as a single file where possible minimises this delay.
 
+The aim was to include a single file for each of the HTML, CSS and JavaScript items, with allowance made for any libraries and image assets. Bandwidth limitations were determined to be those imposed by 'high speed' internet connections i.e. ADSL2+, 4G or faster. In practice this would mean that transfer speeds would allow for file sizes in the MegaByte range, although all effort would be made to reduce assets sizes where possible by using lossy compression algorithms for the images and minifying any large body of javascript. 'Minifying' is the term given to reducing file sizes by, at the most basic level, removing comments and whitespace characters or going as far as replacing longer, meaningful variable names with short alphanumeric sequences.
 
-
+The architecture does not quite follow an Model View Controller (MVC) approach but does strive to seperate structure, presentation and logic elements into the HTML, CSS and JavaScript respectively.
 
 \section{Implementation and testing}
 
 \subsection{Data types and structures}
 The main data types in use in Solar System Explorer are the primitives boolean, number and string and the non-primitive object.
 
-Although these are common to most programming languages, it is worth noting that all numbers in ECMAScript are 64-bit doubles and any floating point values lack the precision of an integer format. This is especially important in this case as the numbers involved in the calculations when it comes to the physics of the solar system can reach beyond the range at which the integer representation is exact. This was notable at times when testing functions in isolation where an integer transformation calculation would return a non-integer result (e.g. a value of 1.000000000001 as opposed to the expected 1).  Whilst the project requires a good representation of reality, it does not require a level of exactitude to an engineering degree, so such minor deviations were overlooked in this case.
+Although these are common to most programming languages, it is worth noting that all numbers in ECMAScript are 64-bit doubles and any floating point values lack the precision of an integer format. This is especially important in this case as the numbers involved in the calculations when it comes to the physics of the solar system can reach beyond the range at which the integer representation is exact. This was notable at times when testing functions in isolation where a trigonometric transformation would return a non-integer result when an integer was expected (e.g. a value of 1.000000000001 as opposed to 1).  Whilst the project requires a good representation of reality it does not require the level of exactitude that an engineering project might, so such minor deviations were overlooked in this case.
 
 One benefit of the use of JavaScript ES6 for a developer with a background in Java programming is the class based instantiation of objects in place of the previously standard prototype model. This allowed for the creation of 5 classes to handle the game logic and allow for the 3D graphical model: Resource, UpgradeEvent, StellarObject, Anchor and Orbit.
 The Resource and UpgradeEvent classes create the Objects for the incremental game logic.
