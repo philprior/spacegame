@@ -2,6 +2,11 @@
 
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{appendix}
+\usepackage{biblatex}
+
+
+\bibliography{pcp620_report_2017.bib}
 
 \title{Solar System Explorer - An Incremental Game}
 \author{Philip Prior (0920420)}
@@ -9,8 +14,15 @@
 \degree{MSc Computer Science}
 \department{Computer Science}
 
+\renewcommand\thesection{\arabic{section}}
+\DefineBibliographyStrings{english}{%
+  bibliography = {References},
+}
+\raggedbottom
+
 \begin{document}
 \maketitle
+\clearemptydoublepage
 
 \tableofcontents
 
@@ -33,29 +45,134 @@ Suggestions are also provided herein as to the further development of the produc
 
 \section{Introduction}
 
+The aim of the work described in this report was to create a web based incremental game that seeks to provide a more realistic representation of the solar system than in present in other products in the genre.
+
+It is an oft discussed issue that scientific theories and data suffer from a distortion of representation and a skew in perception in both popular media and the arts. This is common across all forms of media, from classic painting to modern forms of entertainment such as video games. Such misrepresentation hinders the public understanding of natural phenomena and is arguably more effective at (mis)educating than traditional classroom based learning. In discussing education related to the theory of evolution Brian Alters notes that, "Not only does the general public lack an understanding of evolution but so does a considerable proportion of college graduates." \cite{alters_perspective:_2002}. He goes on to explain that formal education has a very tough time combatting the informal, and often incorrect, learning 
+
+This is very evident in the discipline of astrophysics, where decades of science-fiction and science-fantasy artistic representation and storytelling have resulted in a very poor public understanding of the physical solar system, the technologies available for space exploration and the possibilities of interplanetary travel. So much so that lexicons of terms, and scales for the description of, the relative 'hardness' of such representations have sprung up in the scientific, engineering and media production communities \cite{_mohs_????}. Whilst fiction writers describe the use of 'warp drive' to navigate across interstellar distances, actual scientists are still working on the hugely chllenging problem of reaching the nearest neighbouring planets in our own solar system.
+
+This is not to belittle the influence and inspiration to be had from speculative fiction, the number of technologies predicted or inspired by writers like Isaac Asimov or Arthur C. Clarke are well documented. However there is a great opportunity in the media representation of astrophysical phenomena to provide for a valuable learning experience at the same time as being entertained.
+
+To this end it was considered a worthy pursuit to createl a compelling video game in a genre known as 'incremental gaming', also known as 'idle gaming' or 'clicker gaming'. This genre takes advantage of such psychological factors  as accumulation desire and loss aversion placing the player in an environment that constitutes a simple Skinner box \cite{carlson_psychology:_2009}.
+
+Most games of this type are delivered either as a mobile phone app or as a browser based 'web game', possibly the most famous of which is Cow Clicker, a product that parodied the repetitive gameplay of the Farmville games from publisher Zynga.
+
+Such a product is simple enough for the core mechanics to have been achievable within the timeframe of this project whilst also providing an opportunity to address the issue of realistic representation.
+
+
+
 \section{Further background material}
 
 
+
 \section{Analysis and specification}
+
+The problem was initially analysed by investigating other products in the genre, specifically focusing on a web browser game entitled 'Spaceplan' by Jake Hollands. The features and mechanical gameplay elements of these were broken down into simple lists and categorised to find conventions that span the genre. This primarily involved a card-sort exercise, derived from the technique utilised in usability design.
+
+Given the mechanics of the incremental games model some of these features were inherent, yet some were not, for example the necessity of including some form of text based feedback at key points in progress. This text could take the form of a narrative as in a product akin to Spaceplan or as a goal/achievement flag as seen in Cookie Clicker.
+
+As the project did not follow a standard software-development lifecycle as detailed in the project management section of this report, but instead followed a process that probably relates most closely to Agile methodologies (rapid iteration, not documentation-centric), a simple non-exhaustive of requirements was created, including some non-functional requirements based on the heuristics provided in the GameFlow model, adapted from their approach to real-time-strategy gaming.
+
+Very few statistics were available on the demographics of incremental game players as this information is not typically recorded as a part of play and they are usually relegated to a broader category including other 'casual games' when investigated in games research papers. With this apparent paucity of available data, very little could be done to target or analyse the requirements of any specific user group.
+
 \subsection{Example Requirements}
+
+
+
 \subsection{Game specific requirements}
-Draw from 
+Draw from Aleem \cite{aleem_game_2016}
+
+
+\subsection{General specification}
+
+Solar System Explorer is a desktop browser based incremental game for players of current incremental games, borrowing many conventions of the genre. 
+
 
 \section{Design}
+
+\subsection{Game design}
+
+
+
 \subsection{Language selection}
-\subsubsection{HTML 5.0}
-\subsubsection{CSS 3}
+
+One main concern with creating Solar System Explorer was making a choice of programming language that would enable both a full implementation of the envisioned product whilst maintaining performance. The sole developer's primary skill set was in the Java language, however given the delivery platform of a web browser this essentially mandated the use of the HyperText Markup Language (HTML) and Cascading Style Sheets (CSS) in combination with JavaScript for dynamic behaviour on the client. It was possible that Java would have been useful in developing server-side functionailty, such as providing communicating with a database layer but with the decision to run the code entirely on the server side there was no requirement to do so.
+
+A decision was made to conform to World Wide Web Consortium (W3C) standards as these represent the ideal model of structure in the delivery of web based content, plus compliance with standards in the manner in which web browsers parse the code should ensure a more consistent delivery across different vendor's products (e.g. Google Chrome, Mozilla Firefox, etc). No effort was to be extended to provide functionality to non-standards compliant browsers (e.g. MicroSoft Edge) through the use of proprietary code as this would add a significant overhead to development in terms of the complexity of the finished product.
+
+
+\subsubsection{HTML}
+As the application would require the display of graphical components with dynamic updating, the only suitable version of HTML would be 5.0 with its support for the canvas element \cite{the_world_wide_web_consortium_w3c_html5_2014}. Previous versions could display graphical information with the use of embedded applications such as Adobe Flash or Java applets, however these are considered legacy technologies, support for them is gradually being deprecated \cite{adobe_corporate_communications_flash_2017} and their use is discouraged in general.
+
+\subsubsection{CSS}
+With an ambition to follow standards compliant coding, it followed that the markup should attempt to be as semantically pure as possible. Which is to say that the HTML source should not contain a large number of div elements included purely as hooks for layout and styling at a later point. Due to the original focus of HTML as a documenting system with little emphasis on graphical layout it became a de facto standard practice to use the markup code as a means of arranging layout, originally by utilising tables for non-tabular data and more recently through the use of multiple sets of nested div elements with CSS positioning applied. In many cases this is still done to maintain consistancy across non-standards compliant browsers and to provide a degree of graceful degradation in older browsers. This is very evident in some of the more popular layout libraries such as Bootstrap \cite {otto_get_????}.
+
+Given that there was no aim in this project to provide for backwards compatibility for older browsers, to follow the ideal, standards driven, approach and minimise the use of HTML elements for layout it was decided to make as much use of CSS:grid functionality as possible. This necessitated the use of Cascading Style Sheets version 3. Grid layout allows for the definition of areas as rows and columns on a developer defined grid with applicability to parent and child HTML elements to allow for a more complex graphical result. This allays the need for tablular markup or the use of complex absolute positioning, container div elements and the float attribute that was common to previous versions of CSS.
+
 \subsubsection{JavaScript ES6}
+Early exploratory development was done using a Java based sketchbook language called 'Processing' \cite{fry_processing.org_????}. This was initially chosen with the intention of cross-compiling from Java-like source code into a JavaScript product using the p5.js library. However there are distinct differences between the capabilities of the original Processing implementation and the p5.js product. As a result other cross compilers such as JSweet \cite{pawlak_jsweet:_????} were investigated, but eventually this approach was abandoned in favour of starting with a baseline JavaScript solution, only utilising libraries to reduce complexity when necessary.
+
+The most recent release of JavaScript at the point of development is JavaScript ES6, based on the ECMA International standard for ECMAScript 6 (ES6). This has enjoyed support across most desktop browsers as of March 2017 \cite{zaytsev_ecmascript_2017}. Two major benefits of using ES6 are the java-like syntax for object instantiation using classes and the availablility of variables with a block scope. Previous versions of JavaScript only used global variables whereas with the inclusion of 'let' in addition to the traditional 'var', the scope of a variable can be limited to a single code block, after which it is discarded. This also helps resolve some issues to do with JavaScript loops requiring arbitrary 'hacks' to avoid problems with enclosure.
+
+
+\subsubsection{WebGL and three.js}
+To provide for a complex graphical output in a web browser it was decided to use the Web Graphics Library (WebGL) capabilities of the HTML canvas element. This would allow the display of either 2-dimensional or 3-dimensional content that uses Open Graphics Library for Embedded Sysems (OpenGL ES) instructions to make the most of any available hardware acceleration through the client's Graphics Processing Unit (GPU).
+
+The syntax for creating graphical primitives (e.g. spheres, cubes) in WebGL is relatively complex for a small return, involving the separate declaration of a number of variables before creating the object itself. It is also quite difficult to optimise for performance with a large number of simple missteps in coding practive that could cause major issues with resultant framerates.
+
+A number of different JavaScript libraries which provide interfaces to simplify the use of WebGL are available. One of the more potent and extensively supported of these is the three.js library \cite{cabello_three.js_????}. It was decided to use three.js to the extent that it provides predifined objects that take constructor arguments to create elements such as spheres, lights and cameras to build a 3-dimensional output in WebGL.
+
+\subsection{Architecture}
+
+The architecture chosen was a simple client server model, with a one off delivery of all code to the client machine at the time of the initial HyperText Transfer Protocol (HTTP) GET request to the game's Uniform Resource Locator (URL).
+
+JavaScript ES6 is typically included in order and as part of a single file, rather than broken down into individually localised code blocks in separate files.
+
+
+
 
 \section{Implementation and testing}
-\subsection{Data structures}
+
+\subsection{Data types and structures}
+The main data types in use in Solar System Explorer are the primitives boolean, number and string and the non-primitive object.
+
+Although these are common to most programming languages, it is worth noting that all numbers in ECMAScript are 64-bit doubles and any floating point values lack the precision of an integer format. This is especially important in this case as the numbers involved in the calculations when it comes to the physics of the solar system can reach beyond the range at which the integer representation is exact. This was notable at times when testing functions in isolation where an integer transformation calculation would return a non-integer result (e.g. a value of 1.000000000001 as opposed to the expected 1).  Whilst the project requires a good representation of reality, it does not require a level of exactitude to an engineering degree, so such minor deviations were overlooked in this case.
+
+One benefit of the use of JavaScript ES6 for a developer with a background in Java programming is the class based instantiation of objects in place of the previously standard prototype model. This allowed for the creation of 5 classes to handle the game logic and allow for the 3D graphical model: Resource, UpgradeEvent, StellarObject, Anchor and Orbit.
+The Resource and UpgradeEvent classes create the Objects for the incremental game logic.
+
+A Resource object has properties for the amount of a particular resource that is available at any given time and the rate of change for that resource, along with simple methods for increasing the amount by a value passed as a parameter or increasing the rate of change. There are no negative changes to the values as this is a core feature inherent to incremental game design.
+
+The UpgradeEvents are a set of objects which are continuously checked for pre-requisite conditions which, when met, trigger the visibility of upgrades and store the costs of said upgrades alongside any flavour text that needs to be displayed as and when the event becomes visible.
+
+The Anchor, Orbit and StellarObject classes are used to generate the visual display of the solar system in the 3-dimensional canvas element.
+
+An anchor is a common feature in any system of 3D representation, sometimes referred to as null objects. They simply represent a point in the space with an x,y and z coordinate and values for rotation about the axes. This is most often used as a simple reference by which to parent other objects or as a 'control point' in kinematic animation systems.
+
+The Orbit class takes data common to the scientific description of an orbit about a point (e.g. radius, eccentricity, period, etc.), stores those properties in a manner most useful for further calculation and display (e.g. converting input angles given in degrees to radians, automatically calculating the aphelion and perihelion values) and provides an update function which allows for animation of an object around the orbit by incrementing a theta value. This update function includes rotational transformation in 3D space and is discussed in futher detail in the next subsection.
+
+The StellarObject class has properties representing the metadata for any object in space. In the demonstration content at the point of delivery, this is used to generate the Sun and the planets, however it could also be used to create any object. One iteration of the game used this class to generate moons for the planets. However, given that the relative orbital rotation of the moons was so fast as to make them practically invisible, they were removed for the time being.
+
+In future iterations these 3 classes could be used to generate objects that appear in response to user input (i.e. purchasing upgrades).
+
+JavaScript ES6 is the first release to contain pre-defined collections in the form of maps and sets. These were investigated as potential data structures for the objects instantiated by the above classes, however it was discovered that the performance of these implementations is far slower in current web broswers than using baseline JavaScript when performing lookups \cite{decker_six_2017}. For this reason and the fact that data will not be added by users from outside of the program itself it seemed most sensible to work with simple arrays of objects rather than add the complication of implementing abstract data types. The largest collection of data in the game is the array of upgrade events, but this requires constant interation over the objects to make conditional checks against the pre-requisite event values, so the performance gains from using a data structure with a different method of retrieval would likely be marginal, even if it were faster at finding any single entry (e.g. utilising a hash table).
+
 \subsection{Rotation in 3D space}
+
+
+
 \subsection{Unit testing}
+
 \subsection{Prototype model}
 
+\subsection{Acceptance testing}
+
 \section{User interface}
+
 \subsection{Incremental game conventions}
+
 \subsection{General UI conventions}
+
 \subsection{Aesthetic}
 
 
@@ -63,14 +180,33 @@ Draw from
 
 Tools, time management, meetings.
 
+
+
 \section{Results and evaluation}
+
+
 
 \section{Discussion}
 
+
+
 \section{Conclusion}
 
-\section{References}
 
+
+\addcontentsline{toc}{section}{References}
+\printbibliography
+
+\appendix
+\appendixpage
+\addappheadtotoc
+
+\section{Image licences}
+ESO image licence
+NASA image licence
+
+\section{Framework licence}
+three.js licence
 
 \declaration
 

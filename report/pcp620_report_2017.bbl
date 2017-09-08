@@ -1,0 +1,406 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global/}
+    \entry{adobe_corporate_communications_flash_2017}{online}{}
+      \name{author}{1}{}{%
+        {{hash=f6615e4b3f96df0f93355fe9c23a1ee9}{%
+           family={{Adobe Corporate Communications}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f6615e4b3f96df0f93355fe9c23a1ee9}
+      \strng{fullhash}{f6615e4b3f96df0f93355fe9c23a1ee9}
+      \strng{authornamehash}{f6615e4b3f96df0f93355fe9c23a1ee9}
+      \strng{authorfullhash}{f6615e4b3f96df0f93355fe9c23a1ee9}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Adobe has long played a leadership role in advancing interactivity and creative content \x{fffd}\x{fffd}\x{fffd} from video, to games and more \x{fffd}\x{fffd}\x{fffd} on the web. Where we\x{fffd}\x{fffd}\x{fffd}ve seen a need to push content and interactivity forward, we\x{fffd}\x{fffd}\x{fffd}ve innovated to meet those needs.\x{fffd}\x{fffd}Where a format didn\x{fffd}\x{fffd}\x{fffd}t exist, we invented one \x{fffd}\x{fffd}\x{fffd}}
+      \field{day}{25}
+      \field{month}{7}
+      \field{title}{Flash \& The Future of Interactive Content}
+      \field{titleaddon}{Latest company news \& updates {|} Adobe Conversations Blog}
+      \field{urlday}{28}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\P\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\2wh3fxzf.default\\zotero\\storage\\H7PS8URA\\adobe-flash-update.html:text/html
+      \endverb
+      \verb{url}
+      \verb https://blogs.adobe.com/conversations/2017/07/adobe-flash-update.html
+      \endverb
+    \endentry
+    \entry{aleem_game_2016}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0f3bc3f28ee91ba07d4307998a8fd415}{%
+           family={Aleem},
+           familyi={A\bibinitperiod},
+           given={Saiqa},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3e61f1aed97e0b91a63df42718174878}{%
+           family={Capretz},
+           familyi={C\bibinitperiod},
+           given={Luiz\bibnamedelima Fernando},
+           giveni={L\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=d869b39b386420dad9f90f78aee9c86c}{%
+           family={Ahmed},
+           familyi={A\bibinitperiod},
+           given={Faheem},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{9666e1ee2524450d1a279ac6b5481a22}
+      \strng{fullhash}{9666e1ee2524450d1a279ac6b5481a22}
+      \strng{authornamehash}{9666e1ee2524450d1a279ac6b5481a22}
+      \strng{authorfullhash}{9666e1ee2524450d1a279ac6b5481a22}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Software game is a kind of application that is used not only for entertainment, but also for serious purposes that can be applicable to different domains such as education, business, and health care. Multidisciplinary nature of the game development processes that combine sound, art, control systems, artificial intelligence ({AI}), and human factors, makes the software game development practice different from traditional software development. However, the underline software engineering techniques help game development to achieve maintainability, flexibility, lower effort and cost, and better design. The purpose of this study is to assesses the state of the art research on the game development software engineering process and highlight areas that need further consideration by researchers. In the study, we used a systematic literature review methodology based on well-known digital libraries. The largest number of studies have been reported in the production phase of the game development software engineering process life cycle, followed by the pre-production phase. By contrast, the post-production phase has received much less research activity than the pre-production and production phases. The results of this study suggest that the game development software engineering process has many aspects that need further attention from researchers; that especially includes the postproduction phase.}
+      \field{issn}{2195-1721}
+      \field{journaltitle}{Journal of Software Engineering Research and Development}
+      \field{number}{1}
+      \field{shortjournal}{Journal of Software Engineering Research and Development}
+      \field{title}{Game development software engineering process life cycle: a systematic review}
+      \field{volume}{4}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{pages}{6}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1186/s40411-016-0032-7
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1186/s40411-016-0032-7
+      \endverb
+      \keyw{Development software engineerong proces,Online game,Software Game,Systematic review,Video game}
+    \endentry
+    \entry{alters_perspective:_2002}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3b6ced30fa4246c84a7d31a5b1975f1a}{%
+           family={Alters},
+           familyi={A\bibinitperiod},
+           given={Brian\bibnamedelima J.},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=f790d4b393d0a70411a0a3b722416b89}{%
+           family={Nelson},
+           familyi={N\bibinitperiod},
+           given={Craig\bibnamedelima E.},
+           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{676064ee7f2a3fa0776beede912fb0a4}
+      \strng{fullhash}{676064ee7f2a3fa0776beede912fb0a4}
+      \strng{authornamehash}{676064ee7f2a3fa0776beede912fb0a4}
+      \strng{authorfullhash}{676064ee7f2a3fa0776beede912fb0a4}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Abstract.\x{fffd}\x{fffd}\x{fffd} In the past decade, the academic community has increased considerably its activity concerning the teaching and learning of evolution. Despite such beneficial activity, the state of public understanding of evolution is considered woefully lacking by most researchers and educators. This lack of understanding affects evolution/science literacy, research, and academia in general. Not only does the general public lack an understanding of evolution but so does a considerable proportion of college graduates. However, it is not just evolutionary concepts that students do not retain. In general, college students retain little of what they supposedly have learned. Worse yet, it is not just students who have avoided science and math who fail to retain fundamental science concepts. Students who have had extensive secondary-level and college courses in science have similar deficits. We examine these issues and explore what distinguishes effective pedagogy from ineffective pedagogy in higher education in general and evolution education in particular. The fundamental problem of students' prior conceptions is considered and why prior conceptions often underpin students' misunderstanding of the evolutionary concepts being taught. These conceptions can often be discovered and addressed. We also attend to concerns about coverage of course content and the influence of religious beliefs, and provide helpful strategies to improve college-level teaching of evolution.}
+      \field{issn}{1558-5646}
+      \field{journaltitle}{Evolution}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{number}{10}
+      \field{shorttitle}{Perspective}
+      \field{title}{Perspective: Teaching Evolution in Higher Education}
+      \field{urlday}{12}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{volume}{56}
+      \field{year}{2002}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1891\bibrangedash 1901}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1111/j.0014-3820.2002.tb00115.x
+      \endverb
+      \verb{url}
+      \verb http://onlinelibrary.wiley.com/doi/10.1111/j.0014-3820.2002.tb00115.x/abstract
+      \endverb
+      \keyw{Creationism,evolution,higher education,prior conceptions,religious beliefs,student-centered instruction,teaching}
+    \endentry
+    \entry{cabello_three.js_????}{online}{}
+      \name{author}{1}{}{%
+        {{hash=16f0518683ef1f0b3213ce46a9c96467}{%
+           family={Cabello},
+           familyi={C\bibinitperiod},
+           given={Ricardo},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{16f0518683ef1f0b3213ce46a9c96467}
+      \strng{fullhash}{16f0518683ef1f0b3213ce46a9c96467}
+      \strng{authornamehash}{16f0518683ef1f0b3213ce46a9c96467}
+      \strng{authorfullhash}{16f0518683ef1f0b3213ce46a9c96467}
+      \field{sortinit}{C}
+      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{three.js - Javascript 3D library}
+      \field{urlday}{10}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://threejs.org/
+      \endverb
+    \endentry
+    \entry{carlson_psychology:_2009}{book}{}
+      \name{author}{4}{}{%
+        {{hash=21a4f31323490c0dbc92e3c874f9f938}{%
+           family={Carlson},
+           familyi={C\bibinitperiod},
+           given={Neil\bibnamedelima R},
+           giveni={N\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=7727a3194ba337b41cd8bee22e3e0fa8}{%
+           family={Buskist},
+           familyi={B\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e418b6730abf095f333e4a300d8419d2}{%
+           family={Heth},
+           familyi={H\bibinitperiod},
+           given={C.\bibnamedelimi Donald},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=d3bcbb8136b79fd078f449a19dabee40}{%
+           family={Schmaltz},
+           familyi={S\bibinitperiod},
+           given={Rod},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education Canada}%
+      }
+      \strng{namehash}{8079753d6530f6170e7c76944b4ae45c}
+      \strng{fullhash}{e3e0043a043dafc25b585445a298122a}
+      \strng{authornamehash}{8079753d6530f6170e7c76944b4ae45c}
+      \strng{authorfullhash}{e3e0043a043dafc25b585445a298122a}
+      \field{sortinit}{C}
+      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-0-205-70286-2}
+      \field{note}{{OCLC}: 820144778}
+      \field{shorttitle}{Psychology}
+      \field{title}{Psychology: the Science of Behaviour, Fourth Canadian Edition with {MyPsychLab}.}
+      \field{year}{2009}
+      \field{dateera}{ce}
+    \endentry
+    \entry{decker_six_2017}{online}{}
+      \name{author}{1}{}{%
+        {{hash=7b6f04e1e876fbadbb03f0184aaf4583}{%
+           family={Decker},
+           familyi={D\bibinitperiod},
+           given={Kevin},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b6f04e1e876fbadbb03f0184aaf4583}
+      \strng{fullhash}{7b6f04e1e876fbadbb03f0184aaf4583}
+      \strng{authornamehash}{7b6f04e1e876fbadbb03f0184aaf4583}
+      \strng{authorfullhash}{7b6f04e1e876fbadbb03f0184aaf4583}
+      \field{sortinit}{D}
+      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Six Speed}
+      \field{titleaddon}{Performance of {ES}6 features relative to the {ES}5 baseline operations per second}
+      \field{urlday}{5}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://incaseofstairs.com/six-speed/
+      \endverb
+    \endentry
+    \entry{fry_processing.org_????}{online}{}
+      \name{author}{2}{}{%
+        {{hash=94eb1434c985c7d7a922693b8098da23}{%
+           family={Fry},
+           familyi={F\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod}}}%
+        {{hash=c1e1169a891153d99b4ff6adfd2f05f0}{%
+           family={Reas},
+           familyi={R\bibinitperiod},
+           given={Casey},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{0e2cc0963f18279fabe232cc14adfa2d}
+      \strng{fullhash}{0e2cc0963f18279fabe232cc14adfa2d}
+      \strng{authornamehash}{0e2cc0963f18279fabe232cc14adfa2d}
+      \strng{authorfullhash}{0e2cc0963f18279fabe232cc14adfa2d}
+      \field{sortinit}{F}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Processing.org}
+      \field{titleaddon}{Processing}
+      \field{urlday}{1}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://processing.org/
+      \endverb
+    \endentry
+    \entry{otto_get_????}{online}{}
+      \name{editora}{2}{}{%
+        {{hash=66045c5f9b2a3e66f2672562ccd09cd6}{%
+           family={Otto},
+           familyi={O\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2c62c9cd78e4706630d4e1a01301819a}{%
+           family={Thornton},
+           familyi={T\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{editoranamehash}{dc316d433611bb6b3e15c68ce858963d}
+      \strng{editorafullhash}{dc316d433611bb6b3e15c68ce858963d}
+      \field{sortinit}{G}
+      \field{sortinithash}{618d986594b7198ba52cf8b00d348f3f}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with the Bootstrap {CDN} and a template starter page.}
+      \field{editoratype}{collaborator}
+      \field{title}{Get started with Bootstrap}
+      \field{titleaddon}{Bootstrap}
+      \field{urlday}{14}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\P\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\2wh3fxzf.default\\zotero\\storage\\DCGKJHA2\\introduction.html:text/html
+      \endverb
+      \verb{url}
+      \verb https://getbootstrap.com/docs/4.0/getting-started/introduction/
+      \endverb
+    \endentry
+    \entry{_mohs_????}{online}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
+      \field{labeltitlesource}{title}
+      \field{title}{Mohs Scale of Science Fiction Hardness - {TV} Tropes}
+      \field{titleaddon}{{TV} Tropes}
+      \field{urlday}{1}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://tvtropes.org/pmwiki/pmwiki.php/Main/MohsScaleOfScienceFictionHardness
+      \endverb
+    \endentry
+    \entry{pawlak_jsweet:_????}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9882e72c96831c048867bf483f5f1fb2}{%
+           family={Pawlak},
+           familyi={P\bibinitperiod},
+           given={Renaud},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9882e72c96831c048867bf483f5f1fb2}
+      \strng{fullhash}{9882e72c96831c048867bf483f5f1fb2}
+      \strng{authornamehash}{9882e72c96831c048867bf483f5f1fb2}
+      \strng{authorfullhash}{9882e72c96831c048867bf483f5f1fb2}
+      \field{sortinit}{P}
+      \field{sortinithash}{24100cef455d7974167575052c29146e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{{JSweet} is an open transpiler from Java to {TypeScript}/{JavaScript} with more than 1000 well-typed\x{fffd}\x{fffd}{JavaScript}\x{fffd}\x{fffd}libraries.}
+      \field{shorttitle}{{JSweet}}
+      \field{title}{{JSweet}: a transpiler to write {JavaScript} programs in Java}
+      \field{titleaddon}{{JSweet}}
+      \field{urlday}{22}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\P\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\2wh3fxzf.default\\zotero\\storage\\4G2HVKGC\\www.jsweet.org.html:text/html
+      \endverb
+      \verb{url}
+      \verb http://www.jsweet.org/
+      \endverb
+    \endentry
+    \entry{the_world_wide_web_consortium_w3c_html5_2014}{online}{}
+      \name{author}{1}{}{%
+        {{hash=8a57c16e48b7cc26494856a02527feeb}{%
+           family={{The World Wide Web Consortium (W3C)}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{8a57c16e48b7cc26494856a02527feeb}
+      \strng{fullhash}{8a57c16e48b7cc26494856a02527feeb}
+      \strng{authornamehash}{8a57c16e48b7cc26494856a02527feeb}
+      \strng{authorfullhash}{8a57c16e48b7cc26494856a02527feeb}
+      \field{sortinit}{T}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{28}
+      \field{month}{10}
+      \field{title}{{HTML}5}
+      \field{titleaddon}{{HTML}5 - A vocabulary and associated {APIs} for {HTML} and {XHTML}}
+      \field{urlday}{13}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://www.w3.org/TR/html5/
+      \endverb
+    \endentry
+    \entry{zaytsev_ecmascript_2017}{online}{}
+      \name{author}{1}{}{%
+        {{hash=fb338a1555cb8b4dcb34beffff2a99a9}{%
+           family={Zaytsev},
+           familyi={Z\bibinitperiod},
+           given={Juriy},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{fb338a1555cb8b4dcb34beffff2a99a9}
+      \strng{fullhash}{fb338a1555cb8b4dcb34beffff2a99a9}
+      \strng{authornamehash}{fb338a1555cb8b4dcb34beffff2a99a9}
+      \strng{authorfullhash}{fb338a1555cb8b4dcb34beffff2a99a9}
+      \field{sortinit}{Z}
+      \field{sortinithash}{35589aa085e881766b72503e53fd4c97}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{ECMAScript} 6 compatibility table}
+      \field{urlday}{16}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://kangax.github.io/compat-table/es6/
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
