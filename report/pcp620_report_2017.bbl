@@ -19,6 +19,34 @@
 
 \refsection{0}
   \sortlist[entry]{nty/global/}
+    \entry{acm_siggraph_education_committee_3d_2005}{online}{}
+      \name{author}{1}{}{%
+        {{hash=53fe1fb82074df7560fdb52f7db59bf6}{%
+           family={{ACM SIGGRAPH Education Committee}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{53fe1fb82074df7560fdb52f7db59bf6}
+      \strng{fullhash}{53fe1fb82074df7560fdb52f7db59bf6}
+      \strng{authornamehash}{53fe1fb82074df7560fdb52f7db59bf6}
+      \strng{authorfullhash}{53fe1fb82074df7560fdb52f7db59bf6}
+      \field{sortinit}{A}
+      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{6}
+      \field{month}{6}
+      \field{title}{3D Rotation}
+      \field{titleaddon}{{HyperGraph}}
+      \field{urlday}{15}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
+      \endverb
+    \endentry
     \entry{adobe_corporate_communications_flash_2017}{online}{}
       \name{author}{1}{}{%
         {{hash=f6615e4b3f96df0f93355fe9c23a1ee9}{%
@@ -208,6 +236,35 @@
       \field{year}{2009}
       \field{dateera}{ce}
     \endentry
+    \entry{chandler_game_2009}{book}{}
+      \name{author}{1}{}{%
+        {{hash=feaa023ba6cfb20400de8877213057b4}{%
+           family={Chandler},
+           familyi={C\bibinitperiod},
+           given={Heather\bibnamedelima Maxwell},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Jones \& Bartlett Publishers}%
+      }
+      \strng{namehash}{feaa023ba6cfb20400de8877213057b4}
+      \strng{fullhash}{feaa023ba6cfb20400de8877213057b4}
+      \strng{authornamehash}{feaa023ba6cfb20400de8877213057b4}
+      \strng{authorfullhash}{feaa023ba6cfb20400de8877213057b4}
+      \field{sortinit}{C}
+      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Game Production Handbook, Second Edition Presents Information That A Producer, Lead, Or Studio Manager Needs To Know In Order To Successfully Develop A Game From Concept To Gold Master. The General Game Development Topics Such As Pre-Production, Production, Testing, And Code Release Are Covered, Along With More Specific Topics Such As How To Organize Voice-Over And Mo-Cap Shoots, Creating Cinematics, Working With Marketing, Localizations, Working With External Contractors, Writing Documentation, And Project Management Practices. New Material Includes Additional Information On Project And Personnel Management, New Technologies, Online Gaming Issues And Middleware, And Updated Examples From Next-Generation Games. It Includes New Interviews With Industry Experts Who Discuss Insider Knowledge And Real World Examples Of What Works And What Doesn\x{fffd}\x{fffd}\x{fffd}T Work In Game Development. A Fictitious Game Project Is Used To Fully Illustrate The Production Cycle, Documentation, And Other Production Concepts. The Book Has A {CD}-{ROM} That Includes All The Templates/Forms, So Anyone Can Immediately Apply The Principles Discussed In The Book. An Instructor Resource Kit Is Available For Use As A Textbook. (Ebook Version Does Not Include The {CD}-{ROM})}
+      \field{isbn}{978-1-934015-40-7}
+      \field{langid}{english}
+      \field{note}{Google-Books-{ID}: {laiOw}5WkdEcC}
+      \field{pagetotal}{510}
+      \field{title}{The Game Production Handbook}
+      \field{year}{2009}
+      \field{dateera}{ce}
+      \keyw{Computers / Computer Science}
+    \endentry
     \entry{decker_six_2017}{online}{}
       \name{author}{1}{}{%
         {{hash=7b6f04e1e876fbadbb03f0184aaf4583}{%
@@ -371,6 +428,38 @@
       \field{urldateera}{ce}
       \verb{url}
       \verb https://www.w3.org/TR/html5/
+      \endverb
+    \endentry
+    \entry{zaefferer_introduction_2012}{online}{}
+      \name{author}{1}{}{%
+        {{hash=a6bbcc42f9d97f5706a498bba9756c06}{%
+           family={Zaefferer},
+           familyi={Z\bibinitperiod},
+           given={Jorn},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{a6bbcc42f9d97f5706a498bba9756c06}
+      \strng{fullhash}{a6bbcc42f9d97f5706a498bba9756c06}
+      \strng{authornamehash}{a6bbcc42f9d97f5706a498bba9756c06}
+      \strng{authorfullhash}{a6bbcc42f9d97f5706a498bba9756c06}
+      \field{sortinit}{Z}
+      \field{sortinithash}{35589aa085e881766b72503e53fd4c97}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{month}{6}
+      \field{title}{Introduction To {JavaScript} Unit}
+      \field{urlday}{14}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Introduction To JavaScript Unit Testing \x{fffd}\x{fffd}\x{fffd} Smashing Magazine:C\:\\Users\\P\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\2wh3fxzf.default\\zotero\\storage\\F2TU6S6I\\introduction-to-javascript-unit-testing.html:text/html
+      \endverb
+      \verb{url}
+      \verb https://www.smashingmagazine.com/2012/06/introduction-to-javascript-unit-testing/
       \endverb
     \endentry
     \entry{zaytsev_ecmascript_2017}{online}{}

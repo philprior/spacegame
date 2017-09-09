@@ -2155,6 +2155,9 @@
     <bcf:citekey order="10">zaytsev_ecmascript_2017</bcf:citekey>
     <bcf:citekey order="11">cabello_three.js_????</bcf:citekey>
     <bcf:citekey order="12">decker_six_2017</bcf:citekey>
+    <bcf:citekey order="13">acm_siggraph_education_committee_3d_2005</bcf:citekey>
+    <bcf:citekey order="14">zaefferer_introduction_2012</bcf:citekey>
+    <bcf:citekey order="15">chandler_game_2009</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="nty/global/" type="entry" sortscheme="nty" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>

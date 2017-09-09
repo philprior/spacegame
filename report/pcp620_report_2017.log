@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.22)  8 SEP 2017 22:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.22)  9 SEP 2017 18:59
 entering extended mode
 **./pcp620_report_2017.tex
 (pcp620_report_2017.tex
@@ -319,44 +319,68 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\biblatex\biblatex.cfg"
 File: biblatex.cfg 
 ))
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count278
+\lst@gtempboxa=\box26
+\lst@token=\toks16
+\lst@length=\count279
+\lst@currlwidth=\dimen105
+\lst@column=\count280
+\lst@pos=\count281
+\lst@lostspace=\dimen106
+\lst@width=\dimen107
+\lst@newlines=\count282
+\lst@lineno=\count283
+\lst@maxwidth=\dimen108
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count284
+\lst@skipnumbers=\count285
+\lst@framebox=\box27
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\biblatex\lbx\english.lbx"
 File: english.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
 )
-\@quotelevel=\count278
-\@quotereset=\count279
+\@quotelevel=\count286
+\@quotereset=\count287
 
 (pcp620_report_2017.aux)
 \openout1 = `pcp620_report_2017.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count280
-\scratchdimen=\dimen105
-\scratchbox=\box26
-\nofMPsegments=\count281
-\nofMParguments=\count282
-\everyMPshowfont=\toks16
-\MPscratchCnt=\count283
-\MPscratchDim=\dimen106
-\MPnumerator=\count284
-\makeMPintoPDFobject=\count285
-\everyMPtoPDFconversion=\toks17
+\scratchcounter=\count288
+\scratchdimen=\dimen109
+\scratchbox=\box28
+\nofMPsegments=\count289
+\nofMParguments=\count290
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count291
+\MPscratchDim=\dimen110
+\MPnumerator=\count292
+\makeMPintoPDFobject=\count293
+\everyMPtoPDFconversion=\toks18
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -383,20 +407,21 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'pcp620_report_2017.bbl' found.
 
 (pcp620_report_2017.bbl)
-Package biblatex Info: Reference section=0 on input line 23.
-Package biblatex Info: Reference segment=0 on input line 23.
+Package biblatex Info: Reference section=0 on input line 28.
+Package biblatex Info: Reference segment=0 on input line 28.
+\c@lstlisting=\count294
  <crest.png, id=1, 341.275pt x 341.275pt>
 File: crest.png Graphic file (type png)
 
 <use crest.png>
-Package pdftex.def Info: crest.png used on input line 24.
+Package pdftex.def Info: crest.png used on input line 29.
 (pdftex.def)             Requested size: 85.35498pt x 85.35498pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 24.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 29.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 29.
 
 [1
 
@@ -429,41 +454,49 @@ Missing character: There is no ù in font cmr10!
 
 [5] [6
 
-] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16
+] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
+Overfull \hbox (44.73544pt too wide) in paragraph at lines 298--298
+[]\OT1/cmr/m/n/10 Heather Maxwell Chan-dler. \OT1/cmr/m/it/10 The Game Pro-duc-
+tion Hand-book\OT1/cmr/m/n/10 . Google-Books-ID: laiOw5WkdEcC.
+ []
 
-] [17] [18
+[19
 
-] [19] [20
+] [20] [21
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 217--217
+] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 311--311
 
  []
 
-[21] (pcp620_report_2017.aux)
+[23
+
+] (pcp620_report_2017.aux)
 Package logreq Info: Writing requests to 'pcp620_report_2017.run.xml'.
 \openout1 = `pcp620_report_2017.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 8414 strings out of 493323
- 145252 string characters out of 3139078
- 568638 words of memory out of 3000000
- 11870 multiletter control sequences out of 15000+200000
- 8836 words of font info for 34 fonts, out of 3000000 for 9000
+ 9606 strings out of 493323
+ 163103 string characters out of 3139078
+ 701285 words of memory out of 3000000
+ 13049 multiletter control sequences out of 15000+200000
+ 9004 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,5n,45p,1618b,1168s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmtt10.pfb>
-Output written on pcp620_report_2017.pdf (21 pages, 194316 bytes).
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on pcp620_report_2017.pdf (23 pages, 232941 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
+ 122 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

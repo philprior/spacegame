@@ -4,7 +4,7 @@
 \usepackage{amssymb}
 \usepackage{appendix}
 \usepackage{biblatex}
-
+\usepackage{listings}
 
 \bibliography{pcp620_report_2017.bib}
 
@@ -19,6 +19,11 @@
   bibliography = {References},
 }
 \raggedbottom
+
+\lstset{
+	basicstyle=\ttfamily\footnotesize,
+          breaklines=true
+          }
 
 \begin{document}
 \maketitle
@@ -75,7 +80,7 @@ The problem was initially analysed by investigating other products in the genre,
 
 Given the mechanics of the incremental games model some of these features were inherent, yet some were not, for example the necessity of including some form of text based feedback at key points in progress. This text could take the form of a narrative as in a product akin to Spaceplan or as a goal/achievement flag as seen in Cookie Clicker.
 
-As the project did not follow a standard software-development lifecycle as detailed in the project management section of this report, but instead followed a process that probably relates most closely to Agile methodologies (rapid iteration, not documentation-centric), a simple non-exhaustive of requirements was created, including some non-functional requirements based on the heuristics provided in the GameFlow model, adapted from their approach to real-time-strategy gaming.
+As the project did not follow a standard software-development lifecycle as detailed in the project management section of this report, but instead followed a process that probably relates most closely to Agile methodologies (rapid iteration, not documentation-centric, yet eschewing test-driven-development), a simple non-exhaustive of requirements was created, including some non-functional requirements based on the heuristics provided in the GameFlow model, adapted from their approach to real-time-strategy gaming.
 
 Very few statistics were available on the demographics of incremental game players as this information is not typically recorded as a part of play and they are usually relegated to a broader category including other 'casual games' when investigated in games research papers. With this apparent paucity of available data, very little could be done to target or analyse the requirements of any specific user group.
 
@@ -96,7 +101,7 @@ Solar System Explorer is a desktop browser based incremental game for players of
 
 \subsection{Game design}
 
-
+\subsection{Orbital models}
 
 \subsection{Language selection}
 
@@ -130,7 +135,7 @@ A number of different JavaScript libraries which provide interfaces to simplify 
 
 The architecture chosen was a simple client-server model, with a one off delivery of all code to the client machine at the time of the initial HyperText Transfer Protocol (HTTP) GET request to the game's Uniform Resource Locator (URL). There was no need for extended communication between the client and server beyond this point as there was no need for access to server hosted information, all game logic and data is included in the Javascript source file. In fact any such requirement would introduce needless complexity and performance restrictions. This does make the game simple to 'hack' but, given that there are no negative risks involved in someone accessing the source code, this is of no concern.
 
-JavaScript is typically included as a single file, rather than broken down into individually localised code blocks in separate files. This is to save on request overheads and reduce server load as each HTML page, once parsed, triggers a number of asset requests for any content referred to in the file. Most usually these requests are for one or more CSS files, any embedded images and any embbeded scripts. Each individual request has to travel to the server and wait in a queue to be picked up by a worker thread in the server software, thus adding more wait time until the page is ready to be fully rendered on the client. Serving the JavaScript as a single file where possible minimises this delay.
+JavaScript is typically included as a single file, rather than broken down into individually localised code blocks in separate files. This is to save on request overheads and reduce server load as each HTML page, once parsed, triggers a number of asset requests for any content referred to in the file. Most usually these requests are for one or more CSS files, any embedded images and any embedded scripts. Each individual request has to travel to the server and wait in a queue to be picked up by a worker thread in the server software, thus adding more wait time until the page is ready to be fully rendered on the client. Serving the JavaScript as a single file where possible minimises this delay.
 
 The aim was to include a single file for each of the HTML, CSS and JavaScript items, with allowance made for any libraries and image assets. Bandwidth limitations were determined to be those imposed by 'high speed' internet connections i.e. ADSL2+, 4G or faster. In practice this would mean that transfer speeds would allow for file sizes in the MegaByte range, although all effort would be made to reduce assets sizes where possible by using lossy compression algorithms for the images and minifying any large body of javascript. 'Minifying' is the term given to reducing file sizes by, at the most basic level, removing comments and whitespace characters or going as far as replacing longer, meaningful variable names with short alphanumeric sequences.
 
@@ -141,9 +146,10 @@ The architecture does not quite follow an Model View Controller (MVC) approach b
 \subsection{Data types and structures}
 The main data types in use in Solar System Explorer are the primitives boolean, number and string and the non-primitive object.
 
-Although these are common to most programming languages, it is worth noting that all numbers in ECMAScript are 64-bit doubles and any floating point values lack the precision of an integer format. This is especially important in this case as the numbers involved in the calculations when it comes to the physics of the solar system can reach beyond the range at which the integer representation is exact. This was notable at times when testing functions in isolation where a trigonometric transformation would return a non-integer result when an integer was expected (e.g. a value of 1.000000000001 as opposed to 1).  Whilst the project requires a good representation of reality it does not require the level of exactitude that an engineering project might, so such minor deviations were overlooked in this case.
+Although these are common to most programming languages, it is worth noting that all numbers in ECMAScript are 64-bit doubles and any floating point values lack the precision of an integer format. This is important to understand as the numbers involved in calculations when it comes to the physics of the solar system can reach beyond the range at which the integer representation is exact. This was notable at times when testing functions in isolation where a trigonometric transformation would return a non-integer result when an integer was expected (e.g. a value of 1.000000000001 as opposed to 1).  Whilst the project requires a good representation of reality it does not require the level of exactitude that an engineering project might so minor deviations were overlooked in this case, but calculations sometimes had to be double checked as what seemed like an inconsequential rounding error was actually  indicative of an error in the order of logic.
 
 One benefit of the use of JavaScript ES6 for a developer with a background in Java programming is the class based instantiation of objects in place of the previously standard prototype model. This allowed for the creation of 5 classes to handle the game logic and allow for the 3D graphical model: Resource, UpgradeEvent, StellarObject, Anchor and Orbit.
+
 The Resource and UpgradeEvent classes create the Objects for the incremental game logic.
 
 A Resource object has properties for the amount of a particular resource that is available at any given time and the rate of change for that resource, along with simple methods for increasing the amount by a value passed as a parameter or increasing the rate of change. There are no negative changes to the values as this is a core feature inherent to incremental game design.
@@ -154,23 +160,111 @@ The Anchor, Orbit and StellarObject classes are used to generate the visual disp
 
 An anchor is a common feature in any system of 3D representation, sometimes referred to as null objects. They simply represent a point in the space with an x,y and z coordinate and values for rotation about the axes. This is most often used as a simple reference by which to parent other objects or as a 'control point' in kinematic animation systems.
 
-The Orbit class takes data common to the scientific description of an orbit about a point (e.g. radius, eccentricity, period, etc.), stores those properties in a manner most useful for further calculation and display (e.g. converting input angles given in degrees to radians, automatically calculating the aphelion and perihelion values) and provides an update function which allows for animation of an object around the orbit by incrementing a theta value. This update function includes rotational transformation in 3D space and is discussed in futher detail in the next subsection.
+The Orbit class takes data common to the scientific description of an orbit about a point (e.g. radius, eccentricity, period, etc.), stores those properties in a manner most useful for further calculation and display (e.g. converting input angles given in degrees to radians, automatically calculating the aphelion and perihelion values) and provides an update method which allows for animation of an object around the orbit by incrementing a theta value. This update method includes rotational transformation in 3D space and is discussed in futher detail in the next subsection.
 
-The StellarObject class has properties representing the metadata for any object in space. In the demonstration content at the point of delivery, this is used to generate the Sun and the planets, however it could also be used to create any object. One iteration of the game used this class to generate moons for the planets. However, given that the relative orbital rotation of the moons was so fast as to make them practically invisible, they were removed for the time being.
+The StellarObject class has properties representing the metadata for any object in space. In the demonstration content at the point of delivery, this was used to generate the Sun and the planets, however it could also be used to provide data for any object in the scene. One iteration used this class to generate moons for the planets. However, given that the relative orbital rotation of the moons was so fast as to make them practically invisible, they were removed for the time being.
 
 In future iterations these 3 classes could be used to generate objects that appear in response to user input (i.e. purchasing upgrades).
 
 JavaScript ES6 is the first release to contain pre-defined collections in the form of maps and sets. These were investigated as potential data structures for the objects instantiated by the above classes, however it was discovered that the performance of these implementations is far slower in current web broswers than using baseline JavaScript when performing lookups \cite{decker_six_2017}. For this reason and the fact that data will not be added by users from outside of the program itself it seemed most sensible to work with simple arrays of objects rather than add the complication of implementing abstract data types. The largest collection of data in the game is the array of upgrade events, but this requires constant interation over the objects to make conditional checks against the pre-requisite event values, so the performance gains from using a data structure with a different method of retrieval would likely be marginal, even if it were faster at finding any single entry (e.g. utilising a hash table).
 
-\subsection{Rotation in 3D space}
+\subsection{Example method - orbital rotation in 3D space}
+The model used in WebGL for mapping objects in 3-dimensional space is a cartesian coordinate system with an x, y and z value describing any single point. Most data that describes the movement of astronomical bodies is given as a series of angles and distances from a point of rotation as they are usually ellipses or parabola.
+
+To translate from the information given in the physics to that required by the program involves the use of trigonometry. At a basic level, e.g calculating the x and z values for a point on a circle on the x,z plane, this is a relatively simple application of the formulae:
+
+\[x = radius*\sin\theta\]
+\[z = radius*\cos\theta\]
+
+In an ellipse centred at its origin the radius is subsituted for the semi-major and semi-minor axis values, in astrophysics terminology these are the equivalent of the aphelion and perihelion, terms which describe the closest and furthest orbital distance from the parent body. (Note that this is only true for orbits where the centre and eccentricity of the ellipse are such that the aphelion and perihelion are perpendicular)
+
+\[x = aphelion*\sin\theta\]
+\[z = perihelion*\cos\theta\]
+
+However, most orbits exist at an incline to the ecplitic, a term used for the plane which is coplanar with the orbit of the Earth around the Sun. They are also not all uniformly rotated in relation to the Sun. This necessitates the inclusion of the ability to rotate the orbital ellipse about each of the 3 axes.
+
+Rotation of a point about an axis by a value ($\theta'$) given in radians requires application of the following formulae \cite{acm_siggraph_education_committee_3d_2005}.
+
+Rotation about the x axis:
+\[z' = y*\sin\theta' + z*\cos\theta'\]
+\[y' = y*\cos\theta' - z*\sin\theta'\]
+
+Rotation about the y axis:
+\[x' = z*\sin\theta' + x*\cos\theta'\]
+\[z' = z*\cos\theta' - x*\sin\theta'\]
+
+Rotation about the z axis:
+\[y' = x*\sin\theta' + y*\cos\theta'\]
+\[x' = x*\cos\theta' - y*\sin\theta'\]
+
+These can be applied consecutively if there is a requirement to rotate about more than one axis.
+
+When coded as a part of the update() method in the Orbit object care had to be taken not to overwrite previous x,y and z values until they were ready for assignment, so some temporary variables with a block scope were included for instantiation within each conditional check for rotation. Simple addition of the coordinates of any parent orbit allowed for rotation of chains of parent and child objects. If no parent was defined or there was no need for the parent to be an Orbit itself, a simple Anchor object could substitute.
+
+\newpage
+
+\begin{lstlisting}[label=Implemented code for rotation in 3D space, caption=Implemented code for rotation in 3D space on an update() call, captionpos=b]
+class Orbit {
+
+	[...]
+	
+	update() {
+		// Rotate the value of theta by one measure
+		this._theta += this._deltaTheta;
+		// calculate the basic x,y,z cartesian coordinates
+		// assuming we start by generating on a plane level with the sun->earth axis
+		let localX = (Math.sin(this._theta)*this._aphe);
+		let localZ = (Math.cos(this._theta)*this._peri);
+		let localY = 0;
+		// Rotate the coordinates based on the rotation of the orbit around its parent
+		if(this._rotX!==0){
+			let temp_z = (Math.sin(this._rotX)*localY) + (Math.cos(this._rotX)*localZ);
+			let temp_y = (Math.cos(this._rotX)*localY) - (Math.sin(this._rotX)*localZ);
+			localZ = temp_z;
+			localY = temp_y;
+		}
+		if(this._rotY!==0){
+			let temp_x = (Math.sin(this._rotY)*localZ) + (Math.cos(this._rotY)*localX);
+			let temp_z = (Math.cos(this._rotY)*localZ) - (Math.sin(this._rotY)*localX);
+			localX = temp_x;
+			localZ = temp_z;
+		}
+		if(this._rotZ!==0){
+			let temp_y = (Math.sin(this._rotZ)*localX) + (Math.cos(this._rotZ)*localY);
+			let temp_x = (Math.cos(this._rotZ)*localX) - (Math.sin(this._rotZ)*localY);
+			localY = temp_y;
+			localX = temp_x;
+		}
+		this._x = localX + this._parent.getX();
+		this._z = localZ + this._parent.getZ();
+		this._y = localY + this._parent.getY();
+	}
+}
+\end{lstlisting}
+
+\newpage
 
 
+\subsection{Unit, prototype and integration testing}
 
-\subsection{Unit testing}
+There are limited options available when it comes to automated or scripted unit testing for JavaScript. With such a fast moving language, which often uses proprietary frameworks and libraries that virtually constitute domain specific languages (DSLs), it can be difficult for developers of test suites to keep up with the latest trends.
+The most tried and tested method appears to be maually unit testing i.e. isolating a block of code, be it a function, method or full script and create another short piece of JavaScript to test for the expected return by outputting this to the console \cite{zaefferer_introduction_2012}.
 
-\subsection{Prototype model}
+For segments of the program where the output was not immediately verfiable as correct, e.g. when performing rotational translation as in the previous section, the method of testing was to save the function into a separate .js file, provide sample inputs and check for the correct outputs by sending them to the console in versions of both the Chrome and Firefox browsers on both machines that formed the test bed (One mid-range Core i5 laptop, one high-end Core i7 desktop).
+
+Most of the functionality behind the game logic in this program is simple arithmetic and thus testing was usually not required. Methods that merely incremented a value or performed an addition operation were assumed to be working as expected.
+
+The most challenging parts of the code were those that defined the behavour of on screen elements and that captured user interaction, neither of which can be fully verified using unit testing scripts. Technically mouse clicks can be simulated, but the effort required to do so and adequately measure correct outputs would mean that the main body of the project would become about writing automated tests rather than producing a game. An automated test cannot, for instance, tell you whether a texture has rendered on the surface of a sphere, wrapping in the correct direction or judge the correct opacity of a translucent background.
+
+Most of these elements were tested by building prototypes that modelled the correct behaviour prior to integrating them into the main body of the program. For example in the first 5 weeks of development, the WebGL code for the 3D section of the UI was developed in a separate file structure, away from the game logic.
+
+Integration tests were done using the traditional games development technique of play-throughs as a part of the quality assurance phase \cite{chandler_game_2009}. This is one clear way in which the development lifecycle of a game differs significantly from that of office applications or data-processing applications. At the point of integration specific non-functional behaviours were verified, such as the ability to render the animation at a consistent framerate on a mid-range PC and the legibility of text imposed over the image of a starfield.
 
 \subsection{Acceptance testing}
+
+A body of 12 users volunteered to assist with acceptance testing. Given that the product has no clearly defined audience demographic, these were left to self select into participation by clicking a link that automatically appeared in the user-interface at the end of a play-through.
+
+The users were asked to complete a very short multiple choice questionnaire which related specifically to the aspirational goals of the product. They were subsequently invited to leave free-form comments relating to both the product and to elaborate on their multiple choice answers. This was done via a Google Form which automatically added responses to a speadsheet and generated graphical reports demonstrating the results.
 
 \section{User interface}
 
