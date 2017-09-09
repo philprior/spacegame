@@ -2147,17 +2147,20 @@
     <bcf:citekey order="2">_mohs_????</bcf:citekey>
     <bcf:citekey order="3">carlson_psychology:_2009</bcf:citekey>
     <bcf:citekey order="4">aleem_game_2016</bcf:citekey>
-    <bcf:citekey order="5">the_world_wide_web_consortium_w3c_html5_2014</bcf:citekey>
-    <bcf:citekey order="6">adobe_corporate_communications_flash_2017</bcf:citekey>
-    <bcf:citekey order="7">otto_get_????</bcf:citekey>
-    <bcf:citekey order="8">fry_processing.org_????</bcf:citekey>
-    <bcf:citekey order="9">pawlak_jsweet:_????</bcf:citekey>
-    <bcf:citekey order="10">zaytsev_ecmascript_2017</bcf:citekey>
-    <bcf:citekey order="11">cabello_three.js_????</bcf:citekey>
-    <bcf:citekey order="12">decker_six_2017</bcf:citekey>
-    <bcf:citekey order="13">acm_siggraph_education_committee_3d_2005</bcf:citekey>
-    <bcf:citekey order="14">zaefferer_introduction_2012</bcf:citekey>
-    <bcf:citekey order="15">chandler_game_2009</bcf:citekey>
+    <bcf:citekey order="5">king_numbers_2015</bcf:citekey>
+    <bcf:citekey order="6">oconnor_bruns_????</bcf:citekey>
+    <bcf:citekey order="7">dvorak_chaos_2005</bcf:citekey>
+    <bcf:citekey order="8">the_world_wide_web_consortium_w3c_html5_2014</bcf:citekey>
+    <bcf:citekey order="9">adobe_corporate_communications_flash_2017</bcf:citekey>
+    <bcf:citekey order="10">otto_get_????</bcf:citekey>
+    <bcf:citekey order="11">fry_processing.org_????</bcf:citekey>
+    <bcf:citekey order="12">pawlak_jsweet:_????</bcf:citekey>
+    <bcf:citekey order="13">zaytsev_ecmascript_2017</bcf:citekey>
+    <bcf:citekey order="14">cabello_three.js_????</bcf:citekey>
+    <bcf:citekey order="15">decker_six_2017</bcf:citekey>
+    <bcf:citekey order="16">acm_siggraph_education_committee_3d_2005</bcf:citekey>
+    <bcf:citekey order="17">zaefferer_introduction_2012</bcf:citekey>
+    <bcf:citekey order="18">chandler_game_2009</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="nty/global/" type="entry" sortscheme="nty" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>

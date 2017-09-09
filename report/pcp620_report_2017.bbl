@@ -293,6 +293,47 @@
       \verb http://incaseofstairs.com/six-speed/
       \endverb
     \endentry
+    \entry{dvorak_chaos_2005}{collection}{}
+      \name{editor}{3}{}{%
+        {{hash=64ee270a4e6a3e2ac912576977eae20c}{%
+           family={Dvorak},
+           familyi={D\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=01c3b452663ec85a3363527e753084a8}{%
+           family={Freistetter},
+           familyi={F\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=9fe8d59db779fd02f652ae717750ac51}{%
+           family={Kurths},
+           familyi={K\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin ; New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{e3371450ffd81fc36f4aeadee72d5302}
+      \strng{fullhash}{e3371450ffd81fc36f4aeadee72d5302}
+      \strng{editornamehash}{e3371450ffd81fc36f4aeadee72d5302}
+      \strng{editorfullhash}{e3371450ffd81fc36f4aeadee72d5302}
+      \field{sortinit}{D}
+      \field{sortinithash}{d10b5413de1f3d197b20897dd0d565bb}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-540-28208-2}
+      \field{number}{683}
+      \field{pagetotal}{279}
+      \field{series}{Lecture notes in physics}
+      \field{title}{Chaos and stability in planetary systems}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \keyw{Celestial mechanics,Extrasolar planets,Orbits,Planets}
+    \endentry
     \entry{fry_processing.org_????}{online}{}
       \name{author}{2}{}{%
         {{hash=94eb1434c985c7d7a922693b8098da23}{%
@@ -357,6 +398,41 @@
       \verb https://getbootstrap.com/docs/4.0/getting-started/introduction/
       \endverb
     \endentry
+    \entry{king_numbers_2015}{online}{}
+      \name{author}{1}{}{%
+        {{hash=cdd91a9889b84ebe058f315fb917e134}{%
+           family={King},
+           familyi={K\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{cdd91a9889b84ebe058f315fb917e134}
+      \strng{fullhash}{cdd91a9889b84ebe058f315fb917e134}
+      \strng{authornamehash}{cdd91a9889b84ebe058f315fb917e134}
+      \strng{authorfullhash}{cdd91a9889b84ebe058f315fb917e134}
+      \field{sortinit}{K}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Incremental games are fascinating and perplexing. Marked by minimal player agency and periods of inactivity, they seem to defy conventional logic about good game design, and yet nonetheless have...}
+      \field{day}{22}
+      \field{month}{5}
+      \field{shorttitle}{Numbers Getting Bigger}
+      \field{title}{Numbers Getting Bigger: What Are Incremental Games, and Why Are They Fun?}
+      \field{titleaddon}{Game Development Envato Tuts+}
+      \field{urlday}{11}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\P\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\2wh3fxzf.default\\zotero\\storage\\EZB6N4ZN\\numbers-getting-bigger-what-are-incremental-games-and-why-are-they-fun--cms-23925.html:text/html
+      \endverb
+      \verb{url}
+      \verb https://gamedevelopment.tutsplus.com/articles/numbers-getting-bigger-what-are-incremental-games-and-why-are-they-fun--cms-23925
+      \endverb
+    \endentry
     \entry{_mohs_????}{online}{}
       \field{sortinit}{M}
       \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
@@ -369,6 +445,36 @@
       \field{urldateera}{ce}
       \verb{url}
       \verb http://tvtropes.org/pmwiki/pmwiki.php/Main/MohsScaleOfScienceFictionHardness
+      \endverb
+    \endentry
+    \entry{oconnor_bruns_????}{online}{}
+      \name{author}{2}{}{%
+        {{hash=6afad086ef94a09317050769e356291f}{%
+           family={O'Connor},
+           familyi={O\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0bd2a0fca7bb87ae63d1d77b1a6b7e6b}{%
+           family={Robertson},
+           familyi={R\bibinitperiod},
+           given={E},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{3fcd2a5a67398ef14620335cca443fba}
+      \strng{fullhash}{3fcd2a5a67398ef14620335cca443fba}
+      \strng{authornamehash}{3fcd2a5a67398ef14620335cca443fba}
+      \strng{authorfullhash}{3fcd2a5a67398ef14620335cca443fba}
+      \field{sortinit}{O}
+      \field{sortinithash}{f5d80ef71b5b58852663ecfd775b175a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bruns biography}
+      \field{urlday}{30}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://www-history.mcs.st-andrews.ac.uk/Biographies/Bruns.html
       \endverb
     \endentry
     \entry{pawlak_jsweet:_????}{online}{}

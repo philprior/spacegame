@@ -48,6 +48,8 @@ I would like to thank my supervisor Hayo Thielecke for his advice and support in
 
 Thanks also to Uday Reddy and the rest of the teaching staff at the University of Birmingham's School of Computer science for their support and guidance.
 
+I would like to acknowledge the contributions of the NASA and ESO teams through the use of their imagery to produce textures for both the planets and milky way.
+
 Finally I would like to extend my appreciation to the individuals, classmates and acquaintances who assisted me in testing and providing feedback on my product.
 \end{acknowledgments}
 
@@ -70,10 +72,6 @@ Such a product is simple enough for the core mechanics to have been achievable w
 
 
 
-\section{Further background material}
-
-
-
 \section{Analysis and specification}
 
 The problem was initially analysed by investigating other products in the genre, specifically focusing on a web browser game entitled 'Spaceplan' by Jake Hollands. The features and mechanical gameplay elements of these were broken down into simple lists and categorised to find conventions that span the genre. This primarily involved a card-sort exercise, derived from the technique utilised in usability design.
@@ -92,22 +90,46 @@ Very few statistics were available on the demographics of incremental game playe
 Draw from Aleem \cite{aleem_game_2016}
 
 
-\subsection{General specification}
-
-Solar System Explorer is a desktop browser based incremental game for players of current incremental games, borrowing many conventions of the genre. 
-
-
 \section{Design}
 
 \subsection{Game design}
 
+In an article entitled 'Numbers Getting Bigger: What Are Incremental Games, and Why Are They Fun?' \cite{king_numbers_2015} it is identified that the fundamental aspects of design that define an incremental game are:
+\begin{itemize}
+\item the presence of at least one currency or number, 
+\item which increases at a set rate, with no or minimal effort, 
+\item and which can be expended to increase the rate or speed at which it increases. \ldots
+\end{itemize}
+ 
+Indeed surveying the various online catalogues of 'incremental', 'clicker' and 'idle' games provides a rich tapestry of examples of this genre of game, each of which follows these general rules.
+
+Given that the aim of this project was to create an incremental game, but with a more realistic representation of the realities of space exploration, it seemed that the challenge was to marry a very simple gaming mechanic with a very complex field of science. Compromises would have to be made, as this was not going to be a full space physics simulator in the style of a full commercial entertainment package like 2015's Kerbal Space Program, yet some degree of realism would have to be maintained. 
+
+Initial designs focused on the interaction of 4 different competing resources, with consideration for aspects that otherwise are under represented in science fiction gaming, such as political will and popular support. However, even paper prototypes of these ideas became riddled with issues e.g.complexity stretching beyond that found elsewhere in the genre, approaching that of '4X' games (e.g. Sid Meyer's Civilisation or Master of Orion) and user interface design issues due to a lack of screen real estate when following the single screen convention of the genre. It was eventually decided to settle on a dual resource system representing different forms of energy income with some necessary level of abstraction. The concept of nuclear and photonic sources of energy would form the basis for this resource system, representing a duality not only of a scientific nature, but of an ethical one also. Players could choose to focus on 'dirty' nuclear energy for fast progress at the start of the game or 'clean' photonic energy for faster progress towards the end.
+
+The functionality that would allow for the 'increase in rate or speed' would provide an opportunity to add context and detail by allowing access to a system of tiered upgrades (commonly referred to in gaming parlance as a 'tech tree') which would use actual scientific and technological terms.
+
+By navigating up the tree of upgrades the player would gradually explore different planets in the solar system, revealing an attractive graphical display of each accompanied by on-screen information about the planet, its orbital data and some other facts relating to the realities of exploring said planet. One example of this would be to limit the upgrades available on Jupiter to orbital items only, given the gaseous nature of and the high gravity conditions that exist close to the surface.
+
+The overall aim of the game in its full form would be to reveal all planets in the solar system and unlock an access code for a sequel game based on the concept surrounding interstellar, rather than interplanetary, exploration and travel. The game would not terminate at this point however, leaving the user to explore the interface, continue to accrue resources and look over the information presented during the course of the experience.
+
+Consideration was given to producing a 2-dimensional graphical represention of the planets as this was a common feature of other games in the genre, however it seemed possible to present a greater degree of realism by modelling the solar system in a 3-dimensional space. A 2-dimensional overlay or 'Heads Up Display' (HUD) would allow for interaction and the presentation of data to the player.
+
+
 \subsection{Orbital models}
+Initial investigations into methods for creating models to represent the solar system led to quite a few simulations of gravitational attraction. These ranged from simple bouncing balls to mutiple moving objects accelerating according to the laws of gravitation.
+
+Several of these were (re)created as exploratory prototypes in the Processing sketchbook IDE, however it rapidly became apparent that these models had certain limitations and that to ensure continuous motion any bodies were subject to positional limits. It also became clear that to calculate the attraction of multiple bodies would not be as simple. This is referred to in physics as the 'three body problem' and is probably best understood by the analogy of calculating the movements of the Sun, Earth and Moon with each affecting the other. Texts dating back to 1887  by the mathematician Heinrich Bruns demonstrated that there were no general solutions to the three body problem, only special cases such as Lagrange points \cite{oconnor_bruns_????}. This explains the need to reduce gravitional models to two bodies or to artificially impose limits on the motion of the objects in any such model.
+
+Further reading around the topic of modelling orbits \cite{dvorak_chaos_2005}  led back to Kepler's laws of motion, which fit a simulation of this type far better. By modelling orbits as ellipses, bearing in mind that planetary orbits in our solar system are close to circular, a more consistent visualisation of orbital motion could be produced using simpler trigonometric calculations. This would ensure that unlike the gravitational motion based on attraction and acceleration, there was no risk of errors over a longer period of time where a body may come to rest or similar erroneous representation.
+
+
 
 \subsection{Language selection}
 
-One main concern with creating Solar System Explorer was making a choice of programming language that would enable both a full implementation of the envisioned product whilst maintaining performance. The sole developer's primary skill set was in the Java language, however given the delivery platform of a web browser this essentially mandated the use of the HyperText Markup Language (HTML) and Cascading Style Sheets (CSS) in combination with JavaScript for dynamic behaviour on the client. It was possible that Java would have been useful in developing server-side functionailty, such as providing communication with a database layer but with the decision to run the code entirely on the client there was no requirement to do so.
+Serious consideration when creating Solar System Explorer was given to the choice of programming language that would enable both a full implementation of the envisioned product whilst maintaining performance. The sole developer's primary skill set was in the Java language, however given the delivery platform of a web browser this essentially mandated the use of the HyperText Markup Language (HTML) and Cascading Style Sheets (CSS) in combination with JavaScript for dynamic behaviour on the client. It was possible that Java would have been useful in developing server-side functionailty, such as providing communication with a database layer but with the decision to run the code entirely on the client there was no requirement to do so.
 
-A decision was made to conform to World Wide Web Consortium (W3C) standards as these represent the ideal model of structure in the delivery of web based content, plus compliance with standards in the manner in which web browsers parse the code should ensure a more consistent delivery across different vendor's products (e.g. Google Chrome, Mozilla Firefox, etc). No effort was to be extended to provide functionality to non-standards compliant browsers (e.g. MicroSoft Edge) through the use of proprietary code as this would add a significant overhead to development in terms of the complexity of the finished product.
+One aspirational goal of the project was to conform to World Wide Web Consortium (W3C) standards as these represent the ideal model of structure in the delivery of web based content, plus compliance with standards in the manner in which web browsers parse the code should ensure a more consistent delivery across different vendor's products (e.g. Google Chrome, Mozilla Firefox, etc). No effort was to be extended to provide functionality to non-standards compliant browsers (e.g. MicroSoft Edge) through the use of proprietary code as this would add a significant overhead to development in terms of the complexity of the finished product.
 
 
 \subsubsection{HTML}
@@ -300,12 +322,47 @@ Tools, time management, meetings.
 \appendixpage
 \addappheadtotoc
 
-\section{Image licences}
-ESO image licence
-NASA image licence
+\section{Image asset licences}
 
-\section{Framework licence}
-three.js licence
+Below are the permissions given for use of the images that form the textures of the planets (NASA) and the wrapping image of the solar system (ESO).
+
+\subsection{NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}
+
+NASA content - images, audio, video, and computer files used in the rendition of 3-dimensional models, such as texture maps and polygon data in any format - generally are not copyrighted. You may use this material for educational or informational purposes, including photo collections, textbooks, public exhibits, computer graphical simulations and Internet Web pages. This general permission extends to personal Web pages.
+
+News outlets, schools, and text-book authors may use NASA content without needing explicit permission. NASA content used in a factual manner that does not imply endorsement may be used without needing explicit permission. NASA should be acknowledged as the source of the material. NASA occasionally uses copyrighted material by permission on its website. Those images will be marked copyright with the name of the copyright holder. NASA's use does not convey any rights to others to use the same material. Those wishing to use copyrighted material must contact the copyright holder directly.
+
+\subsection{ESO - Usage of images, videos and web texts}
+
+Unless specifically noted, the images and videos distributed from the public ESO web site, along with the texts of press releases, announcements, pictures of the week and captions, are licensed under a Creative Commons Attribution 4.0 International License, and may on a non-exclusive basis be reproduced without fee provided the credit is clear and visible.
+
+\newpage
+
+\section{Framework licence - three.js}
+
+\begin{verbatim}
+The MIT License
+
+Copyright © 2010-2017 three.js authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+\end{verbatim}
 
 \declaration
 
