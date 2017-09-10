@@ -66,15 +66,15 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.4}Solar System Explorer UI design process}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Project management}{24}
+\contentsline {section}{\numberline {6}Project management}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Software development lifecycle}{24}
+\contentsline {subsection}{\numberline {6.1}Software development lifecycle}{25}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.2}Tools}{25}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.3}Meetings}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Review}{25}
+\contentsline {subsection}{\numberline {6.4}Review}{26}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {7}Results and evaluation}{26}
 \defcounter {refsection}{0}\relax 
