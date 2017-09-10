@@ -4,62 +4,94 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Analysis and specification}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Example Requirements}{9}
+\contentsline {subsection}{\numberline {2.1}General specification}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Game specific requirements}{9}
+\contentsline {subsubsection}{Fallback specification}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Design}{9}
+\contentsline {subsection}{\numberline {2.2}Example requirements}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Game design}{9}
+\contentsline {subsubsection}{Functional requirements}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Orbital models}{11}
+\contentsline {subsubsection}{Non-functional requirements}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Language selection}{11}
+\contentsline {subsection}{\numberline {2.3}Example game specific requirements}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{HTML}{12}
+\contentsline {section}{\numberline {3}Design}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{CSS}{12}
+\contentsline {subsection}{\numberline {3.1}Game design}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{JavaScript ES6}{12}
+\contentsline {subsection}{\numberline {3.2}Orbital models}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{WebGL and three.js}{13}
+\contentsline {subsection}{\numberline {3.3}Language selection}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Architecture}{13}
+\contentsline {subsubsection}{HTML}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Implementation and testing}{14}
+\contentsline {subsubsection}{CSS}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Data types and structures}{14}
+\contentsline {subsubsection}{JavaScript ES6}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Example method - orbital rotation in 3D space}{16}
+\contentsline {subsubsection}{WebGL and three.js}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Unit, prototype and integration testing}{19}
+\contentsline {subsection}{\numberline {3.4}Architecture}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Acceptance testing}{19}
+\contentsline {section}{\numberline {4}Implementation and testing}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}User interface}{20}
+\contentsline {subsection}{\numberline {4.1}Data types and structures}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Incremental game conventions}{20}
+\contentsline {subsection}{\numberline {4.2}Example method - orbital rotation in 3D space}{18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}General UI conventions}{20}
+\contentsline {subsection}{\numberline {4.3}Unit, prototype and integration testing}{21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Aesthetic}{20}
+\contentsline {subsection}{\numberline {4.4}Acceptance testing}{21}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Project management}{20}
+\contentsline {section}{\numberline {5}User interface}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Results and evaluation}{20}
+\contentsline {subsection}{\numberline {5.1}Incremental game conventions}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Discussion}{20}
+\contentsline {subsubsection}{Wireframe layouts}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Conclusion}{20}
+\contentsline {subsubsection}{Representation of figures}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{References}{20}
+\contentsline {subsubsection}{Typographic elements}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{24}
+\contentsline {subsubsection}{Art style}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Image asset licences}{24}
+\contentsline {subsection}{\numberline {5.2}General UI conventions}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}{24}
+\contentsline {subsubsection}{Pointer behaviour and signposting interactivity}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{24}
+\contentsline {subsubsection}{Typographic elements}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Framework licence - three.js}{25}
+\contentsline {subsubsection}{Use of colour}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3}Aesthetic}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4}Solar System Explorer UI design process}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Project management}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1}Software development lifecycle}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2}Tools}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.3}Meetings}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.4}Review}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Results and evaluation}{24}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Discussion}{24}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}Conclusion}{24}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{References}{24}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendices}{29}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Image asset licences}{29}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1}NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}{29}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{29}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Framework licence - three.js}{30}

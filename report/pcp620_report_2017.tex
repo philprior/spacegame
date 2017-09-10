@@ -76,18 +76,79 @@ Such a product is simple enough for the core mechanics to have been achievable w
 
 The problem was initially analysed by investigating other products in the genre, specifically focusing on a web browser game entitled 'Spaceplan' by Jake Hollands. The features and mechanical gameplay elements of these were broken down into simple lists and categorised to find conventions that span the genre. This primarily involved a card-sort exercise, derived from the technique utilised in usability design.
 
-Given the mechanics of the incremental games model some of these features were inherent, yet some were not, for example the necessity of including some form of text based feedback at key points in progress. This text could take the form of a narrative as in a product akin to Spaceplan or as a goal/achievement flag as seen in Cookie Clicker.
+Given the mechanics of the incremental games model some of these features were inherent, yet some were not, for example the necessity of including some form of text based feedback at key points in progress. This text could take the form of a narrative as in a product akin to Spaceplan \cite{hollands_spaceplan_2017} or as a goal/achievement flag as seen in Cookie Clicker \cite{ortiel_cookie_2017}.
 
-As the project did not follow a standard software-development lifecycle as detailed in the project management section of this report, but instead followed a process that probably relates most closely to Agile methodologies (rapid iteration, not documentation-centric, yet eschewing test-driven-development), a simple non-exhaustive of requirements was created, including some non-functional requirements based on the heuristics provided in the GameFlow model, adapted from their approach to real-time-strategy gaming.
+As the project did not follow a standard software-development lifecycle as detailed in the project management section of this report, but instead followed a process that relates most closely to a hybrid of Agile methodologies (rapid iteration, not documentation-centric, yet eschewing test-driven-development) and the media production workflow common to games production (concept, pre-production, production, post and distribution phases), a simple non-exhaustive of requirements was created, including some non-functional requirements based on the heuristics provided in the GameFlow model \cite{sweetser_gameflow_2012}, adapted from their approach to real-time-strategy gaming.
 
 Very few statistics were available on the demographics of incremental game players as this information is not typically recorded as a part of play and they are usually relegated to a broader category including other 'casual games' when investigated in games research papers. With this apparent paucity of available data, very little could be done to target or analyse the requirements of any specific user group.
 
-\subsection{Example Requirements}
+\subsection{General specification}
+
+Solar System Explorer is a web browser based game of the incremental game genre. Its mechanics are based on the acquisition of resources represented by one or more numbers that increment continuously, even whilst the player of the game is idle.
+
+There are mechanisms in the game to increase the rate at which these numbers increment by expending some of the previously gained resource. The game is themed around the exploration of our solar system, modelled on real measurements provided by astrophysics organisations. It uses scientific terminology and representations of data that are reasonably accurate to the real world and any mechanic or terminology that has a basis in only hypothesis or speculative fiction is clearly explained as such.
+
+The game provides a semi-realistic visual representation of the planets and their orbits, specifically focusing on representations of scale and distance, with as little abstraction as possible.
+
+The interface for the game is a 2-dimensional overlay on a 3-dimensional visualisation and the only tool for interaction required is of the pointer type (mouse, trackpad, touchscreen, etc). Player interaction results in visual feedback relating to the rate of resource gain, contextual information about optional increases to the rate of resource gain and visual feedback via the 3-dimensional graphical representation.
+
+The game starts with only the Earth visible and the overall goal of the game is to unlock access to view all of the planets in the solar system along with related scientific data. When all planets are unlocked, the player is rewarded with a special access code for a sequel game based on interstellar travel.
+
+\subsubsection{Fallback specification}
+Should there be inadequate time for delivery of the full specification above, the expected delivery will be a text based implementation of the game mechanics with a graphical representation of the solar system that serves as an aesthetic accompaniment to the core game.
+
+\subsection{Example requirements}
+Presented here is a short selection of functional and non-functional requirements, typical to this kind of software engineering project, that were elicited during the early phases of development of Solar System Explorer.
+
+\subsubsection{Functional requirements}
+
+Logic requirements
+\begin{itemize}
+\item[] LOFR001 - The game must automatically increment, by a set amount, each available resource on a periodic basis set by the framerate.
+\item[] LOFR002 - The game must automatically update, on a periodic basis set by the framerate, the x,y,z coordinate position of stellar bodies
+\item[] LOFR003 - A button for each type of resource, when clicked, must add a fixed amount of said resource to the general pool available to the player
+\end{itemize}
+
+\noindent
+UI requirements
+\begin{itemize}
+\item[] UIFR001 - The minimum necessary resolution for interacting with the game UI must not exceed a resolution of 1280 x 720 pixels
+\item[] UIFR002 - Elements of the interface that are not interactive should not be selectable within the browser window
+\item[] UIFR003 - Interactive elements of the game UI (clickable) must trigger a change in state of the mouse cursor on a hover condition
+\end{itemize}
+
+\subsubsection{Non-functional requirements}
+
+\noindent
+Performance requirements
+\begin{itemize}
+\item[] PFNFR001 - The total time taken to download the client code and assets over a domestic 8mbps+ broadband connection should not exceed 5 seconds
+\item[] PFNFR002 - All interactive user interface options, when triggered, should provide some form of visual feedback for the user in under 200ms
+\item[] PFNFR003 - Any animation in the user interface should maintain a display framerate of greater than 15 frames per second on a mid-range client machine
+\end{itemize}
+
+\noindent
+Compliance requirements
+\begin{itemize}
+\item[] CONFR001 - All markup code should comply with W3C standards as per the HTML 5 recommendation
+\item[] CONFR004 - All imagery should be right cleared for use in an educational/non-profit product
+\item[] CONFR005 - Any licenced content should be appropriately acknowledged as per the licensing requirements
+\end{itemize}
+
+\subsection{Example game specific requirements}
+In addition to the typical requirements expected in a software engineering project, game design demands the inclusion of gameplay specific non-functional requirements. These are often hard to define with complete specificity so are less easily measured. Typically in modern development they will be evaluated at the point of beta testing the product or as an ongoing concern post-release, evaluated through user feedback and altered by deploying patches (sometimes descibed as being 'in permanent beta'). The GameFlow model \cite{sweetser_gameflow_2017}, whilst not specifically created for the genre of incremental gaming, provided some suitable guidance and was used as an example for designing gameplay requirements.
 
 
+\bigskip
+\noindent
+Gameplay requirements
+\begin{itemize}
+\item[] GPNFR001 - The game should conform to genre conventions to allow the player to have an inherent understanding of the game
+\item[] GPNFR002 - The gameplay should be easy to pick up for new players
+\item[] GPNFR003 - The game should gradually introduce new upgrades and items so that the player learns a little at a time
+\item[] GPNFR004 - The game should consistently reward the player for their effort, and motivate them to keep playing, through story developments
+\end{itemize}
 
-\subsection{Game specific requirements}
-Draw from Aleem \cite{aleem_game_2016}
 
 
 \section{Design}
@@ -101,11 +162,11 @@ In an article entitled 'Numbers Getting Bigger: What Are Incremental Games, and 
 \item and which can be expended to increase the rate or speed at which it increases. \ldots
 \end{itemize}
  
-Indeed surveying the various online catalogues of 'incremental', 'clicker' and 'idle' games provides a rich tapestry of examples of this genre of game, each of which follows these general rules.
+Surveying the various online catalogues of 'incremental', 'clicker' and 'idle' games provides a rich tapestry of examples of this genre of game, each of which follows these general rules. These indeed consitute the necesary terms for defining a genre as a taxonimic ideal based on identifiable characteristics \cite{clarke_why_2017}.
 
-Given that the aim of this project was to create an incremental game, but with a more realistic representation of the realities of space exploration, it seemed that the challenge was to marry a very simple gaming mechanic with a very complex field of science. Compromises would have to be made, as this was not going to be a full space physics simulator in the style of a full commercial entertainment package like 2015's Kerbal Space Program, yet some degree of realism would have to be maintained. 
+Given that the aim of this project was to create an incremental game, but with a more realistic representation of the realities of space exploration, it seemed that the challenge was to marry a very simple gaming mechanic with a very complex field of science. Compromises would have to be made, as this was not going to be a full space physics simulator in the style of a full commercial entertainment package like 2015's Kerbal Space Program \cite{squad_kerbal_2015}, yet some degree of realism would have to be maintained. 
 
-Initial designs focused on the interaction of 4 different competing resources, with consideration for aspects that otherwise are under represented in science fiction gaming, such as political will and popular support. However, even paper prototypes of these ideas became riddled with issues e.g.complexity stretching beyond that found elsewhere in the genre, approaching that of '4X' games (e.g. Sid Meyer's Civilisation or Master of Orion) and user interface design issues due to a lack of screen real estate when following the single screen convention of the genre. It was eventually decided to settle on a dual resource system representing different forms of energy income with some necessary level of abstraction. The concept of nuclear and photonic sources of energy would form the basis for this resource system, representing a duality not only of a scientific nature, but of an ethical one also. Players could choose to focus on 'dirty' nuclear energy for fast progress at the start of the game or 'clean' photonic energy for faster progress towards the end.
+Initial designs focused on the interaction of 4 different competing resources, with consideration for aspects that otherwise are under represented in science fiction gaming, such as political will and popular support. However, even paper prototypes of these ideas became riddled with issues e.g.complexity stretching beyond that found elsewhere in the genre, approaching that of '4X' games \cite{gunn_taxonomy_2009} and user interface design issues due to a lack of screen real estate when following the single screen convention of the genre. It was eventually decided to settle on a dual resource system representing different forms of energy income with some necessary level of abstraction. The concept of nuclear and photonic sources of energy would form the basis for this resource system, representing a duality not only of a scientific nature, but of an ethical one also. Players could choose to focus on 'dirty' nuclear energy for fast progress at the start of the game or 'clean' photonic energy for faster progress towards the end.
 
 The functionality that would allow for the 'increase in rate or speed' would provide an opportunity to add context and detail by allowing access to a system of tiered upgrades (commonly referred to in gaming parlance as a 'tech tree') which would use actual scientific and technological terms.
 
@@ -113,7 +174,7 @@ By navigating up the tree of upgrades the player would gradually explore differe
 
 The overall aim of the game in its full form would be to reveal all planets in the solar system and unlock an access code for a sequel game based on the concept surrounding interstellar, rather than interplanetary, exploration and travel. The game would not terminate at this point however, leaving the user to explore the interface, continue to accrue resources and look over the information presented during the course of the experience.
 
-Consideration was given to producing a 2-dimensional graphical represention of the planets as this was a common feature of other games in the genre, however it seemed possible to present a greater degree of realism by modelling the solar system in a 3-dimensional space. A 2-dimensional overlay or 'Heads Up Display' (HUD) would allow for interaction and the presentation of data to the player.
+Consideration was given to producing a 2-dimensional graphical represention of the planets as this was a common feature of other games in the genre, however it seemed possible to present a greater degree of realism by modelling the solar system in a 3-dimensional space. A 2-dimensional overlay or 'Heads Up Display' (HUD) would allow for interaction and the presentation of data to the player. To further enhance the sense of realism, where possible, image assets would be obtained from photographic libraries rather than relying on artistic visualisations.
 
 
 \subsection{Orbital models}
@@ -129,7 +190,7 @@ Further reading around the topic of modelling orbits \cite{dvorak_chaos_2005}  l
 
 Serious consideration when creating Solar System Explorer was given to the choice of programming language that would enable both a full implementation of the envisioned product whilst maintaining performance. The sole developer's primary skill set was in the Java language, however given the delivery platform of a web browser this essentially mandated the use of the HyperText Markup Language (HTML) and Cascading Style Sheets (CSS) in combination with JavaScript for dynamic behaviour on the client. It was possible that Java would have been useful in developing server-side functionailty, such as providing communication with a database layer but with the decision to run the code entirely on the client there was no requirement to do so.
 
-One aspirational goal of the project was to conform to World Wide Web Consortium (W3C) standards as these represent the ideal model of structure in the delivery of web based content, plus compliance with standards in the manner in which web browsers parse the code should ensure a more consistent delivery across different vendor's products (e.g. Google Chrome, Mozilla Firefox, etc). No effort was to be extended to provide functionality to non-standards compliant browsers (e.g. MicroSoft Edge) through the use of proprietary code as this would add a significant overhead to development in terms of the complexity of the finished product.
+One aspirational goal of the project was to conform to World Wide Web Consortium (W3C) standards as these represent the ideal model of structure in the delivery of web based content, plus compliance with standards in the manner in which web browsers parse the code should ensure a more consistent delivery across different vendor's products (e.g. Google Chrome, Mozilla Firefox, etc). No effort was to be extended to provide functionality to non-standards compliant browsers (e.g. Microsoft Edge) through the use of proprietary code as this would add a significant overhead to development in terms of the complexity of the finished product.
 
 
 \subsubsection{HTML}
@@ -290,16 +351,56 @@ The users were asked to complete a very short multiple choice questionnaire whic
 
 \section{User interface}
 
+Creating the user interface for Solar System Explorer was a 4 stage process. Firstly evaluating the conventions of the genre to ensure that the very first gameplay requirement (GPNFR001) was met, secondly considering general web, graphic design and usabilty conventions and thirdly considering the aesthetic of the inteface given the subject material in question. These findings were then integrated into the final user interface delivered as part of the product.
+
 \subsection{Incremental game conventions}
+
+Whilst multiple games were reviewed from lengthy listings at websites such as Kongregate and Clicker Games, this report will simply summarise a few examples of the findings.
+
+\subsubsection{Wireframe layouts}
+
+\subsubsection{Representation of figures}
+
+\subsubsection{Typographic elements}
+
+\subsubsection{Art style}
 
 \subsection{General UI conventions}
 
+\subsubsection{Pointer behaviour and signposting interactivity}
+
+\subsubsection{Typographic elements}
+
+\subsubsection{Use of colour}
+
 \subsection{Aesthetic}
+
+\subsection{Solar System Explorer UI design process}
 
 
 \section{Project management}
 
-Tools, time management, meetings.
+\subsection{Software development lifecycle}
+At the very initial stages of the project, when assembling the proposal document, it was noted that game development did not typically follow one of the many formal software development lifecycles (SDLCs) in any strict sense \cite{ramadan_game_2013}. In fact a systematic review published in the Journal of Software Engineering Research and Development found that there was a very poor understanding of the process of game development outside of the 'production phase' (typically referred to as implementation in other SDLCs).
+
+In the case of Solar System Explorer an iterative, incremental approach was taken, with small scale deliverables developed as individual tasks on a day-to-day basis in the style of Agile methodologies.
+
+An overall aspirational goal was set at the initiation of the project as to what the final product may look like and how it may function, with a fallback position if this proved to be too time consuming or complex to produce in the time given. Certain aspects of the product were developed in short bursts, switching between themed streams e.g. Developing a method to dynamically add listeners and event handlers to interface objects for one half day, followed by a further half day creating graphical assets for the user interface.
+
+
+\subsection{Tools}
+A simple set of tasks were stored as a spreadsheet on Google Sheets which allowed for portability and easy annotation. Google Calendar was used to keep track of deadlines, meetings and advisory lectures as well as setting alerts and notifications for said events. Version control for the software itself was implemented using a local git repository which was pushed to the remote repository provided by the school. This was managed through the graphical user interface in the Adobe Dreamweaver integrated development environment (IDE) which was also used as the main editing environment to produce code for the project.
+
+\subsection{Meetings}
+Accomodation was made for a weekly meeting with the project supervisor to discuss progress and address any concerns. These would typically last in the region of between 1-2 
+hours. These were extremely useful as they allowed for a regular flow of information and provided a motivating factor to achieve a notable level of progress on a weekly basis.
+
+\subsection{Review}
+Given that the project resulted in delivery of a product that meets at least the fallback specification then the project management methods would seem to have been generally appropriate in this case. However there was definitely potential for further development of professional practice, for instance there was an over-reliance on documentation through the use of mandated logging which, whilst useful as a summary review of weekly progress, failed to provide a particularly useful tool for the weeks that followed. Completing a simple pro-forma on a daily basis would possibly have resulted in a better measure of progress. Also, a productivity tool that provided better tracking of dates or similar would have been useful in place of the spreadsheet for tracking tasks, be that a free web based application such as Trello or a formal office application like Microsoft Project.
+
+On a project of this size, with only a single developer and a relatively short deadline, it can be quite difficult to appropriately allocate time to administrative and management tasks without either becoming overly bureaucratic and negatively impacting on the production schedule, or ignoring project management tasks to focus solely on implementation. Putting aside a regular slot of 3 hours on a Friday afternoon meant that there was a strict yet simple rule to follow. This also meant that there was a mandatory 'cool down' period at the end of the week in an effort to maintain a standard production schedule, giving time to reflect and step back to gain a broader perspective on the direction of the project.
+
+
 
 
 

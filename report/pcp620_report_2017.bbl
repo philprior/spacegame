@@ -79,51 +79,6 @@
       \verb https://blogs.adobe.com/conversations/2017/07/adobe-flash-update.html
       \endverb
     \endentry
-    \entry{aleem_game_2016}{article}{}
-      \name{author}{3}{}{%
-        {{hash=0f3bc3f28ee91ba07d4307998a8fd415}{%
-           family={Aleem},
-           familyi={A\bibinitperiod},
-           given={Saiqa},
-           giveni={S\bibinitperiod}}}%
-        {{hash=3e61f1aed97e0b91a63df42718174878}{%
-           family={Capretz},
-           familyi={C\bibinitperiod},
-           given={Luiz\bibnamedelima Fernando},
-           giveni={L\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=d869b39b386420dad9f90f78aee9c86c}{%
-           family={Ahmed},
-           familyi={A\bibinitperiod},
-           given={Faheem},
-           giveni={F\bibinitperiod}}}%
-      }
-      \strng{namehash}{9666e1ee2524450d1a279ac6b5481a22}
-      \strng{fullhash}{9666e1ee2524450d1a279ac6b5481a22}
-      \strng{authornamehash}{9666e1ee2524450d1a279ac6b5481a22}
-      \strng{authorfullhash}{9666e1ee2524450d1a279ac6b5481a22}
-      \field{sortinit}{A}
-      \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Software game is a kind of application that is used not only for entertainment, but also for serious purposes that can be applicable to different domains such as education, business, and health care. Multidisciplinary nature of the game development processes that combine sound, art, control systems, artificial intelligence ({AI}), and human factors, makes the software game development practice different from traditional software development. However, the underline software engineering techniques help game development to achieve maintainability, flexibility, lower effort and cost, and better design. The purpose of this study is to assesses the state of the art research on the game development software engineering process and highlight areas that need further consideration by researchers. In the study, we used a systematic literature review methodology based on well-known digital libraries. The largest number of studies have been reported in the production phase of the game development software engineering process life cycle, followed by the pre-production phase. By contrast, the post-production phase has received much less research activity than the pre-production and production phases. The results of this study suggest that the game development software engineering process has many aspects that need further attention from researchers; that especially includes the postproduction phase.}
-      \field{issn}{2195-1721}
-      \field{journaltitle}{Journal of Software Engineering Research and Development}
-      \field{number}{1}
-      \field{shortjournal}{Journal of Software Engineering Research and Development}
-      \field{title}{Game development software engineering process life cycle: a systematic review}
-      \field{volume}{4}
-      \field{year}{2016}
-      \field{dateera}{ce}
-      \field{pages}{6}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1186/s40411-016-0032-7
-      \endverb
-      \verb{url}
-      \verb http://dx.doi.org/10.1186/s40411-016-0032-7
-      \endverb
-      \keyw{Development software engineerong proces,Online game,Software Game,Systematic review,Video game}
-    \endentry
     \entry{alters_perspective:_2002}{article}{}
       \name{author}{2}{}{%
         {{hash=3b6ced30fa4246c84a7d31a5b1975f1a}{%
@@ -265,6 +220,56 @@
       \field{dateera}{ce}
       \keyw{Computers / Computer Science}
     \endentry
+    \entry{clarke_why_2017}{article}{}
+      \name{author}{3}{}{%
+        {{hash=847428be47c458ad1450e8633c1f0bed}{%
+           family={Clarke},
+           familyi={C\bibinitperiod},
+           given={Rachel\bibnamedelima Ivy},
+           giveni={R\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=07cd90874ca098c4dc00041b4a23ea1c}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Jin\bibnamedelima Ha},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=c4bf0041a97cc85475464abdca3909eb}{%
+           family={Clark},
+           familyi={C\bibinitperiod},
+           given={Neils},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{0883f4a58dc45c34af3e9b00e1f30629}
+      \strng{fullhash}{0883f4a58dc45c34af3e9b00e1f30629}
+      \strng{authornamehash}{0883f4a58dc45c34af3e9b00e1f30629}
+      \strng{authorfullhash}{0883f4a58dc45c34af3e9b00e1f30629}
+      \field{sortinit}{C}
+      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{day}{6}
+      \field{issn}{1555-4120, 1555-4139}
+      \field{journaltitle}{Games and Culture}
+      \field{langid}{english}
+      \field{month}{7}
+      \field{number}{5}
+      \field{shorttitle}{Why Video Game Genres Fail}
+      \field{title}{Why Video Game Genres Fail: A Classificatory Analysis}
+      \field{urlday}{10}
+      \field{urlmonth}{9}
+      \field{urlyear}{2017}
+      \field{volume}{12}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{445\bibrangedash 465}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1177/1555412015591900
+      \endverb
+      \verb{url}
+      \verb http://journals.sagepub.com/doi/10.1177/1555412015591900
+      \endverb
+    \endentry
     \entry{decker_six_2017}{online}{}
       \name{author}{1}{}{%
         {{hash=7b6f04e1e876fbadbb03f0184aaf4583}{%
@@ -398,6 +403,68 @@
       \verb https://getbootstrap.com/docs/4.0/getting-started/introduction/
       \endverb
     \endentry
+    \entry{gunn_taxonomy_2009}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=2fc88875e39354f01f59d1de09054efb}{%
+           family={Gunn},
+           familyi={G\bibinitperiod},
+           given={E.\bibnamedelimi A.\bibnamedelimi A.},
+           giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=1203891c4a824604198d6a750d048087}{%
+           family={Craenen},
+           familyi={C\bibinitperiod},
+           given={B.\bibnamedelimi G.\bibnamedelimi W.},
+           giveni={B\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=79ba8500c1f41b05c7749d2204b3b90e}{%
+           family={Hart},
+           familyi={H\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{943feaa5751b3876d40d4f7329ed6f13}
+      \strng{fullhash}{943feaa5751b3876d40d4f7329ed6f13}
+      \strng{authornamehash}{943feaa5751b3876d40d4f7329ed6f13}
+      \strng{authorfullhash}{943feaa5751b3876d40d4f7329ed6f13}
+      \field{sortinit}{G}
+      \field{sortinithash}{618d986594b7198ba52cf8b00d348f3f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{AI} and Games Symposium}
+      \field{title}{A taxonomy of video games and {AI}}
+      \field{year}{2009}
+      \field{dateera}{ce}
+      \verb{url}
+      \verb http://www.academia.edu/download/30890403/10.1.1.160.5134.pdf#page=5
+      \endverb
+    \endentry
+    \entry{hollands_spaceplan_2017}{software}{}
+      \name{author}{1}{}{%
+        {{hash=1957a23d3c391cb24cf6abfef918f36e}{%
+           family={Hollands},
+           familyi={H\bibinitperiod},
+           given={Jake},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{1957a23d3c391cb24cf6abfef918f36e}
+      \strng{fullhash}{1957a23d3c391cb24cf6abfef918f36e}
+      \strng{authornamehash}{1957a23d3c391cb24cf6abfef918f36e}
+      \strng{authorfullhash}{1957a23d3c391cb24cf6abfef918f36e}
+      \field{sortinit}{H}
+      \field{sortinithash}{2f664b453ec75da1fe3804ca92633405}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{SPACEPLAN}}
+      \field{urlday}{30}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{version}{Prototype}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://jhollands.co.uk/spaceplan/
+      \endverb
+    \endentry
     \entry{king_numbers_2015}{online}{}
       \name{author}{1}{}{%
         {{hash=cdd91a9889b84ebe058f315fb917e134}{%
@@ -477,6 +544,32 @@
       \verb http://www-history.mcs.st-andrews.ac.uk/Biographies/Bruns.html
       \endverb
     \endentry
+    \entry{ortiel_cookie_2017}{software}{}
+      \name{author}{1}{}{%
+        {{hash=0f580bbe782be702412dd118316d4acf}{%
+           family={{Ortiel}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{0f580bbe782be702412dd118316d4acf}
+      \strng{fullhash}{0f580bbe782be702412dd118316d4acf}
+      \strng{authornamehash}{0f580bbe782be702412dd118316d4acf}
+      \strng{authorfullhash}{0f580bbe782be702412dd118316d4acf}
+      \field{sortinit}{O}
+      \field{sortinithash}{f5d80ef71b5b58852663ecfd775b175a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Cookie Clicker}
+      \field{urlday}{1}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{version}{2.0042}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://orteil.dashnet.org/cookieclicker/
+      \endverb
+    \endentry
     \entry{pawlak_jsweet:_????}{online}{}
       \name{author}{1}{}{%
         {{hash=9882e72c96831c048867bf483f5f1fb2}{%
@@ -507,6 +600,194 @@
       \verb{url}
       \verb http://www.jsweet.org/
       \endverb
+    \endentry
+    \entry{ramadan_game_2013}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=d3e55d8376513bded636c49c2cc985ff}{%
+           family={Ramadan},
+           familyi={R\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=5be0c89c4a33fdbf8d05624f31eb0f7a}{%
+           family={Widyani},
+           familyi={W\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{0f10bac9300725aff48f1a643a92021f}
+      \strng{fullhash}{0f10bac9300725aff48f1a643a92021f}
+      \strng{authornamehash}{0f10bac9300725aff48f1a643a92021f}
+      \strng{authorfullhash}{0f10bac9300725aff48f1a643a92021f}
+      \field{sortinit}{R}
+      \field{sortinithash}{c15bc8eb6936bc6b3c8baa9e8575af53}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Game is a kind of software with goal to provide entertainment. However, during the real game development practice, simply adopting the software development life cycle ({SDLC}) is not enough, as the developers face several challenges during its life cycle. To address the problem, game development uses a kind of specific approach called game development life cycle ({GDLC}) to direct the game development. However, none of the existing {GDLCs} explicitly address how to successfully deliver a good quality game. This paper presents a new game development life cycle model and guidelines to successfully deliver a good quality game. Several quality criterias are explicitly considered at each phase.}
+      \field{booktitle}{2013 International Conference on Advanced Computer Science and Information Systems ({ICACSIS})}
+      \field{month}{9}
+      \field{title}{Game development life cycle guidelines}
+      \field{year}{2013}
+      \field{dateera}{ce}
+      \field{pages}{95\bibrangedash 100}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ICACSIS.2013.6761558
+      \endverb
+      \keyw{Art,computer games,entertainment,game development life cycle guidelines,Games,{GDLC},Guidelines,Production,Prototypes,quality criterias,{SDLC},Software,software development life cycle,software quality,Testing}
+    \endentry
+    \entry{squad_kerbal_2015}{software}{}
+      \name{author}{1}{}{%
+        {{hash=5c7d6a353fd951a31ea16999f68e4000}{%
+           family={{Squad}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{5c7d6a353fd951a31ea16999f68e4000}
+      \strng{fullhash}{5c7d6a353fd951a31ea16999f68e4000}
+      \strng{authornamehash}{5c7d6a353fd951a31ea16999f68e4000}
+      \strng{authorfullhash}{5c7d6a353fd951a31ea16999f68e4000}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{{KSP} is a game where the players create and manage their own space program. Build spacecraft, fly them, and try to help the Kerbals to fulfill their ultimate mission of conquering space.}
+      \field{day}{27}
+      \field{month}{7}
+      \field{title}{Kerbal Space Program}
+      \field{urlday}{10}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{version}{1.0}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\P\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\2wh3fxzf.default\\zotero\\storage\\S4VEA4XS\\en.html:text/html
+      \endverb
+      \verb{url}
+      \verb https://kerbalspaceprogram.com/en/
+      \endverb
+    \endentry
+    \entry{sweetser_gameflow_2012}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=ca866e0267155dac149cf93b44f85345}{%
+           family={Sweetser},
+           familyi={S\bibinitperiod},
+           given={Penelope},
+           giveni={P\bibinitperiod}}}%
+        {{hash=2fc43e3d0810d31ef1843085ed53cdaa}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=af7cb0b8b767952e55cd3fa61f5c8ee7}{%
+           family={Wyeth},
+           familyi={W\bibinitperiod},
+           given={Peta},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e39295e3641e6be3f80eded1bcd122a8}{%
+           family={Ozdowska},
+           familyi={O\bibinitperiod},
+           given={Anne},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, {NY}, {USA}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{7bcaaff885a46d25cf67290dfc0a2430}
+      \strng{fullhash}{b20f43e619b508ee794f4680e0b9bee3}
+      \strng{authornamehash}{7bcaaff885a46d25cf67290dfc0a2430}
+      \strng{authorfullhash}{b20f43e619b508ee794f4680e0b9bee3}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The {GameFlow} model strives to be a general model of player enjoyment, applicable to all game genres and platforms. Derived from a general set of heuristics for creating enjoyable player experiences, the {GameFlow} model has been widely used in evaluating many types of games, as well as non-game applications. However, we recognize that more specific, low-level, and implementable criteria are potentially more useful for designing and evaluating video games. Consequently, the research reported in this paper aims to provide detailed heuristics for designing and evaluating one specific game genre, real-time strategy games. In order to develop these heuristics, we conducted a grounded theoretical analysis on a set of professional game reviews and structured the resulting heuristics using the {GameFlow} model. The resulting 165 heuristics for designing and evaluating real-time strategy games are presented and discussed in this paper.}
+      \field{booktitle}{Proceedings of The 8th Australasian Conference on Interactive Entertainment: Playing the System}
+      \field{isbn}{978-1-4503-1410-7}
+      \field{series}{{IE} '12}
+      \field{title}{{GameFlow} Heuristics for Designing and Evaluating Real-time Strategy Games}
+      \field{urlday}{12}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1:1\bibrangedash 1:10}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1145/2336727.2336728
+      \endverb
+      \verb{url}
+      \verb http://doi.acm.org/10.1145/2336727.2336728
+      \endverb
+      \keyw{enjoyment,evaluation,flow,game design,Games,heuristics,model}
+    \endentry
+    \entry{sweetser_gameflow_2017}{article}{}
+      \name{author}{6}{}{%
+        {{hash=ca866e0267155dac149cf93b44f85345}{%
+           family={Sweetser},
+           familyi={S\bibinitperiod},
+           given={Penelope},
+           giveni={P\bibinitperiod}}}%
+        {{hash=2fc43e3d0810d31ef1843085ed53cdaa}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=af7cb0b8b767952e55cd3fa61f5c8ee7}{%
+           family={Wyeth},
+           familyi={W\bibinitperiod},
+           given={Peta},
+           giveni={P\bibinitperiod}}}%
+        {{hash=fcf3288df5e8c4d1ae868320fb927d9d}{%
+           family={Anwar},
+           familyi={A\bibinitperiod},
+           given={Aiman},
+           giveni={A\bibinitperiod}}}%
+        {{hash=4100a48166cfccfb0e463647ee6f01bf}{%
+           family={Meng},
+           familyi={M\bibinitperiod},
+           given={Yan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e39295e3641e6be3f80eded1bcd122a8}{%
+           family={Ozdowska},
+           familyi={O\bibinitperiod},
+           given={Anne},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7bcaaff885a46d25cf67290dfc0a2430}
+      \strng{fullhash}{25525ae303cc13b4cd60a3ea8d465b1b}
+      \strng{authornamehash}{7bcaaff885a46d25cf67290dfc0a2430}
+      \strng{authorfullhash}{25525ae303cc13b4cd60a3ea8d465b1b}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The {GameFlow} model strives to be a general model of player enjoyment, applicable to all game genres and platforms. Derived from a general set of heuristics for creating enjoyable player experiences, the {GameFlow} model has been widely used in evaluating many types of games, as well as non-game applications. Initial applications of the {GameFlow} model were limited to real-time strategy games. However, in order to be considered a general model of player enjoyment in games, the {GameFlow} model needs to be applied to a more varied set of play experiences. In this article, we revisit the design of the {GameFlow} model, review the various applications and derivative models, and discuss on-going analysis of the model. Subsequently, we describe a study that aims to extend the initial validation of the {GameFlow} model to incorporate additional game types. We report the results of expert reviews conducted using the {GameFlow} criteria to evaluate first person shooter games on Sony {PlayStation} 3 and adventure games on Apple {iPhone}. Our findings provide insight into the manifestation of the {GameFlow} elements in these types of games and also highlight some of the genre-specific considerations in the application of the {GameFlow} model. Key issues are raised and discussed in relation to immersion, social interaction, and multiplayer games.}
+      \field{issn}{1544-3574}
+      \field{journaltitle}{Comput. Entertain.}
+      \field{month}{4}
+      \field{number}{3}
+      \field{title}{{GameFlow} in Different Game Genres and Platforms}
+      \field{urlday}{12}
+      \field{urlmonth}{7}
+      \field{urlyear}{2017}
+      \field{volume}{15}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1:1\bibrangedash 1:24}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1145/3034780
+      \endverb
+      \verb{url}
+      \verb http://doi.acm.org/10.1145/3034780
+      \endverb
+      \keyw{enjoyment,evaluation,flow,game design,Games,heuristics,model}
     \endentry
     \entry{the_world_wide_web_consortium_w3c_html5_2014}{online}{}
       \name{author}{1}{}{%
