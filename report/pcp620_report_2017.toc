@@ -52,46 +52,46 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Representation of figures}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Typographic elements}{22}
+\contentsline {subsubsection}{Placement of typographic elements}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Art style}{22}
+\contentsline {subsubsection}{Art style}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}General UI conventions}{22}
+\contentsline {subsection}{\numberline {5.2}General UI conventions}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Pointer behaviour and signposting interactivity}{22}
+\contentsline {subsubsection}{Pointer behaviour and signposting interactivity}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Typographic elements}{22}
+\contentsline {subsubsection}{Typographic elements}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Use of colour}{22}
+\contentsline {subsubsection}{Use of colour}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Aesthetic}{22}
+\contentsline {subsection}{\numberline {5.3}Aesthetic}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}Solar System Explorer UI design process}{22}
+\contentsline {subsection}{\numberline {5.4}Solar System Explorer UI design process}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Project management}{22}
+\contentsline {section}{\numberline {6}Project management}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Software development lifecycle}{22}
+\contentsline {subsection}{\numberline {6.1}Software development lifecycle}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Tools}{23}
+\contentsline {subsection}{\numberline {6.2}Tools}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Meetings}{23}
+\contentsline {subsection}{\numberline {6.3}Meetings}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Review}{23}
+\contentsline {subsection}{\numberline {6.4}Review}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Results and evaluation}{24}
+\contentsline {section}{\numberline {7}Results and evaluation}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Discussion}{24}
+\contentsline {section}{\numberline {8}Discussion}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Conclusion}{24}
+\contentsline {section}{\numberline {9}Conclusion}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{References}{24}
+\contentsline {section}{References}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{29}
+\contentsline {chapter}{Appendices}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Image asset licences}{29}
+\contentsline {section}{\numberline {1}Image asset licences}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}{29}
+\contentsline {subsection}{\numberline {1.1}NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{29}
+\contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Framework licence - three.js}{30}
+\contentsline {section}{\numberline {2}Framework licence - three.js}{31}

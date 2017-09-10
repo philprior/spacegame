@@ -465,6 +465,63 @@
       \verb http://jhollands.co.uk/spaceplan/
       \endverb
     \endentry
+    \entry{inostroza_usability_2012}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=df0c9a4458a4ca141987fe9b75313095}{%
+           family={Inostroza},
+           familyi={I\bibinitperiod},
+           given={Rodolfo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=24fc1bbb81d15aec5ab80ccf7130f750}{%
+           family={Rusu},
+           familyi={R\bibinitperiod},
+           given={Cristian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=1f0092035340f7c5337d409fb9c46102}{%
+           family={Roncagliolo},
+           familyi={R\bibinitperiod},
+           given={Silvana},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a39151ae03b2a25955088d4ee8760d92}{%
+           family={Jimenez},
+           familyi={J\bibinitperiod},
+           given={Cristhy},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a3ca6304910965ca18dee66981b91c89}{%
+           family={Rusu},
+           familyi={R\bibinitperiod},
+           given={Virginica},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{e5a812ebf4267631f6d88ccd2a64c84d}
+      \strng{fullhash}{2ec6647b7e6578a4525ccef1ef172326}
+      \strng{authornamehash}{e5a812ebf4267631f6d88ccd2a64c84d}
+      \strng{authorfullhash}{2ec6647b7e6578a4525ccef1ef172326}
+      \field{sortinit}{I}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-1-4673-0798-7 978-0-7695-4654-4}
+      \field{month}{4}
+      \field{title}{Usability Heuristics for Touchscreen-based Mobile Devices}
+      \field{urlday}{10}
+      \field{urlmonth}{9}
+      \field{urlyear}{2017}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{662\bibrangedash 667}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/ITNG.2012.134
+      \endverb
+      \verb{url}
+      \verb http://ieeexplore.ieee.org/document/6209242/
+      \endverb
+    \endentry
     \entry{king_numbers_2015}{online}{}
       \name{author}{1}{}{%
         {{hash=cdd91a9889b84ebe058f315fb917e134}{%
@@ -512,6 +569,44 @@
       \field{urldateera}{ce}
       \verb{url}
       \verb http://tvtropes.org/pmwiki/pmwiki.php/Main/MohsScaleOfScienceFictionHardness
+      \endverb
+    \endentry
+    \entry{norman_affordance_1999}{article}{}
+      \name{author}{1}{}{%
+        {{hash=c64c2a2e6b8d777b2f131deba107c777}{%
+           family={Norman},
+           familyi={N\bibinitperiod},
+           given={Donald\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{c64c2a2e6b8d777b2f131deba107c777}
+      \strng{fullhash}{c64c2a2e6b8d777b2f131deba107c777}
+      \strng{authornamehash}{c64c2a2e6b8d777b2f131deba107c777}
+      \strng{authorfullhash}{c64c2a2e6b8d777b2f131deba107c777}
+      \field{sortinit}{N}
+      \field{sortinithash}{1163c28585427c673ad5a010cbf82f52}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{issn}{10725520}
+      \field{journaltitle}{interactions}
+      \field{month}{5}
+      \field{number}{3}
+      \field{title}{Affordance, conventions, and design}
+      \field{urlday}{10}
+      \field{urlmonth}{9}
+      \field{urlyear}{2017}
+      \field{volume}{6}
+      \field{year}{1999}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{38\bibrangedash 43}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/301153.301168
+      \endverb
+      \verb{url}
+      \verb http://portal.acm.org/citation.cfm?doid=301153.301168
       \endverb
     \endentry
     \entry{oconnor_bruns_????}{online}{}
