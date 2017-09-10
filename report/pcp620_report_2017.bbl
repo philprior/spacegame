@@ -582,7 +582,7 @@
       \field{edition}{First Edition}
       \field{isbn}{978-1-61689-170-1}
       \field{pagetotal}{208}
-      \field{series}{Design briefs-essential texts on design}
+      \field{series}{Design briefs - essential texts on design}
       \field{shorttitle}{Type on screen}
       \field{title}{Type on screen: a guide for designers, developers, writers, and students}
       \field{year}{2014}
@@ -761,6 +761,36 @@
       \verb 10.1109/ICACSIS.2013.6761558
       \endverb
       \keyw{Art,computer games,entertainment,game development life cycle guidelines,Games,{GDLC},Guidelines,Production,Prototypes,quality criterias,{SDLC},Software,software development life cycle,software quality,Testing}
+    \endentry
+    \entry{sinclair_man_2016}{online}{}
+      \name{author}{1}{}{%
+        {{hash=53a0dd3cb2a38b93ae7266a86a8337c3}{%
+           family={Sinclair},
+           familyi={S\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{53a0dd3cb2a38b93ae7266a86a8337c3}
+      \strng{fullhash}{53a0dd3cb2a38b93ae7266a86a8337c3}
+      \strng{authornamehash}{53a0dd3cb2a38b93ae7266a86a8337c3}
+      \strng{authorfullhash}{53a0dd3cb2a38b93ae7266a86a8337c3}
+      \field{sortinit}{S}
+      \field{sortinithash}{3c1547c63380458f8ca90e40ed14b83e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{16}
+      \field{month}{3}
+      \field{title}{The man who drew the future}
+      \field{titleaddon}{Creative Review}
+      \field{urlday}{20}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://www.creativereview.co.uk/harry-lange-the-man-who-drew-the-future/
+      \endverb
     \endentry
     \entry{squad_kerbal_2015}{software}{}
       \name{author}{1}{}{%
@@ -1004,7 +1034,6 @@
       \endverb
     \endentry
   \endsortlist
-  \missing{sinclair_harry_2016}
 \endrefsection
 \endinput
 

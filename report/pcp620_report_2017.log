@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.22)  10 SEP 2017 20:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.22)  10 SEP 2017 20:34
 entering extended mode
 **./pcp620_report_2017.tex
 (pcp620_report_2017.tex
@@ -406,43 +406,35 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'pcp620_report_2017.bbl' found.
 
-(pcp620_report_2017.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                sinclair_harry_2016
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+(pcp620_report_2017.bbl)
 Package biblatex Info: Reference section=0 on input line 28.
 Package biblatex Info: Reference segment=0 on input line 28.
 \c@lstlisting=\count294
  <crest.png, id=1, 341.275pt x 341.275pt>
 File: crest.png Graphic file (type png)
- <use crest.png>
+
+<use crest.png>
 Package pdftex.def Info: crest.png used on input line 29.
 (pdftex.def)             Requested size: 85.35498pt x 85.35498pt.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 29.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 29.
- [1
+
+[1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./crest.png>] [2
 
-] (pcp620_report_2017.toc
+]
+(pcp620_report_2017.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 3.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [3
 
@@ -457,16 +449,16 @@ Missing character: There is no ú in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
- [5
 
-]
-[6
+[5
+
+] [6
 
 ] [7] [8] [9] [10] [11]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 160.
- [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
-[22] [23] [24] [25] [26]
+ [12] [13] [14] [15] [16] [17] [18] [19] [20]
+[21] [22] [23] [24] [25] [26]
 Overfull \hbox (44.73544pt too wide) in paragraph at lines 449--449
 []\OT1/cmr/m/n/10 Heather Maxwell Chan-dler. \OT1/cmr/m/it/10 The Game Pro-duc-
 tion Hand-book\OT1/cmr/m/n/10 . Google-Books-ID: laiOw5WkdEcC.
@@ -483,6 +475,7 @@ Package biblatex Warning: No driver for entry type 'software'.
 Package biblatex Warning: No driver for entry type 'software'.
 (biblatex)                Using fallback driver on input line 448.
 
+[28]
 
 Package biblatex Warning: No driver for entry type 'software'.
 (biblatex)                Using fallback driver on input line 448.
@@ -494,7 +487,7 @@ Overfull \hbox (35.5896pt too wide) in paragraph at lines 449--449
 t/m/n/10 https : / / kerbalspaceprogram .
  []
 
-[28]
+
 Overfull \hbox (3.18092pt too wide) in paragraph at lines 449--449
 \OT1/cmr/m/it/10 Com-put. En-ter-tain. \OT1/cmr/m/n/10 15.3 (Apr. 2017), 1:1{1:
 24. \OT1/cmr/m/sc/10 issn\OT1/cmr/m/n/10 : 1544-3574. \OT1/cmr/m/sc/10 doi\OT1/
@@ -549,10 +542,10 @@ Package logreq Info: Writing requests to 'pcp620_report_2017.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 9667 strings out of 493323
- 164986 string characters out of 3139078
- 702051 words of memory out of 3000000
- 13110 multiletter control sequences out of 15000+200000
+ 9666 strings out of 493323
+ 165022 string characters out of 3139078
+ 702018 words of memory out of 3000000
+ 13109 multiletter control sequences out of 15000+200000
  9004 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,5n,45p,1618b,1170s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -566,7 +559,7 @@ e1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 s/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
 10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on pcp620_report_2017.pdf (33 pages, 272916 bytes).
+Output written on pcp620_report_2017.pdf (33 pages, 272636 bytes).
 PDF statistics:
  154 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
