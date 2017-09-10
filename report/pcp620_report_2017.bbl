@@ -557,6 +557,38 @@
       \verb https://gamedevelopment.tutsplus.com/articles/numbers-getting-bigger-what-are-incremental-games-and-why-are-they-fun--cms-23925
       \endverb
     \endentry
+    \entry{lupton_type_2014}{collection}{}
+      \name{editor}{1}{}{%
+        {{hash=fd84052390982321de521bf7f03d9aed}{%
+           family={Lupton},
+           familyi={L\bibinitperiod},
+           given={Ellen},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Princeton Architectural Press}%
+      }
+      \strng{namehash}{fd84052390982321de521bf7f03d9aed}
+      \strng{fullhash}{fd84052390982321de521bf7f03d9aed}
+      \strng{editornamehash}{fd84052390982321de521bf7f03d9aed}
+      \strng{editorfullhash}{fd84052390982321de521bf7f03d9aed}
+      \field{sortinit}{L}
+      \field{sortinithash}{7bba64db83423e3c29ad597f3b682cf3}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{shorttitle}
+      \field{edition}{First Edition}
+      \field{isbn}{978-1-61689-170-1}
+      \field{pagetotal}{208}
+      \field{series}{Design briefs-essential texts on design}
+      \field{shorttitle}{Type on screen}
+      \field{title}{Type on screen: a guide for designers, developers, writers, and students}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \keyw{Digital media,Graphic design (Typography)}
+    \endentry
     \entry{_mohs_????}{online}{}
       \field{sortinit}{M}
       \field{sortinithash}{c26a05ef03e4429073ed5c825140fac3}
@@ -972,6 +1004,7 @@
       \endverb
     \endentry
   \endsortlist
+  \missing{sinclair_harry_2016}
 \endrefsection
 \endinput
 

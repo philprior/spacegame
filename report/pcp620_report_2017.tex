@@ -3,7 +3,7 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{appendix}
-\usepackage{biblatex}
+\usepackage[backend=biber]{biblatex}
 \usepackage{listings}
 
 \bibliography{pcp620_report_2017.bib}
@@ -216,7 +216,7 @@ A number of different JavaScript libraries which provide interfaces to simplify 
 
 \subsection{Architecture}
 
-The architecture chosen was a simple client-server model, with a one off delivery of all code to the client machine at the time of the initial HyperText Transfer Protocol (HTTP) GET request to the game's Uniform Resource Locator (URL). There was no need for extended communication between the client and server beyond this point as there was no need for access to server hosted information, all game logic and data is included in the Javascript source file. In fact any such requirement would introduce needless complexity and performance restrictions. This does make the game simple to 'hack' but, given that there are no negative risks involved in someone accessing the source code, this is of no concern.
+The architecture chosen was a simple client-server model, with a one off delivery of all code to the client machine at the time of the initial HyperText Transfer Protocol (HTTP) GET request to the game's Uniform Resource Locator (URL). There was no need for extended communication between the client and server beyond this point as there was no need for access to server hosted information. All game logic and data is included in the Javascript source file. In fact any such requirement would introduce needless complexity and performance restrictions. This does make the game simple to 'hack' but, given that there are no negative risks involved in someone accessing the source code, no highscore tables and no multiplayer element, this is of no concern.
 
 JavaScript is typically included as a single file, rather than broken down into individually localised code blocks in separate files. This is to save on request overheads and reduce server load as each HTML page, once parsed, triggers a number of asset requests for any content referred to in the file. Most usually these requests are for one or more CSS files, any embedded images and any embedded scripts. Each individual request has to travel to the server and wait in a queue to be picked up by a worker thread in the server software, thus adding more wait time until the page is ready to be fully rendered on the client. Serving the JavaScript as a single file where possible minimises this delay.
 
@@ -241,7 +241,7 @@ The UpgradeEvents are a set of objects which are continuously checked for pre-re
 
 The Anchor, Orbit and StellarObject classes are used to generate the visual display of the solar system in the 3-dimensional canvas element.
 
-An anchor is a common feature in any system of 3D representation, sometimes referred to as null objects. They simply represent a point in the space with an x,y and z coordinate and values for rotation about the axes. This is most often used as a simple reference by which to parent other objects or as a 'control point' in kinematic animation systems.
+An anchor is a common feature in any system of 3D representation, sometimes referred to as null objects. They are a reference to a point in the 3D space with an x,y and z coordinate and values for rotation about the axes. These are most often used as positional references by which to parent other objects or act as 'control points' in kinematic animation systems.
 
 The Orbit class takes data common to the scientific description of an orbit about a point (e.g. radius, eccentricity, period, etc.), stores those properties in a manner most useful for further calculation and display (e.g. converting input angles given in degrees to radians, automatically calculating the aphelion and perihelion values) and provides an update method which allows for animation of an object around the orbit by incrementing a theta value. This update method includes rotational transformation in 3D space and is discussed in futher detail in the next subsection.
 
@@ -355,13 +355,13 @@ Creating the user interface for Solar System Explorer was a 4 stage process. Fir
 
 \subsection{Incremental game conventions}
 
-Whilst multiple games were reviewed from lengthy listings at websites such as Kongregate and Clicker Games, this report will simply summarise a few examples of the findings.
+Whilst multiple games were reviewed from lengthy listings at websites such as Kongregate and Clicker Games, this report will simply summarise a few examples of the findings and how they were used.
 
 \subsubsection{Wireframe layouts}
 
 Most incremental games are designed with a single page layout, a few included pop-up, pop out or tab style menus, but largely the convention of the genre is to encapsulate the entire game in a single screen. With one or two notable exceptions the layout of the user interface is build on a grid system, similar to most print or text-based web design. This is understandable as the platform and the underlying expectations of its rendering capabilities are evolved from the presentation of documents.
 
-This means that most incremental game interfaces can be broken down into a wireframe of their grid and box layout.
+This means that most incremental game interfaces can be broken down into a wireframe of their grid and box layout. Following this convention made it possible to create a working product without having to spend an overtly long period trying to position elements on screen and also made it easier to create a responsive layout that changes in line with the viewport window of the web browser software.
 
 \subsubsection{Representation of figures}
 
@@ -377,7 +377,7 @@ Text is used to build context and explain the options available for increasing t
 
 \subsubsection{Art style}
 
-The two art styles most common in incremental games are cell-shaded cartoon animation style (this includes anime art) and 'pixel art' i.e. deliberately pixelated imagery simulating the low resolution graphics of computing in the 1970s and 80s.
+The two art styles most common in incremental games are cell-shaded cartoon animation style (this includes anime art) and 'pixel art' i.e. deliberately pixelated imagery simulating the low resolution graphics of computing in the 1970s and 80s. Solar System Explorer is definitely an outlier in the decision not to follow this genre convention, but given that a primary requirement is realistic visual representation then to do so would have been counter productive to the goals of the project.
 
 \subsection{General UI conventions}
 
@@ -387,9 +387,21 @@ It is commonly understood from years of design convention that changing the curs
 
 \subsubsection{Typographic elements}
 
-\subsubsection{Use of colour}
+Typography is an area that has recieved a lot of attention when it comes to display in a web browser, especially given the primary focus on delivering documents. There have been numerous studies and numerous debates amongst publishers, web designers and coders as to what is the most effective way to display text on screen for years.
+
+Some conventions are now well understood. Text should generally appear on screen as having a moderate size and weight, similar to that used in print design, utilise sans-serif typefaces and be displayed at an optimal columnar width for readability \cite{lupton_type_2014}. Solar System Explorer follows these conventions to a reasonable degree, implementing at least the most basic elements. Any short comings are reviewed in the discussion section of this report.
 
 \subsection{Aesthetic}
+
+Albeit that the game interface is a work of design, it still needed to convey a sense of appropriate aesthetic for the theme of space exploration. The field of science fiction is replete with imaginative interpretations of what space ships and space travel look like, from the baroque stylings of H.R. Geiger to the colour coded galaxy of Gene Roddenberry's Star Trek (created under the supervision of art director Matt Jefferies).
+
+None have been so influential as the artwork in Stanley Kubrick's 2001: A Space Odyssey, released in April 1968. Kubrick and art director John Hoesli were said to have been massively inspired by the artwork of  NASA illustrator Harry Lange \cite{sinclair_harry_2016} and indeed Lange ended up working on the film project alongside them.
+
+It is from Lange's work, which itself was rooted in providing a sense of realism to a work of fiction, that many conventions of the genre were born. White panels with black heat shielding, exposed sensor and radio arrays, designs that avoided the all too common conventions of 'WWII in space' and so on. In fact, even referring back to Geiger and Jeffries, you can see the lasting impact of Lange's vision in their work. 
+
+Lange's art reflected engineering practice and the similarities between his work and even modern endeavours in space exploration are remarkable. One of the films most lauded for its realism in recent years is 2015's The Martian, which again uses a palette and style which draws on actual technologies but also on those same artistic conventions for its speculative imagery. The rotating section of the Hermes drawing on the same principles of artificial gravitation as 2001's Space Station 5.
+
+Solar System Explorer borrows conventions from Lange's work in both its pallette and in the graphical flourishes that detail its user interface.
 
 \subsection{Solar System Explorer UI design process}
 
