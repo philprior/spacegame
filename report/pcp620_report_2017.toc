@@ -40,9 +40,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2}Example method - orbital rotation in 3D space}{18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Unit, prototype and integration testing}{21}
+\contentsline {subsection}{\numberline {4.3}Modelling the solar system using WebGL}{21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Acceptance testing}{21}
+\contentsline {subsection}{\numberline {4.4}Unit, prototype and integration testing}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.5}Acceptance testing}{22}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}User interface}{22}
 \defcounter {refsection}{0}\relax 
@@ -50,7 +52,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Wireframe layouts}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Representation of figures}{22}
+\contentsline {subsubsection}{Numeric formatting}{23}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Placement of typographic elements}{23}
 \defcounter {refsection}{0}\relax 
@@ -72,24 +74,24 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.2}Tools}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Meetings}{25}
+\contentsline {subsection}{\numberline {6.3}Meetings}{26}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.4}Review}{26}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {7}Results and evaluation}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Discussion}{26}
+\contentsline {section}{\numberline {8}Discussion}{28}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Conclusion}{26}
+\contentsline {section}{\numberline {9}Conclusion}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{References}{26}
+\contentsline {section}{References}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{31}
+\contentsline {chapter}{Appendices}{35}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Image asset licences}{31}
+\contentsline {section}{\numberline {1}Image asset licences}{35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}{31}
+\contentsline {subsection}{\numberline {1.1}NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}{35}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{31}
+\contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{35}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Framework licence - three.js}{32}
+\contentsline {section}{\numberline {2}Framework licence - three.js}{36}

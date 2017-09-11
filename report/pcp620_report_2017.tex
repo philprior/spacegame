@@ -95,7 +95,7 @@ The interface for the game is a 2-dimensional overlay on a 3-dimensional visuali
 The game starts with only the Earth visible and the overall goal of the game is to unlock access to view all of the planets in the solar system along with related scientific data. When all planets are unlocked, the player is rewarded with a special access code for a sequel game based on interstellar travel.
 
 \subsubsection{Fallback specification}
-Should there be inadequate time for delivery of the full specification above, the expected delivery will be a text based implementation of the game mechanics with a graphical representation of the solar system that serves as an aesthetic accompaniment to the core game.
+Should there have been inadequate time for delivery of the full specification above, the expected delivery should have been, at a minimum, a text based implementation of the game mechanics with a graphical representation of the solar system to serves as an aesthetic accompaniment.
 
 \subsection{Example requirements}
 Presented here is a short selection of functional and non-functional requirements, typical to this kind of software engineering project, that were elicited during the early phases of development of Solar System Explorer.
@@ -327,6 +327,10 @@ class Orbit {
 
 \newpage
 
+\subsection{Modelling the solar system using WebGL}
+
+
+
 
 \subsection{Unit, prototype and integration testing}
 
@@ -345,7 +349,7 @@ Integration tests were done using the traditional games development technique of
 
 \subsection{Acceptance testing}
 
-A body of 12 users volunteered to assist with acceptance testing. Given that the product has no clearly defined audience demographic, these were left to self select into participation by clicking a link that automatically appeared in the user-interface at the end of a play-through.
+A body of 13 users volunteered to assist with acceptance testing. Given that the product has no clearly defined audience demographic, these were left to self select into participation by clicking a link that automatically appeared in the user-interface at the end of a play-through.
 
 The users were asked to complete a very short multiple choice questionnaire which related specifically to the aspirational goals of the product. They were subsequently invited to leave free-form comments relating to both the product and to elaborate on their multiple choice answers. This was done via a Google Form which automatically added responses to a speadsheet and generated graphical reports demonstrating the results.
 
@@ -363,7 +367,7 @@ Most incremental games are designed with a single page layout, a few included po
 
 This means that most incremental game interfaces can be broken down into a wireframe of their grid and box layout. Following this convention made it possible to create a working product without having to spend an overtly long period trying to position elements on screen and also made it easier to create a responsive layout that changes in line with the viewport window of the web browser software.
 
-\subsubsection{Representation of figures}
+\subsubsection{Numeric formatting}
 
 The incrementing numerical values are commonly displayed in a localised format with numeric seperators (commas in the UK).
 
@@ -399,9 +403,9 @@ None have been so influential as the artwork in Stanley Kubrick's 2001: A Space 
 
 It is from Lange's work, which itself was rooted in providing a sense of realism to a work of fiction, that many conventions of the genre were born. White panels with black heat shielding, exposed sensor and radio arrays, designs that avoided the all too common conventions of 'WWII in space' and so on. In fact, even referring back to Geiger and Jeffries, you can see the lasting impact of Lange's vision in their work. 
 
-Lange's art reflected engineering practice and the similarities between his work and even modern endeavours in space exploration are remarkable. One of the films most lauded for its realism in recent years is 2015's The Martian, which again uses a palette and style which draws on actual technologies but also on those same artistic conventions for its speculative imagery. The rotating section of the Hermes drawing on the same principles of artificial gravitation as 2001's Space Station 5.
+Lange's art reflected engineering practice and the similarities between his work and even modern endeavours in space exploration are remarkable. One of the films most lauded for its realism in recent years is 2015's The Martian, which again uses a palette and style that draws on both actual technologies and on Lange's artistic conventions for its speculative imagery. The rotating section of the Hermes spacecraft modelled on the same principles of artificial gravitation as 2001's Space Station 5.
 
-Solar System Explorer borrows conventions from Lange's work in both its pallette and in the graphical flourishes that detail its user interface.
+In this implementation Solar System Explorer also borrows conventions from Lange's work in both its pallette and in the graphical flourishes that detail its user interface.
 
 \subsection{Solar System Explorer UI design process}
 
@@ -412,7 +416,6 @@ It was decided that the adoption of a widescreen style of presentation for the 3
 A common convention of the genre is to place interactive buttons on the far left and right of the screen. Solar System Explorer follows this model, but when showing the 'System View' which shows the position of the planets relative to the sun along with ellipses reprenting their orbits, these side bars retreat off screen.
 
 All 2D graphical elements were generated in Adobe Photoshop, saved locally and are included in the UI through the use of the CSS:background property.
-
 
 
 \section{Project management}
@@ -443,13 +446,61 @@ On a project of this size, with only a single developer and a relatively short d
 
 \section{Results and evaluation}
 
+Solar System Explorer exists as a software demo, complete as a game framework with some sample content for progress through the game narrative.
 
+
+
+The game as it stands mostly fulfils the original general specification. Though it does not meet the aspirational end point of the product, it is far more complete than the state described in the fallback specification. The core mechanics for the incremental game have been realised in full and the 3-dimensional graphical representation of the solar system is complete to a playable degree. Enough game content is present to demonstrate all features of the game mechanics and current features of the user interface.
+
+The numbers increment as expected, upgrade events become visible and trigger properly given the correct prerequisite conditions. Upgrades are purchasable once the resources are available and are listed against specific planets. Purchased upgrades that are one-off events are correctly removed from the interface and those that can be purchased repetitively properly update their costs and display the number of times they have been purchased. The clickable resource boosters work as intended and are modifiable through the purchase of upgrades.
+
+The product meets the expected response times specified at the requirements stage, both for initial download and also to user input, once it is running on the client machine.
+
+It is reliable in the sense that at no point does the software appear to critically fail under standard working conditions. After 20+ playthroughs no user has yet reported a crash bug or a technical failure within the game (though one or two  minor issues have been identfied and noted by the developer below).
+
+The product is reasonably robust. If put under stress, e.g. 10+ mouse clicks per second whilst purchasing upgrades, the game can sometimes, but rarely, be forced to report negative values for resources, even though this should be verified in the code at the time of an upgrade purchase. Somehow anindividual event is sometimes 'slipping between' the check for availability and the check for affordability.
+
+The user interface generally behaves in a consistent fashion, though under stress minor misbehaviour can be elicited from the retracting sidebars by rapidly switching back and forth between a planet and the system viewer. This can result in a planet being selected with no sidebars present, though this does not cause any kind of logical failure and a simple repeat click will restore the interface to its normal state.
+
+Of the 13 volunteer users who participated in testing and feedback, all played the demonstration content to completion, 10 of them having played incremental games before. Only 4 reported that they learnt anything new from playing the game, yet one replied in full with "This was a pretty cool way to learn about energy production and space travel. I would have loved to see some links or further facts about space and the planets and the theories around space travel, but I understand this is just a demo. I think it would be a good learning resource for children interested in space. I did enjoy it as an adult." This reflects the lack of narrative content in the demonstration version and the lack of complexity in the scientific information presented.
+
+Offering feedback on the ease of use of the interface, on a 5 tiered ranking of difficulty, 9 of the users ranked the interface at a 1 (the 'easiest' rating) and the rest at a 2. No user found the interface even moderately difficult to use. This is encouraging and suggests that the conventions followed for the interface and any explicit prompts given were adequate to satisfy any non-functional requirements related to learnability. Specific comments were made about the readability of the text area at the base of the interface and about making the availability of new upgrades more obvious by incorporating further visual prompts. Both of these issues are reviewed in the discussion section.
+
+In response to a similarly tiered question ranking the 'realism' of the visualisation (1 representing unrealistic and 5 very realistic) there was a greater spread of results but still with 9 of the 13 choosing to award a rating of 4 or 5. Comments were made about the lack of rings on Saturn and the glossiness of the specular highlights on the gas giants.
+
+Of the 13 respondents the only one to reply negatively when asked if they would be 'interested in playing a full version with more content' did so because "these kind of games [...] eat my life, not because there's anything wrong with it". A testament to the compelling nature of the game genre and also a validation that this implemention was effective enough at employing the psychological 'hooks' and genre conventions in that it reminded the user of 'these kind of games'.
 
 \section{Discussion}
 
+One of the test user group stated in their feedback, "More!!! I collected lots of resources I want more! Also a save game feature would be nice, and maybe some online leader boards to add a social or competitive element to the game. Please release the full game!".  This is a good summary introduction to this discussion as it reflects much about the state of the product at this time.
 
+In terms of achievements, Solar System Explorer currently fulfils all mechanical and logical requirements of an incremental game. The programming logic appears to be robust under normal operating conditions, only showing minor bugs when deliberately stressed, none of which cause a catastrophic or critical failure in the running of the program.
+
+The 3-dimensional representation of the solar system is implemented in a fashion that is at least reasonably satisfactory. The orbits demonstrate a good approximation of the actual motion of the planets,  the scales of size and distance are very accurately modelled and the relative rotational speeds are consistent with the actual bodies themselves. The data structures, methods and functions that populate the environment with objects do so capably and deliver performance to a grade expected in this type of application.
+
+The interface is usable, if not refined, and some of the ways in which elements are added and removed using a combination of JavaScript and CSS make the most of the latest developments in those languages. Not to mention features like the dynamic allocation of event listeners to interactive interface elements at the point of becoming available, which keeps the memory footprint of the product lower than it otherwise would be.
+
+This is not to say that the product is without deficiencies. It lacks gameplay content at this point and not enough time was allocated to generating further complexity and depth. In this sense it is hard to justify the suggestion that, in its current state, this game would provide much of an education, save perhaps in those very ignorant of the basic scientific principles and technology. Even then it still falls foul of using shortcuts in the demonstration content to move the experience along quickly, in the reference to 'orbital technologies' for instance.
+
+The costs and prerequisite resource values for the demonstration version are not tuned to provide the most compelling gameplay or give a clear indication of the dilemmas that should be present in choosing to upgrade either one of the resources ahead of the other.
+
+Whilst the data structures used are fast enough and work well for the purposes of this product thus far, the addition of moons and rings, user spawned orbital objects like satellites and a large chain of upgrade events would increase the complexity of the logic and code because of the need to directly address these by their specific positions in their related arrays. With more time it would be preferable to refactor the code to include some form of collection for these objects, be that utilising some features of the inbuilt sets and maps of JavaScript ES6, or proprietary implementations that model similar behaviour.
+
+The user interface could be improved in regards to its readibility, especially the lower section of the UI that incorporates the 'story' element. Perhaps even swapping the position of that information with the less crucial passive data in the left hand retracting sidebar. The animations that fade this information in and out, along with other UI elements could be implemented using a pure JavaScript solution rather than relying so heavily on CSS, however this might mean having to incorporate further premade libraries and frameworks like JQuery. Given enough time the UI should really be subject to a proper usability study.
+
+It was hoped that the 3D visualisation would include text overlays, clickable objects for navigation alongside an animated camera and user feedback in the form of new objects spawned into the environment when upgrades were purchased, however in the window of time for development this proved beyond the capabilities of a developer working with new and unfamiliar languages and libraries. These would definitely be in the plans for a future iteration.
+
+There are other visual refinements that would have been ideal. The Sun's representation as a flare in the system view was implemented in the planetary views in some interstitial stages of development, but this was removed for the final demonstration version as it proved too difficult to reason around a problem where the flare would be rendered in the viewport even when the sun's z coordinate was behind the position of the camera. This led to the odd visual artifact of the Sun appearing to cast both light and shadow on any planets further out from the origin than Jupiter. Adding layered flares that animate as the Sun moved across the viewport to give the impression that the camera is an actual glass lens would have also been a nice effect, but the documentation for the three.js library was not up to date with the current version of the code. It was sadly too time consuming to dig down into the logic of the 44,000 lines of code in the library to figure out how the required callback function would be properly used.
+
+In short, there are many potential future developments for the program. It would have been wonderful to have implemented more of these features and to have a full gameplay experience ready for delivery at project's end. However some of these were defined from the beginning as aspirational goals and should not detract too heavily from the fact that the core aims of the project have been realised in the final product.
 
 \section{Conclusion}
+
+The product is mechanically complete enough to justify the label 'incremental game' and the core features of the genre have been incorporated into the game's framework. The visual aspect is realistic enough to meet the goals of relative realism set out in the introduction. It defiinitely represents a departure from the cartoonish art styles and abstract subject material otherwise common in the field.
+
+Solar System Explorer is a functionally complete program which simply needs populating with more content to provide a full length game experience and a more in-depth gateway to scientific knowledge and terminology. The interface would definitely benefit from further enhancements yet, taken as a whole, this software is already at the stage where it has the potential to be considered a valid beta release candidate.
+
+When measured against the expectations set out in the introductory sections of this report it demonstrates a reasonable degree of success.
 
 
 
