@@ -95,3 +95,5 @@
 \contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{37}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Framework licence - three.js}{38}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}}{38}
