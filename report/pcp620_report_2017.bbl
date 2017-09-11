@@ -582,7 +582,7 @@
       \field{edition}{First Edition}
       \field{isbn}{978-1-61689-170-1}
       \field{pagetotal}{208}
-      \field{series}{Design briefs - essential texts on design}
+      \field{series}{Design briefs-essential texts on design}
       \field{shorttitle}{Type on screen}
       \field{title}{Type on screen: a guide for designers, developers, writers, and students}
       \field{year}{2014}
@@ -601,6 +601,33 @@
       \field{urldateera}{ce}
       \verb{url}
       \verb http://tvtropes.org/pmwiki/pmwiki.php/Main/MohsScaleOfScienceFictionHardness
+      \endverb
+    \endentry
+    \entry{nasa_planetary_2017}{online}{}
+      \name{author}{1}{}{%
+        {{hash=1f99771bc3e23e6097509a331544ab65}{%
+           family={{NASA}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{1f99771bc3e23e6097509a331544ab65}
+      \strng{fullhash}{1f99771bc3e23e6097509a331544ab65}
+      \strng{authornamehash}{1f99771bc3e23e6097509a331544ab65}
+      \strng{authorfullhash}{1f99771bc3e23e6097509a331544ab65}
+      \field{sortinit}{N}
+      \field{sortinithash}{1163c28585427c673ad5a010cbf82f52}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{month}{6}
+      \field{title}{Planetary Fact Sheet}
+      \field{urlday}{1}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{year}{2017}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://nssdc.gsfc.nasa.gov/planetary/factsheet/
       \endverb
     \endentry
     \entry{norman_affordance_1999}{article}{}

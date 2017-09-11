@@ -68,9 +68,25 @@ To this end it was considered a worthy pursuit to createl a compelling video gam
 
 Most games of this type are delivered either as a mobile phone app or as a browser based 'web game', possibly the most famous of which is Cow Clicker, a product that parodied the repetitive gameplay of the Farmville games from publisher Zynga.
 
-Such a product is simple enough for the core mechanics to have been achievable within the timeframe of this project whilst also providing an opportunity to address the issue of realistic representation.
+Such a product is simple enough for the core mechanics to have been achievable within the timeframe of this project whilst also providing an opportunity to address the issue of realistic representation. It is not expected that any product would be able to give a completely realistic model of a detailed astrophysics problem, but some degree of relative realism could be attained that goes beyond the usual fare in this genre of entertainment media.
 
+This report will describe the creation of the Solar System Explorer software product in the following ways:
 
+The analysis and specification section discusses the initial phases of development, detailing the overall goals for the software product and giving some examples of the requirements that formed the basis for the direction of the product's development.
+
+Under design we find a more in depth explanation as to the choices involved in the gameplay and game logic design, an explanation as to the rationale behind the orbital models used and the programming languages selected for development. Finally a brief discussion as to structure of the product and how this relates to the host architecture.
+
+The implementation section gives some detail about the data types and structures used in the project with justifications for why these were chosen, an example method demonstrating a mathematical transformation in 3 dimensional space and a brief description of how the objects in the 3D environment were deployed. This section also incorporates a description of the testing methods employed throughout the development process.
+
+There is a discussion of conventions in the user interface section, how these relate to the choices made in designing the Solar System Explorer's look and feel and also detailing some of the interface's behaviour.
+
+There follows a description of the project management tools and methodology used and a brief review of how successfully this project was managed.
+
+The results and evaluation section contains a breakdown of some qualities of the final delivery along with reflections on user responses to the product.
+
+This is followed by a discussion of the strengths and weaknesses of the product, how these relate to the relative success of the project and what further improvements may have been made given further time.
+
+Finally a conclusion is offered as to how the product addresses the problems described in this introduction.
 
 \section{Analysis and specification}
 
@@ -216,7 +232,7 @@ A number of different JavaScript libraries which provide interfaces to simplify 
 
 \subsection{Architecture}
 
-The architecture chosen was a simple client-server model, with a one off delivery of all code to the client machine at the time of the initial HyperText Transfer Protocol (HTTP) GET request to the game's Uniform Resource Locator (URL). There was no need for extended communication between the client and server beyond this point as there was no need for access to server hosted information. All game logic and data is included in the Javascript source file. In fact any such requirement would introduce needless complexity and performance restrictions. This does make the game simple to 'hack' but, given that there are no negative risks involved in someone accessing the source code, no highscore tables and no multiplayer element, this is of no concern.
+The architecture of the delivery platform follows the standard client-server model found in a basic web hosting service. The product was structured to form a one off delivery of all code to the client machine at the time of the initial HyperText Transfer Protocol (HTTP) GET request to the game server. There is no need for extended communication between the client and server beyond this point as there is no need for access to server hosted information. All game logic and data is included in the Javascript source file. In fact any such requirement would introduce needless complexity and performance restrictions. This does make the game simple to 'hack' but, given that there are no negative risks involved in someone accessing the source code, no highscore tables and no multiplayer element, this is of no concern.
 
 JavaScript is typically included as a single file, rather than broken down into individually localised code blocks in separate files. This is to save on request overheads and reduce server load as each HTML page, once parsed, triggers a number of asset requests for any content referred to in the file. Most usually these requests are for one or more CSS files, any embedded images and any embedded scripts. Each individual request has to travel to the server and wait in a queue to be picked up by a worker thread in the server software, thus adding more wait time until the page is ready to be fully rendered on the client. Serving the JavaScript as a single file where possible minimises this delay.
 
@@ -327,9 +343,44 @@ class Orbit {
 
 \newpage
 
-\subsection{Modelling the solar system using WebGL}
+\subsection{Modelling the planets of the solar system using three.js}
+Real data about the solar system and the bodies within were drawn from a number of sources, including directly from NASA factsheets \cite{nasa_planetary_2017}. These were then built into arrays of objects, the properties of which were used to generate scale spherical primitives to represent each of the planets in turn by looping through said array.
+
+\begin{lstlisting}[label=Instances of the StellarObject class, caption=The planets as instances of the StellarObject class, captionpos=b]
+
+// Planets
+/*
+Params: name, type, diameter(1000s of km to 2sf), orbitalRadiusAu(AU to 1 dp), orbitalRadiusKm (1000s of km), period(relative to 1 earth year), eccentricity, inclination(degrees), axial tilt, axial rotation(relative to 1 earth day)
+*/
+
+let sol = new StellarObject("Sol", "Star", 1390, 0, 0, 0, 0, 0, 0, 0);
+
+var planets = [];
+let planetMercury = new StellarObject("Mercury", "Terrestrial", 3.0, 0.4, 57900, 0.241, 0.208, 7.00, 0, 59);
+planets.push(planetMercury);
+let planetVenus = new StellarObject("Venus", "Terrestrial", 7.5, 0.7, 108200, 0.615, 0.007, 3.39, 177, 243);
+planets.push(planetVenus);
+
+\end{lstlisting}
+
+This loop uses the three.js library to create primitive spheres with a basic Phong shading model and apply textures from a local image folder.  The textures used for the planets and the Milky Way are taken from NASA and ESO photographic image libraries.
 
 
+\begin{lstlisting}[label=Loop using three.js objects and methods to create planetary spheres, caption=Loop using three.js objects and methods to create planetary spheres, captionpos=b]
+
+for (let i=0, len=planets.length; i<len; i++) {
+	let planetGeometry = new THREE.SphereGeometry((planets[i].getDiameter()/2), 64, 64);
+	let planetMap = new THREE.MeshPhongMaterial();
+	planetMap.map = THREE.ImageUtils.loadTexture("images/" + planets[i].getName().toLowerCase() + "map.jpg");
+	planetMaps.push(planetMap);
+	planetModels[i] = new THREE.Mesh(planetGeometry, planetMaps[i]);
+	planetModels[i].rotateZ(planets[i].getAxialTilt()*(Math.PI/180));
+	scene.add(planetModels[i]);
+}
+
+\end{lstlisting}
+
+Similar processes were followed to model the orbits that these planetary spheres were assigned to. The whole 3D interface in the application is a single 3D model, built to scale using these methods, that is simply viewed from different positions by altering the camera's location in the scene.
 
 
 \subsection{Unit, prototype and integration testing}
@@ -440,8 +491,7 @@ Given that the project resulted in delivery of a product that meets at least the
 
 On a project of this size, with only a single developer and a relatively short deadline, it can be quite difficult to appropriately allocate time to administrative and management tasks without either becoming overly bureaucratic and negatively impacting on the production schedule, or ignoring project management tasks to focus solely on implementation. Putting aside a regular slot of 3 hours on a Friday afternoon meant that there was a strict yet simple rule to follow. This also meant that there was a mandatory 'cool down' period at the end of the week in an effort to maintain a standard production schedule, giving time to reflect and step back to gain a broader perspective on the direction of the project.
 
-
-
+In the end the production schedule indicated in the project proposal was only loosely followed, but the phases of development roughly approximated the timespans indicated, albeit offset  by a fortnight.
 
 
 \section{Results and evaluation}
@@ -482,6 +532,8 @@ The interface is usable, if not refined, and some of the ways in which elements 
 
 This is not to say that the product is without deficiencies. It lacks gameplay content at this point and not enough time was allocated to generating further complexity and depth. In this sense it is hard to justify the suggestion that, in its current state, this game would provide much of an education, save perhaps in those very ignorant of the basic scientific principles and technology. Even then it still falls foul of using shortcuts in the demonstration content to move the experience along quickly, in the reference to 'orbital technologies' for instance.
 
+A save game function as mentioned in the user feedback would have been a great addition and would probably be a key feature in any next iteration.
+
 The costs and prerequisite resource values for the demonstration version are not tuned to provide the most compelling gameplay or give a clear indication of the dilemmas that should be present in choosing to upgrade either one of the resources ahead of the other.
 
 Whilst the data structures used are fast enough and work well for the purposes of this product thus far, the addition of moons and rings, user spawned orbital objects like satellites and a large chain of upgrade events would increase the complexity of the logic and code because of the need to directly address these by their specific positions in their related arrays. With more time it would be preferable to refactor the code to include some form of collection for these objects, be that utilising some features of the inbuilt sets and maps of JavaScript ES6, or proprietary implementations that model similar behaviour.
@@ -490,13 +542,13 @@ The user interface could be improved in regards to its readibility, especially t
 
 It was hoped that the 3D visualisation would include text overlays, clickable objects for navigation alongside an animated camera and user feedback in the form of new objects spawned into the environment when upgrades were purchased, however in the window of time for development this proved beyond the capabilities of a developer working with new and unfamiliar languages and libraries. These would definitely be in the plans for a future iteration.
 
-There are other visual refinements that would have been ideal. The Sun's representation as a flare in the system view was implemented in the planetary views in some interstitial stages of development, but this was removed for the final demonstration version as it proved too difficult to reason around a problem where the flare would be rendered in the viewport even when the sun's z coordinate was behind the position of the camera. This led to the odd visual artifact of the Sun appearing to cast both light and shadow on any planets further out from the origin than Jupiter. Adding layered flares that animate as the Sun moved across the viewport to give the impression that the camera is an actual glass lens would have also been a nice effect, but the documentation for the three.js library was not up to date with the current version of the code. It was sadly too time consuming to dig down into the logic of the 44,000 lines of code in the library to figure out how the required callback function would be properly used.
+There are other visual refinements that would have been ideal. The Sun's representation as a flare in the system view was implemented in the planetary views in some interstitial stages of development, but this was removed for the final demonstration version as it proved too difficult to reason around a problem where the flare would be rendered in the viewport even when the sun's z coordinate was behind the position of the camera. This led to the odd visual artifact of the Sun appearing to cast both light and shadow on any planets further out from the origin than Jupiter. Adding layered flares that animate as the Sun moved across the viewport to give the impression that the camera is an actual glass lens would have also been a nice effect, but the documentation for the three.js library was not up to date with the current version of the code. It was sadly too time consuming to dig down into the logic of the 44,000 lines of code in the library to figure out how the required callback function would be properly used. With more time shaders could have been added to the Sun and OpenGL post-processing effects like bloom could have given an even more photorealistic feel.
 
 In short, there are many potential future developments for the program. It would have been wonderful to have implemented more of these features and to have a full gameplay experience ready for delivery at project's end. However some of these were defined from the beginning as aspirational goals and should not detract too heavily from the fact that the core aims of the project have been realised in the final product.
 
 \section{Conclusion}
 
-The product is mechanically complete enough to justify the label 'incremental game' and the core features of the genre have been incorporated into the game's framework. The visual aspect is realistic enough to meet the goals of relative realism set out in the introduction. It defiinitely represents a departure from the cartoonish art styles and abstract subject material otherwise common in the field.
+The product is mechanically complete enough to justify the label 'incremental game' and the core features of the genre have been incorporated into the game's framework. The visual aspect is detailed enough to meet the goals of relative realism set out in the introduction. It defiinitely represents a departure from the cartoonish art styles and abstract subject material otherwise common in the field.
 
 Solar System Explorer is a functionally complete program which simply needs populating with more content to provide a full length game experience and a more in-depth gateway to scientific knowledge and terminology. The interface would definitely benefit from further enhancements yet, taken as a whole, this software is already at the stage where it has the potential to be considered a valid beta release candidate.
 

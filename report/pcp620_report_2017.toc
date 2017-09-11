@@ -4,33 +4,33 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Analysis and specification}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}General specification}{9}
+\contentsline {subsection}{\numberline {2.1}General specification}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Fallback specification}{10}
+\contentsline {subsubsection}{Fallback specification}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Example requirements}{10}
+\contentsline {subsection}{\numberline {2.2}Example requirements}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Functional requirements}{10}
+\contentsline {subsubsection}{Functional requirements}{11}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Non-functional requirements}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Example game specific requirements}{11}
+\contentsline {subsection}{\numberline {2.3}Example game specific requirements}{12}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Design}{12}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}Game design}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Orbital models}{13}
+\contentsline {subsection}{\numberline {3.2}Orbital models}{14}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Language selection}{14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{HTML}{14}
+\contentsline {subsubsection}{HTML}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{CSS}{14}
+\contentsline {subsubsection}{CSS}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{JavaScript ES6}{15}
+\contentsline {subsubsection}{JavaScript ES6}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{WebGL and three.js}{15}
+\contentsline {subsubsection}{WebGL and three.js}{16}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.4}Architecture}{16}
 \defcounter {refsection}{0}\relax 
@@ -38,60 +38,60 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1}Data types and structures}{17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Example method - orbital rotation in 3D space}{18}
+\contentsline {subsection}{\numberline {4.2}Example method - orbital rotation in 3D space}{19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Modelling the solar system using WebGL}{21}
+\contentsline {subsection}{\numberline {4.3}Modelling the planets of the solar system using three.js}{22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Unit, prototype and integration testing}{21}
+\contentsline {subsection}{\numberline {4.4}Unit, prototype and integration testing}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.5}Acceptance testing}{22}
+\contentsline {subsection}{\numberline {4.5}Acceptance testing}{23}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}User interface}{22}
+\contentsline {section}{\numberline {5}User interface}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Incremental game conventions}{22}
+\contentsline {subsection}{\numberline {5.1}Incremental game conventions}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Wireframe layouts}{22}
+\contentsline {subsubsection}{Wireframe layouts}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Numeric formatting}{23}
+\contentsline {subsubsection}{Numeric formatting}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Placement of typographic elements}{23}
+\contentsline {subsubsection}{Placement of typographic elements}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Art style}{23}
+\contentsline {subsubsection}{Art style}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}General UI conventions}{23}
+\contentsline {subsection}{\numberline {5.2}General UI conventions}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Pointer behaviour and signposting interactivity}{23}
+\contentsline {subsubsection}{Pointer behaviour and signposting interactivity}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Typographic elements}{23}
+\contentsline {subsubsection}{Typographic elements}{25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Aesthetic}{24}
+\contentsline {subsection}{\numberline {5.3}Aesthetic}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}Solar System Explorer UI design process}{24}
+\contentsline {subsection}{\numberline {5.4}Solar System Explorer UI design process}{26}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Project management}{25}
+\contentsline {section}{\numberline {6}Project management}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Software development lifecycle}{25}
+\contentsline {subsection}{\numberline {6.1}Software development lifecycle}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Tools}{25}
+\contentsline {subsection}{\numberline {6.2}Tools}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Meetings}{26}
+\contentsline {subsection}{\numberline {6.3}Meetings}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Review}{26}
+\contentsline {subsection}{\numberline {6.4}Review}{28}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Results and evaluation}{26}
+\contentsline {section}{\numberline {7}Results and evaluation}{28}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Discussion}{28}
+\contentsline {section}{\numberline {8}Discussion}{30}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Conclusion}{30}
+\contentsline {section}{\numberline {9}Conclusion}{32}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{References}{30}
+\contentsline {section}{References}{32}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{35}
+\contentsline {chapter}{Appendices}{37}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Image asset licences}{35}
+\contentsline {section}{\numberline {1}Image asset licences}{37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}{35}
+\contentsline {subsection}{\numberline {1.1}NASA Media Usage Guidelines - Still Images and Related Computer Files for Non-Commercial Use}{37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{35}
+\contentsline {subsection}{\numberline {1.2}ESO - Usage of images, videos and web texts}{37}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Framework licence - three.js}{36}
+\contentsline {section}{\numberline {2}Framework licence - three.js}{38}
