@@ -19,6 +19,22 @@
 
 \refsection{0}
   \sortlist[entry]{nty/global/}
+    \entry{_3d_2011}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{197da6d6c34c6b20ce45c4d4baace5a4}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{3D Cartesian Coordinate Rotation (Euler) {VI} - {LabVIEW} 2011 Help - National Instruments}
+      \field{urlday}{15}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{year}{2011}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://zone.ni.com/reference/en-XX/help/371361H-01/gmath/3d_cartesian_coordinate_rotation_euler/
+      \endverb
+    \endentry
     \entry{acm_siggraph_education_committee_3d_2005}{online}{}
       \name{author}{1}{}{%
         {{hash=53fe1fb82074df7560fdb52f7db59bf6}{%
@@ -61,7 +77,7 @@
       \field{sortinithash}{3248043b5fe8d0a34dab5ab6b8d4309b}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Adobe has long played a leadership role in advancing interactivity and creative content \x{fffd}\x{fffd}\x{fffd} from video, to games and more \x{fffd}\x{fffd}\x{fffd} on the web. Where we\x{fffd}\x{fffd}\x{fffd}ve seen a need to push content and interactivity forward, we\x{fffd}\x{fffd}\x{fffd}ve innovated to meet those needs.\x{fffd}\x{fffd}Where a format didn\x{fffd}\x{fffd}\x{fffd}t exist, we invented one \x{fffd}\x{fffd}\x{fffd}}
+      \field{abstract}{Adobe has long played a leadership role in advancing interactivity and creative content \x{fffd}\x{fffd}\x{fffd} from video, to games and more \x{fffd}\x{fffd}\x{fffd} on the web. Where we\x{fffd}\x{fffd}\x{fffd}ve seen a need to push content and interactivity forward, we\x{fffd}\x{fffd}\x{fffd}\x{fffd}\x{fffd}ve innovated to meet those needs.\x{fffd}\x{fffd}Where a format didn\x{fffd}\x{fffd}\x{fffd}t exist, we invented one \x{fffd}\x{fffd}\x{fffd}}
       \field{day}{25}
       \field{month}{7}
       \field{title}{Flash \& The Future of Interactive Content}
@@ -270,6 +286,19 @@
       \verb http://journals.sagepub.com/doi/10.1177/1555412015591900
       \endverb
     \endentry
+    \entry{_coding_????}{online}{}
+      \field{sortinit}{C}
+      \field{sortinithash}{095692fd22cc3c74d7fe223d02314dbd}
+      \field{labeltitlesource}{title}
+      \field{title}{Coding Labs :: World, View and Projection Transformation Matrices}
+      \field{urlday}{17}
+      \field{urlmonth}{8}
+      \field{urlyear}{2017}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb http://www.codinglabs.net/article_world_view_projection_matrix.aspx
+      \endverb
+    \endentry
     \entry{decker_six_2017}{online}{}
       \name{author}{1}{}{%
         {{hash=7b6f04e1e876fbadbb03f0184aaf4583}{%
@@ -368,6 +397,42 @@
       \field{urldateera}{ce}
       \verb{url}
       \verb https://processing.org/
+      \endverb
+    \endentry
+    \entry{_games_2016}{online}{}
+      \field{sortinit}{G}
+      \field{sortinithash}{618d986594b7198ba52cf8b00d348f3f}
+      \field{labeltitlesource}{title}
+      \field{day}{2}
+      \field{month}{11}
+      \field{title}{Games Like Cow Clicker}
+      \field{urlday}{9}
+      \field{urlmonth}{9}
+      \field{urlyear}{2017}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{url}
+      \verb https://www.similargamesto.com/cow-clicker/
+      \endverb
+    \endentry
+    \entry{_gamescom_2011}{video}{}
+      \field{sortinit}{G}
+      \field{sortinithash}{618d986594b7198ba52cf8b00d348f3f}
+      \field{labeltitlesource}{shorttitle}
+      \field{shorttitle}{Gamescom 2011}
+      \field{title}{Gamescom 2011: Star Trek: Infinite Space - Battle Scenes Gameplay Video}
+      \field{urlday}{8}
+      \field{urlmonth}{9}
+      \field{urlyear}{2017}
+      \field{year}{2011}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\P\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\2wh3fxzf.default\\zotero\\storage\\4EP7XBC2\\2300-6329602.html:text/html
+      \endverb
+      \verb{url}
+      \verb https://www.gamespot.com/videos/gamescom-2011-star-trek-infinite-space-battle-scen/2300-6329602/
       \endverb
     \endentry
     \entry{otto_get_????}{online}{}
@@ -972,6 +1037,39 @@
       \verb http://doi.acm.org/10.1145/3034780
       \endverb
       \keyw{enjoyment,evaluation,flow,game design,Games,heuristics,model}
+    \endentry
+    \entry{tang_kerbal_2014}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9c8a67f766dee6f0c0c1bd19176d40d8}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Stephanie},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c8a67f766dee6f0c0c1bd19176d40d8}
+      \strng{fullhash}{9c8a67f766dee6f0c0c1bd19176d40d8}
+      \strng{authornamehash}{9c8a67f766dee6f0c0c1bd19176d40d8}
+      \strng{authorfullhash}{9c8a67f766dee6f0c0c1bd19176d40d8}
+      \field{sortinit}{T}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Learn about space and spaceships by stuffing little green aliens into rocketships and seeing if they'll fly. And now for class credit!}
+      \field{day}{10}
+      \field{month}{2}
+      \field{title}{Kerbal Space Program Follows Minecraft Into Children's Classrooms}
+      \field{urlday}{9}
+      \field{urlmonth}{9}
+      \field{urlyear}{2017}
+      \field{year}{2014}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb Snapshot:C\:\\Users\\P\\AppData\\Roaming\\Zotero\\Zotero\\Profiles\\2wh3fxzf.default\\zotero\\storage\\63H5JVTP\\kerbal-space-program-follows-minecraft-into-childrens-classrooms.html:text/html
+      \endverb
+      \verb{url}
+      \verb https://www.gameskinny.com/wqrmr/kerbal-space-program-follows-minecraft-into-childrens-classrooms
+      \endverb
     \endentry
     \entry{the_world_wide_web_consortium_w3c_html5_2014}{online}{}
       \name{author}{1}{}{%

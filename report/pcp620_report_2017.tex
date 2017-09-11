@@ -31,6 +31,9 @@
 
 \tableofcontents
 
+\listoffigures
+\addcontentsline{toc}{section}{\listfigurename}
+
 \begin{abstract}
 
 This report details the design and implementation of a software engineering project to create a space exploration themed incremental game. The challenge was to introduce a degree of realism to the representation of space beyond that in similar products from the incremental games market.
@@ -53,52 +56,81 @@ I would like to acknowledge the contributions of the NASA and ESO teams through 
 Finally I would like to extend my appreciation to the individuals, classmates and acquaintances who assisted me in testing and providing feedback on my product.
 \end{acknowledgments}
 
-
 \section{Introduction}
+\markboth{Introduction}{Introduction}
 
 The aim of the work described in this report was to create a web based incremental game that seeks to provide a more realistic representation of the solar system than in present in other products in the genre.
 
-It is an oft discussed issue that scientific theories and data suffer from a distortion of representation and a skew in perception in both popular media and the arts. This is common across all forms of media, from classic painting to modern forms of entertainment such as video games. Such misrepresentation hinders the public understanding of natural phenomena and is arguably more effective at (mis)educating than traditional classroom based learning. In discussing education related to the theory of evolution Brian Alters notes that, "Not only does the general public lack an understanding of evolution but so does a considerable proportion of college graduates." \cite{alters_perspective:_2002}. He goes on to explain that formal education has a very tough time combatting the informal, and often incorrect, learning 
+It is an oft discussed issue that scientific theories and data suffer from a distortion of representation and a skew in perception in both popular media and the arts. This is common across all forms of media, from classic painting to modern forms of entertainment such as video games. Such misrepresentation hinders the public understanding of natural phenomena and is arguably more effective at (mis)educating than traditional classroom based learning. In discussing education related to the theory of evolution Brian Alters notes that, "Not only does the general public lack an understanding of evolution but so does a considerable proportion of college graduates." \cite{alters_perspective:_2002}. He goes on to explain that formal education has a very tough time combatting the informal, and often incorrect, learning.
 
-This is very evident in the discipline of astrophysics, where decades of science-fiction and science-fantasy artistic representation and storytelling have resulted in a very poor public understanding of the physical solar system, the technologies available for space exploration and the possibilities of interplanetary travel. So much so that lexicons of terms, and scales for the description of, the relative 'hardness' of such representations have sprung up in the scientific, engineering and media production communities \cite{_mohs_????}. Whilst fiction writers describe the use of 'warp drive' to navigate across interstellar distances, actual scientists are still working on the hugely challenging problem of reaching the nearest neighbouring planets in our own solar system.
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/star_trek_warp.jpg}
+  \caption{A typical media image of interstellar travel, Star Trek's Enterprise travelling at 'Warp Speed' {\cite{_gamescom_2011}}}
+  \label{fig:star_trek}
+\end{figure}
+
+
+This is very evident in the discipline of astrophysics, where decades of science-fiction and science-fantasy artistic representation and storytelling have resulted in a very poor public understanding of the physical solar system, the technologies available for space exploration and the possibilities of interplanetary travel. So much so that lexicons of terms, and scales for the description of, the relative 'hardness' of such representations have sprung up in the scientific, engineering and media production communities \cite{_mohs_????}. Whilst fiction writers describe the use of impossible faster-than-light 'warp drive' technologies to navigate across interstellar distances, actual scientists are still working on the hugely challenging problem of reaching the nearest neighbouring planets in our own solar system.
 
 This is not to belittle the influence and inspiration to be had from speculative fiction, the number of technologies predicted or inspired by writers like Isaac Asimov or Arthur C. Clarke are well documented. However there is a great opportunity in the media representation of astrophysical phenomena to provide for a valuable learning experience at the same time as being entertained. To this end it was considered a worthy pursuit to create a compelling video game in a genre known as 'incremental gaming', also known as 'idle gaming' or 'clicker gaming'. This genre takes advantage of such psychological factors  as accumulation desire and loss aversion placing the player in an environment that constitutes a simple Skinner box \cite{carlson_psychology:_2009}.
 
 Most games of this type are delivered either as a mobile phone app or as a browser based 'web game', possibly the most famous of which is Cow Clicker, a product that parodied the repetitive gameplay of the Farmville games from publisher Zynga.
 
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/cowclicker.jpg}
+  \caption{Infamous parody 'clicker' game Cow Clicker {\cite{_games_2016}}}
+  \label{fig:cowclicker}
+\end{figure}
+
 Such a product is simple enough for the core mechanics to have been achievable within the timeframe of this project whilst also providing an opportunity to address the issue of realistic representation. It is not expected that any product would be able to give a completely realistic model of a detailed astrophysics problem, but some degree of relative realism could be attained that goes beyond the usual fare in this genre of entertainment media.
 
-\bigskip
+\newpage
 \noindent
 This report will detail the creation of the Solar System Explorer incremental game.
 
+\medskip
 The analysis and specification section discusses the initial phases of development, detailing the overall goals for the software product and giving some examples of the requirements that formed the basis for the direction of the product's development.
 
-Under design we find a more in depth explanation as to the choices involved in the gameplay and game logic design, an explanation as to the rationale behind the orbital models used and the programming languages selected for development. Finally a brief discussion as to structure of the product and how this relates to the host architecture.
+\medskip
+In the design section we find a more in depth explanation as to the choices involved in the gameplay and game logic design, an explanation as to the rationale behind the orbital models used and the programming languages selected for development. Finally a brief discussion as to structure of the product and how this relates to the host architecture.
 
+\medskip
 The implementation section gives some detail about the data types and structures used in the project with justifications for why these were chosen, an example method demonstrating a mathematical transformation in 3 dimensional space and a brief description of how the objects in the 3D environment were deployed. This section also incorporates a description of the testing methods employed throughout the development process.
 
+\medskip
 There is a discussion of conventions in the user interface section, how these relate to the choices made in designing the Solar System Explorer's look and feel and also detailing some of the interface's behaviour.
 
-There follows a description of the project management tools and methodology used and a brief review of how successfully this project was managed.
+\medskip
+The project management section lists the tools and methodology used alongside a brief review of how successfully these were utilised.
 
+\medskip
 The results and evaluation section contains a breakdown of some qualities of the final delivery along with reflections on user responses to the product.
 
+\medskip
 This is followed by a discussion of the strengths and weaknesses of the product, how these relate to the relative success of the project and what further improvements may have been made given further time.
 
+\medskip
 Finally a conclusion is offered as to how the product addresses the problems described in this introduction.
 
 \section{Analysis and specification}
+\markboth{Analysis and specification}{Analysis and specification}
 
 The problem was initially analysed by investigating other products in the genre, specifically focusing on a web browser game entitled 'Spaceplan' by Jake Hollands. The features and mechanical gameplay elements of these were broken down into simple lists and categorised to find conventions that span the genre. This primarily involved a card-sort exercise, derived from the technique utilised in usability design.
 
 Given the mechanics of the incremental games model some of these features were inherent, yet some were not, for example the necessity of including some form of text based feedback at key points in progress. This text could take the form of a narrative as in a product akin to Spaceplan \cite{hollands_spaceplan_2017} or as a goal/achievement flag as seen in Cookie Clicker \cite{ortiel_cookie_2017}.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/spaceplan.jpg}
+  \caption{Example incremental game: Spaceplan}
+  \label{fig:spaceplan}
+\end{figure}
 
 As the project did not follow a standard software-development lifecycle as detailed in the project management section of this report, but instead followed a process that relates most closely to a hybrid of Agile methodologies (rapid iteration, not documentation-centric, yet eschewing test-driven-development) and the media production workflow common to games production (concept, pre-production, production, post and distribution phases), a simple non-exhaustive of requirements was created, including some non-functional requirements based on the heuristics provided in the GameFlow model \cite{sweetser_gameflow_2012}, adapted from their approach to real-time-strategy gaming.
 
 Very few statistics were available on the demographics of incremental game players as this information is not typically recorded as a part of play and they are usually relegated to a broader category including other 'casual games' when investigated in games research papers. With this apparent paucity of available data, very little could be done to target or analyse the requirements of any specific user group.
 
 \subsection{General specification}
+
 
 Solar System Explorer is a web browser based game of the incremental game genre. Its mechanics are based on the acquisition of resources represented by one or more numbers that increment continuously, even whilst the player of the game is idle.
 
@@ -168,6 +200,7 @@ Gameplay requirements
 
 
 \section{Design}
+\markboth{Design}{Design}
 
 \subsection{Game design}
 
@@ -180,7 +213,13 @@ In an article entitled 'Numbers Getting Bigger: What Are Incremental Games, and 
  
 Surveying the various online catalogues of 'incremental', 'clicker' and 'idle' games provides a rich tapestry of examples of this genre of game, each of which follows these general rules. These indeed consitute the necesary terms for defining a genre as a taxonimic ideal based on identifiable characteristics \cite{clarke_why_2017}.
 
-Given that the aim of this project was to create an incremental game, but with a more realistic representation of the realities of space exploration, it seemed that the challenge was to marry a very simple gaming mechanic with a very complex field of science. Compromises would have to be made, as this was not going to be a full space physics simulator in the style of a full commercial entertainment package like 2015's Kerbal Space Program \cite{squad_kerbal_2015}, yet some degree of realism would have to be maintained. 
+Given that the aim of this project was to create an incremental game, but with a more realistic representation of the realities of space exploration, it seemed that the challenge was to marry a very simple gaming mechanic with a very complex field of science. Compromises would have to be made, as this was not going to be a full space physics simulator in the style of a full commercial entertainment package like 2015's Kerbal Space Program \cite{squad_kerbal_2015}, yet some degree of realism would have to be maintained.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/ksp.png}
+  \caption{Space physics sandbox game: Kerbal Space Programme {\cite{tang_kerbal_2014}}}
+  \label{fig:ksp}
+\end{figure} 
 
 Initial designs focused on the interaction of 4 different competing resources, with consideration for aspects that otherwise are under represented in science fiction gaming, such as political will and popular support. However, even paper prototypes of these ideas became riddled with issues e.g.complexity stretching beyond that found elsewhere in the genre, approaching that of '4X' games \cite{gunn_taxonomy_2009} and user interface design issues due to a lack of screen real estate when following the single screen convention of the genre. It was eventually decided to settle on a dual resource system representing different forms of energy income with some necessary level of abstraction. The concept of nuclear and photonic sources of energy would form the basis for this resource system, representing a duality not only of a scientific nature, but of an ethical one also. Players could choose to focus on 'dirty' nuclear energy for fast progress at the start of the game or 'clean' photonic energy for faster progress towards the end.
 
@@ -197,6 +236,12 @@ Consideration was given to producing a 2-dimensional graphical represention of t
 Initial investigations into methods for creating models to represent the solar system led to quite a few simulations of gravitational attraction. These ranged from simple bouncing balls to mutiple moving objects accelerating according to the laws of gravitation.
 
 Several of these were (re)created as exploratory prototypes in the Processing sketchbook IDE, however it rapidly became apparent that these models had certain limitations and that to ensure continuous motion any bodies were subject to positional limits. It also became clear that to calculate the attraction of multiple bodies would not be as simple. This is referred to in physics as the 'three body problem' and is probably best understood by the analogy of calculating the movements of the Sun, Earth and Moon with each affecting the other. Texts dating back to 1887  by the mathematician Heinrich Bruns demonstrated that there were no general solutions to the three body problem, only special cases such as Lagrange points \cite{oconnor_bruns_????}. This explains the need to reduce gravitional models to two bodies or to artificially impose limits on the motion of the objects in any such model.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/grav_proto.png}
+  \caption{Early 3D prototype of two body gravitational attraction, created in Processing.}
+  \label{fig:grav_proto}
+\end{figure} 
 
 Further reading around the topic of modelling orbits \cite{dvorak_chaos_2005}  led back to Kepler's laws of motion, which fit a simulation of this type far better. By modelling orbits as ellipses, bearing in mind that planetary orbits in our solar system are close to circular, a more consistent visualisation of orbital motion could be produced using simpler trigonometric calculations. This would ensure that unlike the gravitational motion based on attraction and acceleration, there was no risk of errors over a longer period of time where a body may come to rest or similar erroneous representation.
 
@@ -220,6 +265,12 @@ Given that there was no aim in this project to provide for backwards compatibili
 \subsubsection{JavaScript ES6}
 Early exploratory development was done using a Java based sketchbook language called 'Processing' \cite{fry_processing.org_????}. This was initially chosen with the intention of cross-compiling from Java-like source code into a JavaScript product using the p5.js library. However there are distinct differences between the capabilities of the original Processing implementation and the p5.js product. As a result other cross compilers such as JSweet \cite{pawlak_jsweet:_????} were investigated, but eventually this approach was abandoned in favour of starting with a baseline JavaScript solution, only utilising libraries to reduce complexity when necessary.
 
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/early_proto.jpg}
+  \caption{Early prototyping and 3d modelling in Processing}
+  \label{fig:early_proto}
+\end{figure}
+
 The most recent release of JavaScript at the point of development is JavaScript ES6, based on the ECMA International standard for ECMAScript 6 (ES6). This has enjoyed support across most desktop browsers as of March 2017 \cite{zaytsev_ecmascript_2017}. Two major benefits of using ES6 are the java-like syntax for object instantiation using classes and the availablility of variables with a block scope. Previous versions of JavaScript only used global variables whereas with the inclusion of 'let' in addition to the traditional 'var', the scope of a variable can be limited to a single code block, after which it is discarded. This also helps resolve some issues to do with JavaScript loops requiring arbitrary 'hacks' to avoid problems with enclosure.
 
 
@@ -241,6 +292,7 @@ The aim was to include a single file for each of the HTML, CSS and JavaScript it
 The architecture does not quite follow an Model View Controller (MVC) approach but does strive to seperate structure, presentation and logic elements into the HTML, CSS and JavaScript respectively.
 
 \section{Implementation and testing}
+\markboth{Implementation and testing}{Implementation and testing}
 
 \subsection{Data types and structures}
 The main data types in use in Solar System Explorer are the primitives boolean, number and string and the non-primitive object.
@@ -267,7 +319,14 @@ In future iterations these 3 classes could be used to generate objects that appe
 
 JavaScript ES6 is the first release to contain pre-defined collections in the form of maps and sets. These were investigated as potential data structures for the objects instantiated by the above classes, however it was discovered that the performance of these implementations is far slower in current web broswers than using baseline JavaScript when performing lookups \cite{decker_six_2017}. For this reason and the fact that data will not be added by users from outside of the program itself it seemed most sensible to work with simple arrays of objects rather than add the complication of implementing abstract data types. The largest collection of data in the game is the array of upgrade events, but this requires constant interation over the objects to make conditional checks against the pre-requisite event values, so the performance gains from using a data structure with a different method of retrieval would likely be marginal, even if it were faster at finding any single entry (e.g. utilising a hash table).
 
-\subsection{Example method - orbital rotation in 3D space}
+\subsection{Example method - rotation in 3D space}
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/teapot.png}
+  \caption{A 'teapot primitive' rotating around the y-axis in 3D space {\cite{_coding_????}}}
+  \label{fig:teapot}
+\end{figure}
+
 The model used in WebGL for mapping objects in 3-dimensional space is a cartesian coordinate system with an x, y and z value describing any single point. Most data that describes the movement of astronomical bodies is given as a series of angles and distances from a point of rotation as they are usually ellipses or parabola.
 
 To translate from the information given in the physics to that required by the program involves the use of trigonometry. At a basic level, e.g calculating the x and z values for a point on a circle on the x,z plane, this is a relatively simple application of the formulae:
@@ -282,7 +341,13 @@ In an ellipse centred at its origin the radius is subsituted for the semi-major 
 
 However, most orbits exist at an incline to the ecplitic, a term used for the plane which is coplanar with the orbit of the Earth around the Sun. They are also not all uniformly rotated in relation to the Sun. This necessitates the inclusion of the ability to rotate the orbital ellipse about each of the 3 axes.
 
-Rotation of a point about an axis by a value ($\theta'$) given in radians requires application of the following formulae \cite{acm_siggraph_education_committee_3d_2005}.
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/3dcartrot.png}
+  \caption{Rotation of an ellipse in 3D space {\cite{_3d_2011}}}
+  \label{fig:cartrot}
+\end{figure}
+
+Rotation of a point about an axis by a value ($\theta'$) given in radians requires application of the following formulae \cite{acm_siggraph_education_committee_3d_2005}. 
 
 Rotation about the x axis:
 \[z' = y*\sin\theta' + z*\cos\theta'\]
@@ -298,6 +363,7 @@ Rotation about the z axis:
 
 These can be applied consecutively if there is a requirement to rotate about more than one axis.
 
+\bigskip
 When coded as a part of the update() method in the Orbit object care had to be taken not to overwrite previous x,y and z values until they were ready for assignment, so some temporary variables with a block scope were included for instantiation within each conditional check for rotation. Simple addition of the coordinates of any parent orbit allowed for rotation of chains of parent and child objects. If no parent was defined or there was no need for the parent to be an Orbit itself, a simple Anchor object could substitute.
 
 \newpage
@@ -405,18 +471,25 @@ A body of 13 users volunteered to assist with acceptance testing. Given that the
 The users were asked to complete a very short multiple choice questionnaire which related specifically to the aspirational goals of the product. They were subsequently invited to leave free-form comments relating to both the product and to elaborate on their multiple choice answers. This was done via a Google Form which automatically added responses to a speadsheet and generated graphical reports demonstrating the results.
 
 \section{User interface}
+\markboth{User interface}{User interface}
 
 Creating the user interface for Solar System Explorer was a 4 stage process. Firstly evaluating the conventions of the genre to ensure that the very first gameplay requirement (GPNFR001) was met, secondly considering general web, graphic design and usabilty conventions and thirdly considering the aesthetic of the inteface given the subject material in question. These findings were then integrated into the final user interface delivered as part of the product.
 
 \subsection{Incremental game conventions}
 
-Whilst multiple games were reviewed from lengthy listings at websites such as Kongregate and Clicker Games, this report will simply summarise a few examples of the findings and how they were used.
+Multiple games were reviewed from lengthy listings at websites such as Kongregate and Clicker Games, this report will simply summarise a few examples of the findings and how they were used.
 
 \subsubsection{Wireframe layouts}
 
 Most incremental games are designed with a single page layout, a few included pop-up, pop out or tab style menus, but largely the convention of the genre is to encapsulate the entire game in a single screen. With one or two notable exceptions the layout of the user interface is build on a grid system, similar to most print or text-based web design. This is understandable as the platform and the underlying expectations of its rendering capabilities are evolved from the presentation of documents.
 
 This means that most incremental game interfaces can be broken down into a wireframe of their grid and box layout. Following this convention made it possible to create a working product without having to spend an overtly long period trying to position elements on screen and also made it easier to create a responsive layout that changes in line with the viewport window of the web browser software.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/grid_layout.png}
+  \caption{An early wireframe grid layout prototype for Solar System Explorer}
+  \label{fig:grid_layout}
+\end{figure}
 
 \subsubsection{Numeric formatting}
 
@@ -454,9 +527,21 @@ None have been so influential as the artwork in Stanley Kubrick's 2001: A Space 
 
 It is from Lange's work, which itself was rooted in providing a sense of realism to a work of fiction, that many conventions of the genre were born. White panels with black heat shielding, exposed sensor and radio arrays, designs that avoided the all too common conventions of 'WWII in space' and so on. In fact, even referring back to Geiger and Jeffries, you can see the lasting impact of Lange's vision in their work. 
 
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/2001_palette.png}
+  \caption{The colour palette of 2001: A Space Odyssey {\cite{sinclair_man_2016}}}
+  \label{fig:2001_palette}
+\end{figure}
+
 Lange's art reflected engineering practice and the similarities between his work and even modern endeavours in space exploration are remarkable. One of the films most lauded for its realism in recent years is 2015's The Martian, which again uses a palette and style that draws on both actual technologies and on Lange's artistic conventions for its speculative imagery. The rotating section of the Hermes spacecraft modelled on the same principles of artificial gravitation as 2001's Space Station 5.
 
-In this implementation Solar System Explorer also borrows conventions from Lange's work in both its pallette and in the graphical flourishes that detail its user interface.
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/spacestation.jpg}
+  \caption{Lange's designs for Space Station 5 from 2001: A Space Odyssey {\cite{sinclair_man_2016}}}
+  \label{fig:spacestation}
+\end{figure}
+
+To ensure consistency with genre convention Solar System Explorer also borrows from Lange's work in both its pallette and in the graphical flourishes that detail its user interface.
 
 \subsection{Solar System Explorer UI design process}
 
@@ -464,12 +549,25 @@ The design process for Solar System Explorer took a conventional route, moving r
 
 It was decided that the adoption of a widescreen style of presentation for the 3D graphical element would add a slightly cinematic feel to the finished product, therefore interface bars were added at the top and bottom of the screen forcing a widescreen aspect ratio regardless of the size of the browser viewport. These would only become visible after the game's tutorial and, prior to that point, could be used as a blank area onto which instruction or narrative text could be overlaid.
 
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/cinematic.png}
+  \caption{Cinematic aspect ratio: The opening screen for Solar System Explorer}
+  \label{fig:cinematic}
+\end{figure}
+
 A common convention of the genre is to place interactive buttons on the far left and right of the screen. Solar System Explorer follows this model, but when showing the 'System View' which shows the position of the planets relative to the sun along with ellipses reprenting their orbits, these side bars retreat off screen.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/ui_upgrades.png}
+  \caption{The planetary UI with available upgrades}
+  \label{fig:ui_upgrades}
+\end{figure}
 
 All 2D graphical elements were generated in Adobe Photoshop, saved locally and are included in the UI through the use of the CSS:background property.
 
 
 \section{Project management}
+\markboth{Project management}{Project management}
 
 \subsection{Software development lifecycle}
 At the very initial stages of the project, when assembling the proposal document, it was noted that game development did not typically follow one of the many formal software development lifecycles (SDLCs) in any strict sense \cite{ramadan_game_2013}. In fact a systematic review published in the Journal of Software Engineering Research and Development found that there was a very poor understanding of the process of game development outside of the 'production phase' (typically referred to as implementation in other SDLCs).
@@ -495,6 +593,7 @@ In the end the production schedule indicated in the project proposal was only lo
 
 
 \section{Results and evaluation}
+\markboth{Results and evaluation}{Results and evaluation}
 
 Solar System Explorer exists as a software demo, complete as a game framework with some sample content for progress through the game narrative.
 
@@ -503,6 +602,12 @@ Solar System Explorer exists as a software demo, complete as a game framework wi
 The game as it stands mostly fulfils the original general specification. Though it does not meet the aspirational end point of the product, it is far more complete than the state described in the fallback specification. The core mechanics for the incremental game have been realised in full and the 3-dimensional graphical representation of the solar system is complete to a playable degree. Enough game content is present to demonstrate all features of the game mechanics and current features of the user interface.
 
 The numbers increment as expected, upgrade events become visible and trigger properly given the correct prerequisite conditions. Upgrades are purchasable once the resources are available and are listed against specific planets. Purchased upgrades that are one-off events are correctly removed from the interface and those that can be purchased repetitively properly update their costs and display the number of times they have been purchased. The clickable resource boosters work as intended and are modifiable through the purchase of upgrades.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/system_view.jpg}
+  \caption{System View: Final UI in the Chrome browser}
+  \label{fig:system_view}
+\end{figure}
 
 The product meets the expected response times specified at the requirements stage, both for initial download and also to user input, once it is running on the client machine.
 
@@ -514,6 +619,12 @@ The user interface generally behaves in a consistent fashion, though under stres
 
 Of the 13 volunteer users who participated in testing and feedback, all played the demonstration content to completion, 10 of them having played incremental games before. Only 4 reported that they learnt anything new from playing the game, yet one replied in full with "This was a pretty cool way to learn about energy production and space travel. I would have loved to see some links or further facts about space and the planets and the theories around space travel, but I understand this is just a demo. I think it would be a good learning resource for children interested in space. I did enjoy it as an adult." This reflects the lack of narrative content in the demonstration version and the lack of complexity in the scientific information presented.
 
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{images/venus.png}
+  \caption{Fully unlocked game with a planetary view of Venus}
+  \label{fig:venus}
+\end{figure}
+
 Offering feedback on the ease of use of the interface, on a 5 tiered ranking of difficulty, 9 of the users ranked the interface at a 1 (the 'easiest' rating) and the rest at a 2. No user found the interface even moderately difficult to use. This is encouraging and suggests that the conventions followed for the interface and any explicit prompts given were adequate to satisfy any non-functional requirements related to learnability. Specific comments were made about the readability of the text area at the base of the interface and about making the availability of new upgrades more obvious by incorporating further visual prompts. Both of these issues are reviewed in the discussion section.
 
 In response to a similarly tiered question ranking the 'realism' of the visualisation (1 representing unrealistic and 5 very realistic) there was a greater spread of results but still with 9 of the 13 choosing to award a rating of 4 or 5. Comments were made about the lack of rings on Saturn and the glossiness of the specular highlights on the gas giants.
@@ -521,6 +632,7 @@ In response to a similarly tiered question ranking the 'realism' of the visualis
 Of the 13 respondents the only one to reply negatively when asked if they would be 'interested in playing a full version with more content' did so because "these kind of games [...] eat my life, not because there's anything wrong with it". A testament to the compelling nature of the game genre and also a validation that this implemention was effective enough at employing the psychological 'hooks' and genre conventions in that it reminded the user of 'these kind of games'.
 
 \section{Discussion}
+\markboth{Discussion}{Discussion}
 
 One of the test user group stated in their feedback, "More!!! I collected lots of resources I want more! Also a save game feature would be nice, and maybe some online leader boards to add a social or competitive element to the game. Please release the full game!".  This is a good summary introduction to this discussion as it reflects much about the state of the product at this time.
 
@@ -546,15 +658,28 @@ There are other visual refinements that would have been ideal. The Sun's represe
 
 In short, there are many potential future developments for the program. It would have been wonderful to have implemented more of these features and to have a full gameplay experience ready for delivery at project's end. However some of these were defined from the beginning as aspirational goals and should not detract too heavily from the fact that the core aims of the project have been realised in the final product.
 
+\newpage
 \section{Conclusion}
-
-The product is mechanically complete enough to justify the label 'incremental game' and the core features of the genre have been incorporated into the game's framework. The visual aspect is detailed enough to meet the goals of relative realism set out in the introduction. It defiinitely represents a departure from the cartoonish art styles and abstract subject material otherwise common in the field.
+\markboth{Conclusion}{Conclusion}
 
 Solar System Explorer is a functionally complete program which simply needs populating with more content to provide a full length game experience and a more in-depth gateway to scientific knowledge and terminology. The interface would definitely benefit from further enhancements yet, taken as a whole, this software is already at the stage where it has the potential to be considered a valid beta release candidate.
 
-When measured against the expectations set out in the introductory sections of this report it demonstrates a reasonable degree of success.
+It is mechanically complete enough to justify the label 'incremental game' and the core features of the genre have been incorporated into the game's framework. The visual aspect is detailed enough to meet the goals of realism set out in the introduction. It definitely demonstrates a departure from the cartoonish art styles and abstract subject material otherwise common in the field.
 
+Compared against the expectations set out in the introductory sections of this report Solar System Explorer displays a good measure of success as a 'relatively-realistic incremental browser game with an astrophysics theme'.
 
+\section{Sources of submitted code}
+\markboth{Sources of submitted code}{Sources of submitted code}
+All submitted code with the exception of the three.js library was created by this report's author.
+
+\noindent
+Acknowledgement is given to the following for tutorial content, examples and documentation:
+\begin{itemize}
+\item three.js (threejs.org)
+\item Processing (processing.org)
+\item w3schools.com
+\end{itemize}
+Whilst no code was copied verbatim from these sources, each provided a wealth of educational information that assisted with this project.
 
 \addcontentsline{toc}{section}{References}
 \printbibliography
@@ -563,18 +688,34 @@ When measured against the expectations set out in the introductory sections of t
 \appendixpage
 \addappheadtotoc
 
-\section{Location and structure of git repository, live testing location}
+\section{Location and structure of git repository.}
 
 This project's git repository is located at:
 \begin{verbatim}
 	https://git-teaching.cs.bham.ac.uk/mod-msc-proj-2006/pcp620.git
 \end{verbatim}
 
+\noindent
+The root directory of the repository contains 4 files and 1 subdirectory that comprise the assets for the application, these being:
 
-
+\begin{verbatim}
+	spacegame.html
+	spacegame.css
+	spacegamemechanics.js
+	three-min.js
+	/images (subdirectory)
+\end{verbatim}
 
 \noindent
-The product may be viewed on a live web server at:
+All contents the images directory are required for the application to run as intended.
+
+\bigskip
+\noindent
+The root directory also contains the subdirectory /report which hosts all of the LaTeX files and image assets used in the creation of this report.
+
+
+\section{Live inspection location}
+For ease of inspection, the product may be viewed on a live web server at:
 \begin{verbatim}
 	http://philprior.com/spacegame/spacegame.html
 \end{verbatim}
