@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.22)  11 SEP 2017 03:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.22)  11 SEP 2017 03:35
 entering extended mode
 **./pcp620_report_2017.tex
 (pcp620_report_2017.tex
@@ -496,47 +496,47 @@ cmr/m/n/10 : $\OT1/cmtt/m/n/10 10 . 1145 / 3034780$\OT1/cmr/m/n/10 .
 
 [35] [36
 
-]
-Overfull \hbox (5.10551pt too wide) in paragraph at lines 572--573
+] [37]
+Overfull \hbox (5.10551pt too wide) in paragraph at lines 589--590
 \OT1/cmr/m/n/10 NASA con-tent - im-ages, au-dio, video, and com-puter files use
 d in the ren-di-tion of 3-dimensional
  []
 
-[37]
+[38]
 Missing character: There is no Â in font cmtt10!
 Missing character: There is no © in font cmtt10!
 
-Overfull \hbox (0.65794pt too wide) in paragraph at lines 606--606
+Overfull \hbox (0.65794pt too wide) in paragraph at lines 623--623
 []\OT1/cmtt/m/n/10 Permission is hereby granted, free of charge, to any person 
 obtaining a copy[] 
  []
 
 
-Overfull \hbox (5.9079pt too wide) in paragraph at lines 606--606
+Overfull \hbox (5.9079pt too wide) in paragraph at lines 623--623
 []\OT1/cmtt/m/n/10 of this software and associated documentation files (the "So
 ftware"), to deal[] 
  []
 
 
-Overfull \hbox (0.65794pt too wide) in paragraph at lines 606--606
+Overfull \hbox (0.65794pt too wide) in paragraph at lines 623--623
 []\OT1/cmtt/m/n/10 in the Software without restriction, including without limit
 ation the rights[] 
  []
 
 
-Overfull \hbox (5.9079pt too wide) in paragraph at lines 606--606
+Overfull \hbox (5.9079pt too wide) in paragraph at lines 623--623
 []\OT1/cmtt/m/n/10 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWI
 SE, ARISING FROM,[] 
  []
 
-[38]
-Underfull \hbox (badness 10000) in paragraph at lines 611--611
+[39] [40
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 626--626
 
  []
 
-[39
-
-] (pcp620_report_2017.aux)
+[41] (pcp620_report_2017.aux)
 Package logreq Info: Writing requests to 'pcp620_report_2017.run.xml'.
 \openout1 = `pcp620_report_2017.run.xml'.
 
@@ -559,9 +559,9 @@ e1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 s/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
 10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on pcp620_report_2017.pdf (39 pages, 296709 bytes).
+Output written on pcp620_report_2017.pdf (41 pages, 299243 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
+ 181 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
