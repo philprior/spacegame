@@ -4,7 +4,7 @@ Incremental game using HTML 5, CSS 3 and JavaScript ES6 (vanilla + three.js)
 Created for an MSc project looking into incremental gaming and browser technologies (particularly ES6 and css:grid).
 
 Playable version at: http://philprior.com/spacegame/spacegame.html
-
+Formatted for desktop only, not mobile/responsive.
 ---
 
 Below are the permissions given for use of the images that form the textures of the planets
