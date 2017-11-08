@@ -17,10 +17,13 @@ NASA content - images, audio, video, and computer les used in the rendition of 
 
 This general permission extends to personal Web pages, news outlets, schools, and text-book authors may use NASA content without needing
 explicit permission. NASA content used in a factual manner that does not imply endorsement may be used without needing explicit permission. NASA should be acknowledged as the source of the material. NASA occasionally uses copyrighted material by permission on its website. Those images will be marked copyright with the name of the copyright holder. NASA's use does not convey any rights to others to use the same material. Those wishing to use copyrighted material must contact the copyright holder directly.
+
 From: https://www.nasa.gov/multimedia/guidelines/index.html
+
 
 3.2 ESO - Usage of images, videos and web texts
 
 Unless specifically noted, the images and videos distributed from the public ESO web site, along with the texts of press releases, announcements, pictures of the week and captions, are licensed under a Creative Commons Attribution 4.0 International License, and may on
 a non-exclusive basis be reproduced without fee provided the credit is clear and visible.
+
 From: https://www.eso.org/public/unitedkingdom/copyright/
